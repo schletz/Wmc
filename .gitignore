@@ -1,0 +1,7 @@
+**/.vs
+**/.vscode
+**/node_modules
+**/bin
+**/obj
+*.html
+*/.html
