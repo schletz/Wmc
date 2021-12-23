@@ -1,9 +1,17 @@
 # Webentwicklung und Mobile Computing an der HTL Spengergasse
 
+## Benötigte Software
+
+Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Software:
+- Installation von VS Code und Node.js für die Frontend Entwicklung
+- Installation von Visual Studio 2022 oder JetBrains Rider für die Backend Entwicklung
+
 ## Inhalt 
+
 ### 3. Jahrgang
 
 #### JavaScript Sprachgrundlagen
+- Variablen und JSON
 - Functions (Chapter 8)
 - Collections (tw. Chapter 8, Chapter 7)
 - JSON Parsing (iterieren, suchen, …)

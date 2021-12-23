@@ -3,5 +3,5 @@
 **/node_modules
 **/bin
 **/obj
-*.html
-*/.html
+**/[A-Z0-9].html
+
