@@ -37,5 +37,6 @@
 - Fehlerbehandlung (Verbindungsabbruch, …)
 - Authentication (JWT)
 - State Management
+- Echtzeitkommunikation mit WebSockets
 
 [Zum Lehrplan](Lehrplan.md)

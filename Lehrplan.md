@@ -50,7 +50,7 @@ verschiedenen Komponenten von verteilten Systemen beschreiben;
 vorgegebene Algorithmen auf ihre Korrektheit überprüfen und testen.
 #### Lehrstoff:
 Software-Architektur verteilter Systeme.
-Web Development Stack, Sockets Internet Of Things.
+Web Development Stack, Sockets, Internet Of Things.
 ### 8. Semester - Kompetenzmodul 8:
 #### Bildungs- und Lehraufgabe:
 Die Schülerinnen und Schüler können
