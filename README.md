@@ -25,16 +25,15 @@
 
 #### Backend Entwicklung mit ASP.NET Core WebAPI (tw. in POS)
 - Application Layer mit EF Core
-- Controller, Requestmethoden
-- Routing
+- Controller, Requestmethoden, Routing
 - DTO Klassen und AutoMapper
 - CORS, JWT Authentication
 
 #### Single Page Application Frameworks II
 - Kommunikation mit der API, Entwickeln eines REST Services
+  - Senden von Daten an die API
+  - Fehlerbehandlung (Verbindungsabbruch, …)
 - Formulare und Validierung, serverseitige Validierung
-- Senden von Daten an die API
-- Fehlerbehandlung (Verbindungsabbruch, …)
 - Authentication (JWT)
 - State Management
 - Echtzeitkommunikation mit WebSockets
