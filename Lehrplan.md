@@ -28,8 +28,8 @@ Die Schülerinnen und Schüler können
 - einfache Webbenutzerschnittstellen entwickeln;
 - den Einsatz von Protokollen für Webapplikationen verstehen.
 #### Lehrstoff:
-Kommunikation zwischen Frontend und Backend, dynamisch Frontends, Funktionen iBackend.
-Komplexe Elemente Auszeichnungssprachen, Formatierungstechniken. Komplexe Elemente von
+Kommunikation zwischen Frontend und Backend, dynamisch Frontends, Funktionen im Backend.
+Auszeichnungssprachen, Formatierungstechniken. Komplexe Elemente von
 Skriptsprachen, dynamische Elemente, Gestaltungsvorlagen. HTTP(S)-Protokoll.
 ### 6. Semester - Kompetenzmodul 6:
 #### Bildungs- und Lehraufgabe:
