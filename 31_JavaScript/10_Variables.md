@@ -206,6 +206,9 @@ Die Erklärung liegt im ECMAScript Sprachstandard. Strings sind nur *false*, wen
 Gerade die fehlende Unterscheidung zwischen 0 und *undefined* macht es oft nötig, den === Operator
 zu nutzen. So liefert `if (count === undefined)` auch nur true, wenn *count* nicht zugewiesen wurde.
 
+### Umgang mit undefined
+
+
 ## Die JavaScript Object Notation (JSON)
 
 ### Datum und Zeit
