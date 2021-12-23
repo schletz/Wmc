@@ -149,7 +149,7 @@ console.log("0" === false);        // false
 Auch bei mathematischen Operationen wie +, -, * und / wird die Stringumwandlung durchgeführt.
 Da + aber auch die Stringverknüpfung ist, liefert das Beispiel (1) einen verknüpften String.
 Die anderen Operationen (-, * und /) sind nur für Zahlen definiert. Daher werden Strings - wenn
-möglich - als Zahl interpretiert (2 - 4).
+möglich - als Zahl interpretiert (Beispiele 2 bis 4).
 
 Die schnellste Umwandlung von Strings in Zahlen ist also die Multiplikation mit 1. Die Division
 von 2 ganzen Zahlen liefert eine Dezimalzahl und nicht wie in C# eine Ganzzahl.  
@@ -161,7 +161,7 @@ console.log(1 - "1");       // (3) 0
 console.log("1"/"2");       // (4) 0.5
 ```
 
-#### if mit Ausdrücken, die nicht boolean liefern
+#### if mit Ausdrücken, die nicht boolean sind
 
 In C# oder Java muss ein Ausdruck, der in einem *if* Statement verwendet wird, einen *boolean*
 Wert (true oder false) zurückliefern. In JavaScript muss dies nicht so sein. So können z. B.
@@ -170,23 +170,23 @@ auch Variablen, die keinen Wert vom Typ *boolean* enthalten, mit *if* abgefragt 
 ```javascript
 let count;
 if (!count) /* returns true */ {
-    console.log("!count is true if undefined.")
+    console.log("!count is true because it is undefined.")
 }
 count = 0;
 if (!count) /* returns true */ {
-    console.log("!count is true if 0 (number).")
+    console.log("!count is true because it is 0 (number).")
 }
 count = "0";
 if (!count) /* returns FALSE! */ {
-    console.log("!count is true if \"0\" (string).");
+    console.log("!count is true because it is \"0\" (string).");
 }
 ```
 
 Die Ausgabe liefert beim ersten und zweiten Statement den erwarteten Wert, das 3. Statement liefert
 jedoch nicht true:
 ```text
-!count is true if undefined.
-!count is true if 0 (number).
+!count is true because it is undefined.
+!count is true because it is 0 (number).
 ```
 
 Die Erklärung liegt im ECMAScript Sprachstandard. Strings sind nur *false*, wenn sie leer sind.
@@ -212,13 +212,9 @@ zu nutzen. So liefert `if (count === undefined)` auch nur true, wenn *count* nic
 
 ### Hinzufügen und Löschen
 
-## Arrays
-
-## Typprüfungen und Vergleiche
-
-### Type conversion und Vergleich
-
 ### Vergleiche von JSON Objekten
+
+## Arrays
 
 ## Übung
 
