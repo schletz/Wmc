@@ -299,7 +299,7 @@ Möchte man nicht mit dem rohen Timestamp arbeiten, stellt das Date Object ein O
 verschiedene Methoden zur Ausgabe, ... bereitstellt. Es kann auf 3 Arten erstellt werden:
 
 - Erzeugen eines Datumsobjektes aus einzelnen Komponenten: `Date(year, month [,date [,hours [,minutes [,seconds [,ms]]]]])`
-- Erzeugen eines Datumsobjektes aus einem Timestamp `Date(value) `
+- Erzeugen eines Datumsobjektes aus einem Timestamp: `Date(value) `
 - Erzeugen eines Datumsobjektes mit der aktuellen Systemzeit: `Date()`
 
 ```javascript
