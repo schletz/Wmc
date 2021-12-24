@@ -298,8 +298,8 @@ console.log("Age in days: ", (end - start) / 86_400_000);  // Age in days:  1596
 Möchte man nicht mit dem rohen Timestamp arbeiten, stellt das Date Object ein Objekt dar, welches
 verschiedene Methoden zur Ausgabe, ... bereitstellt. Es kann auf 3 Arten erstellt werden:
 
-- Erzeugen eines Datumsobjektes aus einzelnen Komponenten: `Date ( year, month [, date [ , hours [ , minutes [ , seconds [ , ms ] ] ] ] ] )`
-- Erzeugen eines Datumsobjektes aus einem Timestamp `Date ( value ) `
+- Erzeugen eines Datumsobjektes aus einzelnen Komponenten: `Date(year, month [,date [,hours [,minutes [,seconds [,ms]]]]])`
+- Erzeugen eines Datumsobjektes aus einem Timestamp `Date(value) `
 - Erzeugen eines Datumsobjektes mit der aktuellen Systemzeit: `Date()`
 
 ```javascript
