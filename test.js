@@ -1,2 +1,3 @@
-let x;
-console.log(x | "A");
+let val;
+val ??= 0;
+console.log(val);

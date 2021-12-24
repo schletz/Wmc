@@ -11,7 +11,9 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 ### 3. Jahrgang
 
 #### JavaScript Sprachgrundlagen
-- Variablen und JSON
+- [ECMAScript und JavaScript](31_JavaScript/10_ECMAscript.md)
+- [Variablen und Datentypen](31_JavaScript/20_Variables.md)
+- JSON und Arrays
 - Functions (Chapter 8)
 - Collections (tw. Chapter 8, Chapter 7)
 - JSON Parsing (iterieren, suchen, …)
