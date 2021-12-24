@@ -23,7 +23,7 @@ Natürlich gab es in der Zwischenzeit weitere Fortschritte, wie die folgende Auf
 | ECMAScript 9  | 2018 | https://262.ecma-international.org/9.0  | spread operator ... |
 | ECMAScript 10 | 2019 | https://262.ecma-international.org/10.0 |                     |
 | ECMAScript 11 | 2020 | https://262.ecma-international.org/11.0 | nullish coalescing operator, `??` |
-| ECMAScript 12 | 2021 | https://262.ecma-international.org/12.0 | logical assignment operators (`??=`, `&&=`, `||=`\) |
+| ECMAScript 12 | 2021 | https://262.ecma-international.org/12.0 | logical assignment operators (`??=`, `&&=`, `\|\|=`) |
 
 Das offizielle PDF zum Sprachstandard ECMAScript 6 ist im Dokument
 [ECMA-262_6th_edition_june_2015.pdf](ECMA-262_6th_edition_june_2015.pdf) abrufbar. 
