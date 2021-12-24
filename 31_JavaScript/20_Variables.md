@@ -258,3 +258,60 @@ console.log(val, typeof(val));  // 12  number
 
 Mit *Boolean(val)* kann die entsprechende Umwandlung in einen boolean Wert durchgeführt werden.
 
+## Datum und Zeit
+
+Datums- und Zeitwerte können in Form eines Strings, eines Timestamps oder in Form eines
+Date Objektes gespeichert werden.
+
+Für Stringangaben ist folgender Aufbau zulässig:
+
+- Für UTC Datums- und Zeitangaben: `YYYY-MM-DDTHH:mm[:ss[.sss]]Z`
+- Für Datums- und Zeitangaben in Lokalzeit: `YYYY-MM-DDTHH:mm[:ss[.sss]]`
+- Für Datums- und Zeitangaben mit Zeitzone: `YYYY-MM-DDTHH:mm[:ss[.sss]][(+/-)HH:mm]`
+- Für reine Datumsangaben: `YYYY-MM-DD`
+
+Das nachfolgende Beispiel liefert die internen JavaScript Zeitwerte zurück, die jeweils den
+24.12.2021 um 16 Uhr speichern. Diese JavaScript Timestamps stellen die Anzahl der Millisekunden
+seit dem 1. Jänner 1970 UTC dar. Sie lassen sich auch aus dem Unix Timestamp x 1000 berechnen.
+
+```javascript
+let xmasUtc = Date.parse("2021-12-24T16:00Z");
+console.log(xmasUtc);     // 1640361600000
+let xmasCet = Date.parse("2021-12-24T16:00:00+01:00");
+console.log(xmasCet);     // 1640358000000
+let xmasLocale = Date.parse("2021-12-24T16:00:00");
+console.log(xmasLocale);  // 1640358000000
+```
+
+Die dritte Ausgabe ist abhängig von der eingestellten Zeitzone des Betriebssystems. Da der interne
+Timestamp eine fortlaufende Nummerierung der Millisekunden ist, kann z. B. das Alter in Tagen leicht
+berechnet werden. 1 Tag hat 86400 Sekunden, daher hat 1 Tag 86 400 000 Millisekunden.
+
+```javascript
+let end = Date.now();                    // Current Timestamp
+let start = Date.parse("1978-04-07");
+console.log("Age in days: ", (end - start) / 86_400_000);  // Age in days:  15967.425833275463
+```
+
+### Das Date Object
+
+Möchte man nicht mit dem rohen Timestamp arbeiten, stellt das Date Object ein Objekt dar, welches
+verschiedene Methoden zur Ausgabe, ... bereitstellt. Es kann auf 3 Arten erstellt werden:
+
+- Erzeugen eines Datumsobjektes aus einzelnen Komponenten: `Date ( year, month [, date [ , hours [ , minutes [ , seconds [ , ms ] ] ] ] ] )`
+- Erzeugen eines Datumsobjektes aus einem Timestamp `Date ( value ) `
+- Erzeugen eines Datumsobjektes mit der aktuellen Systemzeit: `Date()`
+
+```javascript
+let xmasLocale = new Date(Date.parse("2021-12-24T16:00:00"));
+console.log(xmasLocale.toDateString());  // Fri Dec 24 2021
+console.log(xmasLocale.toISOString());   // 2021-12-24T15:00:00.000Z
+console.log(xmasLocale.getMonth());      // 11 !!!
+```
+
+Eine genauere Beschreibung ist auf https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+verfügbar.
+
+> **Achtung:** `xmasLocale.getMonth()` liefert das Monat beginnend bei 0, also in diesem Fall den
+> Wert 11. Dies ist ein häufiger Fehler.
+

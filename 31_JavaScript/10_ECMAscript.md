@@ -58,7 +58,7 @@ https://babeljs.io/repl kann dieser Code eingefügt werden. Die Ausgabe liefert:
 
 var _val;
 
-var val;
+let val;
 (_val = val) !== null && _val !== void 0 ? _val : val = 0;
 console.log(val);
 ```
