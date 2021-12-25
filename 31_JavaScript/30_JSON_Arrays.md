@@ -333,7 +333,7 @@ Arrays sind Blöcke, die nur aus Punkten bestehen.
 ![](jsondata_uebung1.svg)
 
 ### Aufgabe
-1. Erstelle eine neue Datei mit dem Namen *json_exercise01.js* und öffne sie in VS Code. kopiere
+1. Erstelle eine neue Datei mit dem Namen *json_exercise01.js* und öffne sie in VS Code. Kopiere
    danach den untenstehenden Code hinein. Öffne danach die Konsole in VS Code und führe mit
    *node json_exercise01.js* die Datei aus.
 2. Definiere ein JSON Objekt, welches die oben abgebildete Struktur abbildet. Achte auf die
@@ -408,7 +408,7 @@ von Interesse.
 
 ### Aufgabe
 
-1. Erstelle eine neue Datei mit dem Namen *json_exercise02.js* und öffne sie in VS Code. kopiere
+1. Erstelle eine neue Datei mit dem Namen *json_exercise02.js* und öffne sie in VS Code. Kopiere
    danach den untenstehenden Code hinein. Öffne danach die Konsole in VS Code und führe mit
    *node json_exercise02.js* die Datei aus.
 2. Analysiere das Objekt *weatherdata* und ermittle das höchste Maximum und das tiefste Minimum

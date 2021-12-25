@@ -187,8 +187,18 @@ console.log(ageCalculator.isFullAged("2004-12-10"));    // false
 Durch den Umstand, Funktionen auch in einem Array speichern zu können, kann ein Publish/Subscribe
 Pattern leicht implementiert werden. Komponenten können durch eine Subscribe Methode eine Callback
 Funktion übergeben. Diese Funktion wird aufgerufen, wenn mit *publish()* Daten gesendet werden.
+Implementiere die Funktion *messageBus()*, sodass sie dieses Feature besitzt. 
 
-Implementiere die Funktion *messageBus()*, sodass sie dieses Feature besitzt. Hinweise:
+### Aufgabe
+
+1. Erstelle eine neue Datei mit dem Namen *functions_exercise01.js* und öffne sie in VS Code. Kopiere
+   danach den untenstehenden Code hinein. Öffne danach die Konsole in VS Code und führe mit
+   *node functions_exercise01.js* die Datei aus. Die Ausgabe muss exakt der vorgegebenen Ausgabe
+   entsprechen.
+2. Es ist nur Code innerhalb der Funktion *messageBus()* zu schreiben. Der Rest darf nicht
+   verändert werden.
+
+Beachte folgende Hinweise:
 - Verwende intern ein Array, welches die subscriptions speichert. Mit *push()* können Elemente zu
   einem Array hinzugefügt werden.
 - Überlege dir, wie eine Funktion ein Objekt, welches 2 Methoden (nämlich *subscribe()* und *publish()*
@@ -196,6 +206,7 @@ Implementiere die Funktion *messageBus()*, sodass sie dieses Feature besitzt. Hi
   kann (closures).
 - Du kannst mit *splice(index, 1)* ein Element in einem Array an der Position *index* löschen.
 
+**functions_exercise01.js**
 ```javascript
 function messageBus() {
     /* Your implementation */
@@ -226,12 +237,24 @@ Subscriber 1 received Hello again!
 ## Übung 2: Publish/Subscribe Pattern mit Eventtyp
 
 Im vorigen Beispiel empfing jede registrierte Callback Funktion die Daten. Nun soll anhand eines
-Typs differenziert werden können. Beachte dabei die folgenden Hinweise:
+Typs differenziert werden können. 
+
+### Aufgabe
+
+1. Erstelle eine neue Datei mit dem Namen *functions_exercise02.js* und öffne sie in VS Code. Kopiere
+   danach den untenstehenden Code hinein. Öffne danach die Konsole in VS Code und führe mit
+   *node functions_exercise02.js* die Datei aus. Die Ausgabe muss exakt der vorgegebenen Ausgabe
+   entsprechen.
+2. Es ist nur Code innerhalb der Funktion *messageBus()* zu schreiben. Der Rest darf nicht
+   verändert werden.
+
+Beachte dabei die folgenden Hinweise:
 - Es ist weiterhin nur ein Array zur Speicherung der Callback Funktionen notwendig.
 - Füge in der Funktion *on()* ein JSON Object mit den Properties *type* und *callback* hinzu.
 - Rufe in der Funktion *publish()* nur die Callback Funktionen auf, die den richtigen subscription
   Typ haben.
 
+**functions_exercise02.js**
 ```javascript
 function messageBus() {
     /* Your implementation */
@@ -259,7 +282,7 @@ bus.unsubscribe(id);
 bus.publish("click", { x: 30, y: 40 });
 ```
 
-**Korrekte Ausgabe**
+**Ausgabe**
 ```text
 Subscriber 1 received x = 10 and y = 20.
 Subscriber 2 received x = 10 and y = 20.
