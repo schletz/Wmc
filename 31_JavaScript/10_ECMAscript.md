@@ -15,18 +15,15 @@ verwenden.
 
 Natürlich gab es in der Zwischenzeit weitere Fortschritte, wie die folgende Aufstellung zeigt:
 
-| Version       | Jahr | Dokumentation                           | Neuerungen
-|---------------|------|-----------------------------------------|---------------------|
-| ECMAScript 6  | 2015 | https://262.ecma-international.org/6.0  |                     |
-| ECMAScript 7  | 2016 | https://262.ecma-international.org/7.0  |                     |
-| ECMAScript 8  | 2017 | https://262.ecma-international.org/8.0  | await/async
-| ECMAScript 9  | 2018 | https://262.ecma-international.org/9.0  | spread operator ... |
-| ECMAScript 10 | 2019 | https://262.ecma-international.org/10.0 |                     |
-| ECMAScript 11 | 2020 | https://262.ecma-international.org/11.0 | nullish coalescing operator, `??` |
-| ECMAScript 12 | 2021 | https://262.ecma-international.org/12.0 | logical assignment operators (`??=`, `&&=`, `\|\|=`) |
-
-Das offizielle PDF zum Sprachstandard ECMAScript 6 ist im Dokument
-[ECMA-262_6th_edition_june_2015.pdf](ECMA-262_6th_edition_june_2015.pdf) abrufbar. 
+| Version       | Jahr | Dokumentation                                                                      | Neuerungen                                                 |
+| ------------- | ---- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| ECMAScript 6  | 2015 | https://262.ecma-international.org/6.0 [PDF](ECMA-262_6th_edition_june_2015.pdf)   |                                                            |
+| ECMAScript 7  | 2016 | https://262.ecma-international.org/7.0                                             |                                                            |
+| ECMAScript 8  | 2017 | https://262.ecma-international.org/8.0                                             | await/async                                                |
+| ECMAScript 9  | 2018 | https://262.ecma-international.org/9.0                                             | spread operator ...                                        |
+| ECMAScript 10 | 2019 | https://262.ecma-international.org/10.0                                            |                                                            |
+| ECMAScript 11 | 2020 | https://262.ecma-international.org/11.0                                            | nullish coalescing operator (`??`), optional chains (`?.`) |
+| ECMAScript 12 | 2021 | https://262.ecma-international.org/12.0 [PDF](ECMA-262_12th_edition_june_2021.pdf) | logical assignment operators (`??=`, `&&=`, `\|\|=`)       |
 
 Zudem definiert ECMAScript noch ein *Global Object*. Es beinhaltet Funktionen und Objekte, die immer
 zur Verfügung stehen (ECMAScript 6):

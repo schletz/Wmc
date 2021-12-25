@@ -1,4 +1,15 @@
-let xmasLocale = new Date(Date.parse("2021-12-24T16:00:00"));
-console.log(xmasLocale.toDateString());  // Fri Dec 24 2021
-console.log(xmasLocale.toISOString());   // 2021-12-24T15:00:00.000Z
-console.log(xmasLocale.getMonth());   // 2021-12-24T15:00:00.000Z
+const mySet = new Set();
+const setFromArray = new Set([1, 2, 3, 1]);
+const json1 = {x: 1};
+const json2 = {x: 1};
+
+mySet.add("1");
+mySet.add(1);
+mySet.add(1);              // Not added
+mySet.add(json1);
+mySet.add(json1);          // Not added
+mySet.add(json2);          // Added
+console.log(mySet);        // { '1', 1 }
+console.log(setFromArray)  // { 1, 2, 3 }
+mySet.delete("1");
+
