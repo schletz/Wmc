@@ -1,4 +1,4 @@
-# Functions: Callbacks und Closures
+# Funktionen 1: Callbacks und Closures
 
 ## Definition einer Funktion
 

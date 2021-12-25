@@ -1,1 +1,1 @@
-# Functions: Prototype und new
+# Funktionen 2: Prototype und new

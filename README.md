@@ -17,7 +17,7 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - Funktionen
   - [Callbacks und Closures](31_JavaScript/40_FunctionsCallback.md)
   - [Prototype und new](31_JavaScript/41_FunctionsPrototype.md)
-  - Arrow functions und Arraymethoden
+  - [Arrow functions und Arraymethoden](31_JavaScript/42_FunctionsArrowFunctions.md)
 - Classes
 - Modules
 
