@@ -14,9 +14,7 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - [ECMAScript und JavaScript](31_JavaScript/10_ECMAscript.md)
 - [Variablen und Datentypen](31_JavaScript/20_Variables.md)
 - [JSON, Arrays und Sets](31_JavaScript/30_JSON_Arrays.md)
-- Functions (Chapter 8)
-- Collections (tw. Chapter 8, Chapter 7)
-- JSON Parsing (iterieren, suchen, …)
+- [Functions und this](31_JavaScript/40_Functions.md)
 - Classes (Chapter 9)
 - Modules (Chapter 10)
 
