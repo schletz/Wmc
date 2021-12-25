@@ -333,8 +333,9 @@ Arrays sind Blöcke, die nur aus Punkten bestehen.
 ![](jsondata_uebung1.svg)
 
 ### Aufgabe
-1. Erstelle eine neue Datei mit dem Namen *json_exercise01.js*. Öffne danach in VS Code die Konsole
-   und führe mit *node json_exercise01.js* die Datei aus.
+1. Erstelle eine neue Datei mit dem Namen *json_exercise01.js* und öffne sie in VS Code. kopiere
+   danach den untenstehenden Code hinein. Öffne danach die Konsole in VS Code und führe mit
+   *node json_exercise01.js* die Datei aus.
 2. Definiere ein JSON Objekt, welches die oben abgebildete Struktur abbildet. Achte auf die
    korrekten Typen (verwende Anführungszeichen nur für Stringwerte). Weise diese Struktur der
    Variable *meeting* zu.
