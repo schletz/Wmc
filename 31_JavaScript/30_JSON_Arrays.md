@@ -419,6 +419,8 @@ Beachte folgende Hinweise:
 - Über den `[]` Operator kann dynamisch auf Properties zugegriffen werden.
 - Verwende diesen Operator, um die Stationen zu *statistics* hinzuzufügen und um den Namen
   aus *stations* zu lesen.
+- Iteriere nur 1x über das Array *measurements*. Lese nicht zuerst die Stationen und gehe dann
+  für jede Station durch das Array.
 - Mit *Math.min()* bzw. *Math.max()* das gespeicherte absolute Maximum und Minimum neu gesetzt werden.
 - Mit *continue* kann die Schleife mit dem nächsten Wert fortgesetzt werden. Das ist zum Prüfen
   von Bedingungen am Anfang der Schleife nützlich. Vermeide *else* im Programmcode und prüfe zu
