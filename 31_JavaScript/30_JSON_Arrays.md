@@ -396,3 +396,62 @@ console.log("* Zugesagte Teilnehmer ********************************************
 console.log("* Abgesagte Teilnehmer *************************************************************");
 ```
 
+## Übung 2
+
+Eine Wetter API liefert Messwerte im JSON Format. Die Stationen haben eine ID, die als Key
+dient. Die Messwerte liegen als Array *measurements* vor. Die Reihenfolge der Messwerte kann
+beliebig sein. Es wird die maximale und minimale Temperatur des Tages übertragen. Konnte
+die Station an einem Tag keine Daten liefern, wird der Tag ohne diesen Datensatz geliefert.
+
+Es soll nun ein Statistikobjekt erstellt werden. Dabei ist das absolute Maximum und Minimum
+von Interesse.
+
+### Aufgabe
+
+1. Erstelle eine neue Datei mit dem Namen *json_exercise02.js* und öffne sie in VS Code. kopiere
+   danach den untenstehenden Code hinein. Öffne danach die Konsole in VS Code und führe mit
+   *node json_exercise02.js* die Datei aus.
+2. Analysiere das Objekt *weatherdata* und ermittle das höchste Maximum und das tiefste Minimum
+   dynamisch im Programmcode.
+3. Die Ausgabe des Objektes *statistics* soll der unten angezeigten Ausgabe entsprechen.
+
+Beachte folgende Hinweise:
+- Über den `[]` Operator kann dynamisch auf Properties zugegriffen werden.
+- Verwende diesen Operator, um die Stationen zu *statistics* hinzuzufügen und um den Namen
+  aus *stations* zu lesen.
+- Mit *Math.min()* bzw. *Math.max()* das gespeicherte absolute Maximum und Minimum neu gesetzt werden.
+- Mit *continue* kann die Schleife mit dem nächsten Wert fortgesetzt werden. Das ist zum Prüfen
+  von Bedingungen am Anfang der Schleife nützlich. Vermeide *else* im Programmcode und prüfe zu
+  Beginn, ob ein Schleifendurchlauf sinnvoll ist.
+- Es sollen keine temporären Variablen für Zwischenwerte verwendet werden.
+
+**Ausgabe**
+```text
+{"11035":{"name":"Wien - Hohe Warte","min":-2.7,"max":10.2},"11082":{"name":"Gumpoldskirchen","min":-6.3,"max":9.7}}
+```
+
+**json_exercise02.js**
+```javascript
+const weatherdata = {
+    stations: {
+        "11035": { name: "Wien - Hohe Warte" },
+        "11082": { name: "Gumpoldskirchen" }
+    },
+    measurements: [
+        { stationId: "11035", date: "2021-12-01", temp: { max: 10.2, min: 3.4 } },
+        { stationId: "11082", date: "2021-12-01" },
+        { stationId: "11035", date: "2021-12-02" },
+        { stationId: "11082", date: "2021-12-02", temp: { max: 9.7, min: 4.2 } },
+        { stationId: "11035", date: "2021-12-03", temp: { max: 5.4, min: 0 } },
+        { stationId: "11082", date: "2021-12-03", temp: { max: 4.9, min: -2.1 } },
+        { stationId: "11035", date: "2021-12-04", temp: { max: 3.8, min: -2.7 } },
+        { stationId: "11082", date: "2021-12-04", temp: { max: 4.5, min: -6.3 } }
+    ]
+}
+
+const statistics = {};
+// Add data to statistics
+
+console.log(JSON.stringify(statistics));
+```
+
