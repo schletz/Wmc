@@ -343,6 +343,7 @@ Arrays sind Blöcke, die nur aus Punkten bestehen.
    Ausgabe entsprechen. Die Daten sind natürlich dynamisch zu ermitteln und nicht hardcoded
    auszugeben.
 
+**Ausgabe**
 ```text
 * Einladung vor dem Meeting ********************************************************
    Die Einladung wurde 9.74 Tage vor dem Meeting gesendet.
@@ -358,6 +359,7 @@ Arrays sind Blöcke, die nur aus Punkten bestehen.
    Ilario Semken hat noch nicht reagiert.
 ```
 
+**json_exercise01.js**
 ```javascript
 // Define your JSON object.
 const meeting = {
