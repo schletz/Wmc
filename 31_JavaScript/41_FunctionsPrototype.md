@@ -49,8 +49,8 @@ function point(x, y) {
     }
 }
 
-var p1 = point(3, 4);
-var p2 = point(5, 12);
+const p1 = point(3, 4);
+const p2 = point(5, 12);
 
 console.log(p1.distanceToOrigin());   // 5
 console.log(p2.distanceToOrigin());   // 13
@@ -74,8 +74,8 @@ function point(x, y) {
     return pointData;
 }
 
-var p1 = point(3, 4);
-var p2 = point(5, 12);
+const p1 = point(3, 4);
+const p2 = point(5, 12);
 
 console.log(p1.distanceToOrigin());   // 5
 console.log(p2.distanceToOrigin());   // 13
@@ -107,7 +107,7 @@ Point.prototype.distanceTo = function (point) {
 };
 
 const p1 = new Point(3, 4);
-const p2 = new Point(3, 4);
+const p2 = point(5, 12);
 console.log(p1.distanceToOrigin());   // 5
 console.log(p2.distanceToOrigin());   // 13
 console.log(p2.distanceTo(p1));       // 8.246
