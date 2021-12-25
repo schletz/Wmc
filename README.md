@@ -18,8 +18,8 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
   - [Callbacks und Closures](31_JavaScript/40_FunctionsCallback.md)
   - [Prototype und new](31_JavaScript/41_FunctionsPrototype.md)
   - Arrow functions und Arraymethoden
-- Classes (Chapter 9)
-- Modules (Chapter 10)
+- Classes
+- Modules
 
 #### Single Page Application Frameworks I
 - Buildchain, Webpack, Development Tools
