@@ -16,8 +16,8 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - [JSON, Arrays und Sets](31_JavaScript/30_JSON_Arrays.md)
 - Funktionen
   - [Callbacks und Closures](31_JavaScript/40_FunctionsCallback.md)
-  - [Prototype und new](31_JavaScript/41_FunctionsPrototype.md)
-  - [Arrow functions und Arraymethoden](31_JavaScript/42_FunctionsArrowFunctions.md)
+  - Prototype und new
+  - Arrow functions und Arraymethoden
 - Classes
 - Modules
 
