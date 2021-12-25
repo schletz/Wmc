@@ -196,7 +196,8 @@ console.log(names[2]);  // undefined
 
 Arrays in JavaScript sind jedoch weitaus flexibler. Die Elemente müssen nicht den selben Typ
 besitzen. Weiters ist die Größe veränderbar. Mit *push()* können Elemente hinzugefügt werden.
-*splice(idx, count)* löscht *count* Elemente ab dem übergebenen Index (*idx*). Das folgende
+*splice(idx, count)* löscht *count* Elemente ab dem übergebenen Index (*idx*). Mit dem Property
+*length* kann die Anzahl der Elemente abgefragt werden. Das folgende
 Codebeispiel zeigt die Möglichkeiten:
 
 ```javascript
@@ -324,25 +325,71 @@ Wie im Beispiel erkennbar können mit *for...in* alle Properties eines JSON Obje
 werden. Ein JSON Objekt ist nicht iterierbar, d. h. die Verwendung von *for...of* führt zu einem
 Laufzeitfehler.
 
-## Übung
+## Übung 1
 
-Das folgende Diagramm zeigt ein JSON Object. Definiere dieses Objekt in JavaScript
-und speichere es in der Variable Student.
+Das folgende Diagramm zeigt ein JSON Object. Unterobjekte sind durch einen Pfeil gekennzeichnet.
+Arrays sind Blöcke, die nur aus Punkten bestehen.
 
-```plantuml
-@startjson
-{
-    "date": "2022-04-12T10:45:00",
-    "title": "Meeting: Konzeption des Frontends",
-    "location": {"street": "Spengergasse 20", "zip": 1050, "city": "Wien" },
-    "attendees": [
-        {"firstname": "Michael", "lastname": "Stuart", "confirmed": true},
-        {"firstname": "Michael", "lastname": "Stuart"},
-        {"firstname": "Michael", "lastname": "Stuart", "confirmed": false}
+![](jsondata_uebung1.svg)
 
-    ]
-}
-@endjson
+### Aufgabe
+1. Erstelle eine neue Datei mit dem Namen *json_exercise01.js*. Öffne danach in VS Code die Konsole
+   und führe mit *node json_exercise01.js* die Datei aus.
+2. Definiere ein JSON Objekt, welches die oben abgebildete Struktur abbildet. Achte auf die
+   korrekten Typen (verwende Anführungszeichen nur für Stringwerte). Weise diese Struktur der
+   Variable *meeting* zu.
+3. Löse die in den Kommentaren angegebenen Aufgaben. Die Ausgabe muss exakt der gezeigten
+   Ausgabe entsprechen. Die Daten sind natürlich dynamisch zu ermitteln und nicht hardcoded
+   auszugeben.
 
+```text
+* Einladung vor dem Meeting ********************************************************
+   Die Einladung wurde 9.74 Tage vor dem Meeting gesendet.
+* Anzahl der eingeladenen Teilnehmer ***********************************************
+   3 Personen sind eingeladen.
+* String Properties und ihre Werte**************************************************
+   Das Property date ist ein String mit dem Wert "2022-04-12T10:45:00+02:00"
+   Das Property invitationSent ist ein String mit dem Wert "2022-04-02T14:54:12Z"
+   Das Property title ist ein String mit dem Wert "Meeting: Konzeption des Frontends"
+* Zugesagte Teilnehmer *************************************************************
+   Cyrillus Landre hat für das Meeting "Meeting: Konzeption des Frontends" zugesagt.
+* Abgesagte Teilnehmer *************************************************************
+   Ilario Semken hat noch nicht reagiert.
+```
+
+```javascript
+// Define your JSON object.
+const meeting = {
+};
+
+// *************************************************************************************************
+// Wie viele Tage vor dem Meeting wurde die Einladung (invitationSent) gesendet? Schreibe das Ergebnis
+// in die Variable invitationSendBeforeMeeting.
+console.log("* Einladung vor dem Meeting ********************************************************");
+const invitationSendBeforeMeeting = 0;
+console.log(`   Die Einladung wurde ${invitationSendBeforeMeeting.toFixed(2)} Tage vor dem Meeting gesendet.`);
+
+// *************************************************************************************************
+// Weise die Anzahl der Teilnehmer der Variable attendeesCount zu.
+console.log("* Anzahl der eingeladenen Teilnehmer ***********************************************");
+const attendeesCount = 0
+console.log(`   ${attendeesCount} Personen sind eingeladen.`);
+
+// *************************************************************************************************
+// Gib für jedes String Property im JSON Object den Wert aus. Verwende dafür eine Schleife, die
+// das Objekt dynamisch durchgeht.
+console.log("* String Properties und ihre Werte**************************************************");
+
+
+// *************************************************************************************************
+// Wer hat für das Meeting schon zugesagt, d. h. confirmed hat den Wert true? Verwende dafür eine
+// Schleife, die das Array durchgeht. Der Title ist dynamisch auszugeben und nicht fix im Code
+// einzutragen.
+console.log("* Zugesagte Teilnehmer *************************************************************");
+
+// *************************************************************************************************
+// Wer hat für das Meeting definitiv abgesagt, d. h. confirmed hat den Wert false? Verwende dafür
+// eine Schleife, die das Array durchgeht. 
+console.log("* Abgesagte Teilnehmer *************************************************************");
 ```
 
