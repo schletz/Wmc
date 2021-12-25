@@ -201,9 +201,11 @@ Implementiere die Funktion *messageBus()*, sodass sie dieses Feature besitzt.
 Beachte folgende Hinweise:
 - Verwende intern ein Array, welches die subscriptions speichert. Mit *push()* können Elemente zu
   einem Array hinzugefügt werden.
-- Überlege dir, wie eine Funktion ein Objekt, welches 2 Methoden (nämlich *subscribe()* und *publish()*
-  hat), zurückgeben kann. Beachte, dass das Objekt auf die Variablen in der Funktion zugreifen
+- Überlege dir, wie die Funmtion *messageBus()* ein Objekt, welches 3 Methoden (nämlich *subscribe()*, *publish()*
+  und *unsubscribe()* hat), zurückgeben kann. Beachte, dass das Objekt auf die Variablen in der Funktion zugreifen
   kann (closures).
+- Als id kannst du den eingefügten Index in *subscribe()* zurückgeben. Das macht das Löschen in *unsubscribe()*
+  besonders einfach.
 - Du kannst mit *splice(index, 1)* ein Element in einem Array an der Position *index* löschen.
 
 **functions_exercise01.js**
