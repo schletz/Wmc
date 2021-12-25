@@ -14,7 +14,10 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - [ECMAScript und JavaScript](31_JavaScript/10_ECMAscript.md)
 - [Variablen und Datentypen](31_JavaScript/20_Variables.md)
 - [JSON, Arrays und Sets](31_JavaScript/30_JSON_Arrays.md)
-- [Functions und this](31_JavaScript/40_Functions.md)
+- Funktionen
+  - [Callbacks und Closures](31_JavaScript/40_FunctionsCallback.md)
+  - [Prototype und new](31_JavaScript/41_FunctionsPrototype.md)
+  - Arrow functions und Arraymethoden
 - Classes (Chapter 9)
 - Modules (Chapter 10)
 

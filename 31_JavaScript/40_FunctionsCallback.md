@@ -1,4 +1,4 @@
-# Functions und this
+# Functions: Callbacks und Closures
 
 ## Definition einer Funktion
 
@@ -142,12 +142,12 @@ const result3 = add(1, "x", "a string");    // no logging, but no runtine except
 
 Mit dem Wissen, dass Funktionen lediglich Objekte sind, können wir natürlich Funktionen auch als
 Rückgabewert verwenden. Diese zurückgegebenen Funktionen haben eine Besonderheit: Sie können auf
-Variablen, die in der übergeordneten Funktion vorhanden sind, zugreifen. Somit ist folgendes
+Variablen, die in der übergeordneten Funktion definiert sind, zugreifen. Somit ist folgendes
 Beispiel umsetzbar:
 
 ```javascript
 function getAgeCalculator(now) {
-    now = new Date(now);
+    now = new Date(now);             // now can be accessed by the returned function.
     return function (date) {
         return (now - new Date(date)) / 86_400_000;
     };
@@ -180,4 +180,89 @@ const ageCalculator = getAgeCalculator("2021-12-15");
 console.log(ageCalculator.calculateAge("2002-12-10"));  // 6945
 console.log(ageCalculator.isFullAged("2002-12-10"));    // true
 console.log(ageCalculator.isFullAged("2004-12-10"));    // false
+```
+
+## Übung 1: Das Publish/Subscribe Pattern
+
+Durch den Umstand, Funktionen auch in einem Array speichern zu können, kann ein Publish/Subscribe
+Pattern leicht implementiert werden. Komponenten können durch eine Subscribe Methode eine Callback
+Funktion übergeben. Diese Funktion wird aufgerufen, wenn mit *publish()* Daten gesendet werden.
+
+Implementiere die Funktion *messageBus()*, sodass sie dieses Feature besitzt. Hinweise:
+- Verwende intern ein Array, welches die subscriptions speichert. Mit *push()* können Elemente zu
+  einem Array hinzugefügt werden.
+- Überlege dir, wie eine Funktion ein Objekt, welches 2 Methoden (nämlich *subscribe()* und *publish()*
+  hat), zurückgeben kann. Beachte, dass das Objekt auf die Variablen in der Funktion zugreifen
+  kann (closures).
+- Du kannst mit *splice(index, 1)* ein Element in einem Array an der Position *index* löschen.
+
+```javascript
+function messageBus() {
+    /* Your implementation */
+}
+
+function subscriber1(data) {
+    console.log(`Subscriber1 1 received ${data}`);
+}
+function subscriber2(data) {
+    console.log(`Subscriber1 2 received ${data}`);
+}
+
+const bus = messageBus();
+bus.subscribe(subscriber1);
+const id = bus.subscribe(subscriber2);
+bus.publish("Hello!");
+bus.unsubscribe(id);
+bus.publish("Hello again!");
+```
+
+**Ausgabe**
+```text
+Subscriber 1 received Hello!
+Subscriber 2 received Hello!
+Subscriber 1 received Hello again!
+```
+
+## Übung 2: Publish/Subscribe Pattern mit Eventtyp
+
+Im vorigen Beispiel empfing jede registrierte Callback Funktion die Daten. Nun soll anhand eines
+Typs differenziert werden können. Beachte dabei die folgenden Hinweise:
+- Es ist weiterhin nur ein Array zur Speicherung der Callback Funktionen notwendig.
+- Füge in der Funktion *on()* ein JSON Object mit den Properties *type* und *callback* hinzu.
+- Rufe in der Funktion *publish()* nur die Callback Funktionen auf, die den richtigen subscription
+  Typ haben.
+
+```javascript
+function messageBus() {
+    /* Your implementation */
+}
+
+function subscriber1Click(data) {
+    console.log(`Subscriber 1 received x = ${data.x} and y = ${data.y}.`);
+}
+function subscriber2Click(data) {
+    console.log(`Subscriber 2 received x = ${data.x} and y = ${data.y}.`);
+}
+function subscriber3Keydown(data) {
+    console.log(`Subscriber 3 received key ${data}.`);
+}
+
+const bus = messageBus();
+bus.on("click", subscriber1Click);
+const id = bus.on("click", subscriber2Click);
+bus.on("keydown", subscriber3Keydown);
+
+bus.publish("click", { x: 10, y: 20 });
+bus.publish("keydown", "h");
+
+bus.unsubscribe(id);
+bus.publish("click", { x: 30, y: 40 });
+```
+
+**Korrekte Ausgabe**
+```text
+Subscriber 1 received x = 10 and y = 20.
+Subscriber 2 received x = 10 and y = 20.
+Subscriber 3 received key h.
+Subscriber 1 received x = 30 and y = 40.
 ```
