@@ -35,6 +35,13 @@ RangeError, ReferenceError, RegExp, Set, String, Symbol, SyntaxError, TypeError,
 Uint8ClampedArray, Uint16Array, Uint32Array, URIError, WeakMap, WeakSet, 
 - **Statische Objekte:** JSON, Math, Reflect
 
+## Die MDN Dokumentation
+
+Auf https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference gibt es Anwendungsbeispiele
+und Beschreibungen. Sie ist die erste Anlaufstelle bei JavaScript Fragen. Wenn es um die
+Verwendung von JavaScript im Browser geht, kann auf https://developer.mozilla.org/en-US/docs/Web/API
+nachgesehen werden.
+
 ## Polyfill
 
 Wenn wir eine neue Applikation entwickeln, wollen wir natürlich auch neue Features verwenden.

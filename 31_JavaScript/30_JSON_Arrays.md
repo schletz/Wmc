@@ -61,6 +61,30 @@ Es ist folgendes zu beachten:
   - Weitere JSON Objekte
   - Spezielle Objekte wie Arrays, Functions, etc.
 
+### Umgang mit Referenzen
+
+Wie in Java oder C# handelt es sich bei *p* um eine Referenzvariable. Das bedeutet, dass eine
+Zuweisung von *p* zu einer anderen Variablen lediglich eine Referenz zuweist:
+
+```javascript
+const p = { firstname: "Max" };
+const p2 = p;
+p2.firstname = "Sophie";
+console.log(p.firstname);  // Sophie
+```
+
+*p* und *p2* zeigen auf das selbe Objekt, weswegen die Änderung von *p2.firstname* auch für *p*
+gilt. Möchten wir klonen, so können wir den Weg über einen JSON String gehen:
+
+```javascript
+const p = { firstname: "Max" };
+const p2 = JSON.parse(JSON.stringify(p));
+p2.firstname = "Sophie";
+console.log(p.firstname);  // Max
+```
+
+*p* und *p2* zeigen nun auf getrennte Objekte.
+
 ### Verschachtelungen und Zugriff auf Properties
 
 Ein JSON Objekt kann weitere Objekte als Property speichern. So ist folgende Definition möglich.
