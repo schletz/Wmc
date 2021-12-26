@@ -4,4 +4,5 @@
 **/bin
 **/obj
 **/[A-Z0-9]*.html
+**/yarn.lock
 

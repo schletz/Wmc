@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.65.0"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "serve": "webpack serve --config webpack.config.js --mode=development"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.1"
+  }
+}
