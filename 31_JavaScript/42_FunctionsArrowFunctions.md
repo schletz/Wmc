@@ -301,7 +301,8 @@ https://www.plantuml.com/plantuml/uml/ZPAzJiCm4CTtFuLtr1TWG9LWWG4G7nDYCF4rjHJx8j
 
 Erstelle eine neue Datei *data_analyze.js*. Lade die Datei [stores.json](stores.json) in den
 selben Ordner wie *data_analyze.js*. Kopiere danach den Inhalt des untenstehenden Skripts
-in die Datei. Weise deine Lösung der Variable *result* statt dem leeren Array zu.
+in die Datei *data_analyze.js*. Weise deine Lösung der Variable *result* statt dem leeren Array zu.
+Die Ausgabe muss der unten angezeigten Musterausgabe entsprechen.
 
 **data_analyze.js**
 ```javascript
