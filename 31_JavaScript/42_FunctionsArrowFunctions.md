@@ -486,3 +486,87 @@ Muster: Produkte in der Kategorie Fantastic und EAN > 700000.
   │    4    │ '964205' │ 'Practical Concrete Mouse' │   3   │
   └─────────┴──────────┴────────────────────────────┴───────┘
 ```
+
+## Übung 2 (schwer)
+
+In .NET 6 wurden 2 Funktionen eingeführt: *MinBy()* und *MaxBy()*. Sie ermitteln das Minimum
+bzw. das Maximum von Elementen einer Collection. Dabei werden 2 Dinge berücksichtigt:
+- Es wird eine Collection zurückgegeben, die alle minimalen bzw. maximalen Elemente enthält. Das
+  ist notwendig, da z. B. das Array `[3,2,1,3,1]` zwei minimale Elemente (`[1, 1]`) und zwei
+  maximale Elemente (`[3, 3]`) enthält.
+- Die Methoden besitzen einen Parameter, nämlich einen *keySelector*. Er ist eine Funktion, die
+  aus einem Element den zu vergleichenden Wert zurückliefert. Dadurch können auch komplexe
+  Elemente verglichen werden. Dadurch lassen sich die kleinsten Elemente des folgenden Arrays
+  bestimmen: `[{id: 1, temp: 2}, {id: 2, temp: 3}, {id: 3, temp: 2}]`. Mit dem keySelector 
+  `x => x.temp` kann die Temperatur als Vergleichskriterium herangezogen werden. Das Ergebnis von
+  MinBy wäre dann `[{id: 1, temp: 2}, {id: 3, temp: 2}]`.
+
+Das Problem lässt sich mit einem Statement - nämlich einer *reduce()* Funktion lösen.
+Füge deinen Code in die Musterdatei ein. Die Implementierung darf keine Abhängigkeiten vom Aufbau
+der Arrayelemente haben und muss auch für das oben beschriebene Beispiel funktionieren.
+
+**minBy.js**
+```javascript
+Array.prototype.minBy = function (selector) {
+    return this.reduce(/* your implementation */);
+};
+
+Array.prototype.maxBy = function (selector) {
+    return this.reduce(/* your implementation */);
+};
+
+
+const results = [
+    { name: "Max", points: 16, grade: 1 },
+    { name: "Tobias", points: 14, grade: 1 },
+    { name: "Sophie", points: 16, grade: 1 },
+    { name: "Laura", points: 14, grade: 1 },
+    { name: "Bernhard", points: 13, grade: 2 },
+    { name: "Nina", points: 13, grade: 2 },
+];
+
+console.log("results.minBy(r => r.points)");
+console.table(results.minBy(r => r.points));
+console.log("results.maxBy(r => r.points)");
+console.table(results.maxBy(r => r.points));
+
+console.log("results.minBy(r => r.grade)");
+console.table(results.minBy(r => r.grade));
+console.log("results.maxBy(r => r.grade)");
+console.table(results.maxBy(r => r.grade));
+```
+
+**Ausgabe**
+```text
+results.minBy(r => r.points)
+┌─────────┬────────────┬────────┬───────┐
+│ (index) │    name    │ points │ grade │
+├─────────┼────────────┼────────┼───────┤
+│    0    │ 'Bernhard' │   13   │   2   │
+│    1    │   'Nina'   │   13   │   2   │
+└─────────┴────────────┴────────┴───────┘
+results.maxBy(r => r.points)
+┌─────────┬──────────┬────────┬───────┐  
+│ (index) │   name   │ points │ grade │  
+├─────────┼──────────┼────────┼───────┤  
+│    0    │  'Max'   │   16   │   1   │  
+│    1    │ 'Sophie' │   16   │   1   │  
+└─────────┴──────────┴────────┴───────┘  
+results.minBy(r => r.grade)
+┌─────────┬──────────┬────────┬───────┐  
+│ (index) │   name   │ points │ grade │
+├─────────┼──────────┼────────┼───────┤
+│    0    │  'Max'   │   16   │   1   │
+│    1    │ 'Tobias' │   14   │   1   │
+│    2    │ 'Sophie' │   16   │   1   │
+│    3    │ 'Laura'  │   14   │   1   │
+└─────────┴──────────┴────────┴───────┘
+results.maxBy(r => r.grade)
+┌─────────┬────────────┬────────┬───────┐
+│ (index) │    name    │ points │ grade │
+├─────────┼────────────┼────────┼───────┤
+│    0    │ 'Bernhard' │   13   │   2   │
+│    1    │   'Nina'   │   13   │   2   │
+└─────────┴────────────┴────────┴───────┘
+```
+
