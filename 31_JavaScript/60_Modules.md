@@ -1,27 +1,12 @@
-# Klassen
+# Module
 
-Im vorigen Kapitel haben wir gesehen, dass wir über Functions und Prototypes bereits Features,
-die wir aus Klassen kennen, umsetzen können.
-
-In ECMAScript 6 (2015) wurde eine spezielle Syntax für Klassen entwickelt. Dies hatte 2 Gründe:
-- Das Wissen über Klassen ist aus anderen OOP Sprachen wie Java oder C# weit verbreitet.
-- Eine Klasse erzwingt den Einsatz von *new* bei der Instanzierung.
-
-Auf https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes sind die 
-Möglichkeiten der Klassendefinition sehr gut dargestellt. Mit dem Wissen aus Java oder C# fällt es 
-besonders leicht, die einzelnen Bestandteile wieder zu erkennen. Es ist jedoch folgendes zu
-beachten:
-- Einige Features wie private und public field declarations sind (noch) nicht standardisiert,
-  sondern im Status eines proposals (https://github.com/tc39/proposal-class-fields).
-- Beachte daher die Browserkompatibilität am Ende der MDN Seite
-  (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#browser_compatibility).
-
-
-
-Als praktisches Beispiel können wir einen Blog mit 2 Klassen implementieren. Es benutzt nur
-Features aus dem ECMAScript 6 Standard, d. h. in jedem gängigen Browser direkt ausführbar:
-
+**user.mjs**
 ```javascript
+"use strict";
+function generateSchoolMail(lastname) {
+    return lastname.substring(0, 3) + "@spengergasse.at";
+}
+
 class User {
     constructor(firstname, lastname, email) {
         this.firstname = firstname;
@@ -32,7 +17,15 @@ class User {
     get id() { return this.email; }
 }
 
-class Post {
+export { User, generateSchoolMail };
+```
+
+**post.mjs**
+```javascript
+"use strict";
+import { User } from "./user.mjs";
+
+export default class Post {
     constructor(user, title) {
         this.user = user;
         this.title = title;
@@ -73,8 +66,16 @@ class Post {
         return this.comments.filter(c => c.user.id == user.id).length;
     }
 }
+```
 
-const post = new Post(new User("Max", "Mustermann", "max@mail.at"));
+
+**index.mjs**
+```javascript
+"use strict";
+import Post from "./post.mjs"
+import { User, generateSchoolMail } from "./user.mjs"
+
+const post = new Post(new User("Max", "Mustermann", generateSchoolMail("mustermann")));
 const commentator1 = new User("Sophie", "Musterfrau", "sophie@mail.at");
 const commentator2 = new User("Tobias", "Eifrig", "tobias@mail.at");
 
@@ -88,3 +89,4 @@ console.log(`Number of comments: ${post.commentsCount}`);
 console.log(`Average rating: ${post.averageRating}`);
 console.log(`${commentator1.id} has written ${post.getCommentsFromUser(commentator1)} comments.`);
 ```
+
