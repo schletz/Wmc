@@ -18,7 +18,7 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
   - [Callbacks und Closures](31_JavaScript/40_FunctionsCallback.md)
   - [Prototype, this und new](31_JavaScript/41_FunctionsPrototype.md)
   - [Arrow functions und Arraymethoden](31_JavaScript/42_FunctionsArrowFunctions.md)
-- Classes
+- [Classes](31_JavaScript/50_Classes.md)
 - Modules
 
 #### Single Page Application Frameworks I
