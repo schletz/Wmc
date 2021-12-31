@@ -50,8 +50,7 @@ class Post {
 
     tryAddRating(user, rating) {
         if (!(user instanceof User)) { throw new TypeError('user is not an instance of User.'); }
-        rating = Number(rating);
-        if (!isFinite(rating)) { throw new TypeError('rating is not a number.'); }
+        if (!isFinite(rating = Number(rating))) { throw new TypeError('rating is not a number.'); }
 
         if (this.ratings.find(r => r.user.id == user.id)) { return false; }
         this.ratings.push({ user: user, rating: rating });
@@ -88,3 +87,12 @@ console.log(`Number of comments: ${post.commentsCount}`);
 console.log(`Average rating: ${post.averageRating}`);
 console.log(`${commentator1.id} has written ${post.getCommentsFromUser(commentator1)} comments.`);
 ```
+
+Wir erkennen in diesem Code einige Neuerungen:
+
+- Mit **instanceof** können wir prüfen, ob ein Objekt eine Instanz einer bestimmten Klasse ist.
+- Mit *get id()* können wir ein read-only Property realisieren. Der Wert kann dann mit *p.id*
+  (ohne Klammern) aufgerufen werden.
+- Im Konstruktor weisen wir mit this.variable die Membervariablen zu. Dies können wir auch
+  in jeder anderen Methode machen. Diese Variablen haben natürlich vor ihrer Zuweisung den
+  Wert *undefined*.

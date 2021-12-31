@@ -108,8 +108,14 @@ zurückliefert. Dieses Objekt repräsentiert einen Punkt.
 Die Methoden *distanceToOrigin()* und *distanceTo()* könnten auch direkt auf x zugreifen. Wir
 verwenden in diesem Beispiel den Zugriff auf das JSON Objekt.
 
+Um die Argumente zu Prüfen wird der Umstand genutzt, dass die Zuweisung das Ergebnis auch
+zurückliefert. Somit kann in einem Schritt das Argument in eine Zahl umgewandelt werden und
+ein Fehler geworfen werden, wenn das Argument keine Zahl ist.
+
 ```javascript
 function point(x, y) {
+    if (!isFinite(x = Number(x))) { throw new TypeError("x is not a number"); }
+    if (!isFinite(y = Number(y))) { throw new TypeError("y is not a number"); }
     return {
         x: x,
         y: y,
@@ -149,6 +155,9 @@ const pointMethods = {
 };
 
 function point(x, y) {
+    if (!isFinite(x = Number(x))) { throw new TypeError("x is not a number"); }
+    if (!isFinite(y = Number(y))) { throw new TypeError("y is not a number"); }
+
     let pointData = Object.create(pointMethods)
     pointData.x = x;
     pointData.y = y;
@@ -191,6 +200,9 @@ Betrachten wir folgenden Code:
 ```javascript
 "use strict"
 function Point(x, y) {
+    if (!isFinite(x = Number(x))) { throw new TypeError("x is not a number"); }
+    if (!isFinite(y = Number(y))) { throw new TypeError("y is not a number"); }
+        
     if (!(this instanceof Point)) {
         return `${x} | ${y}`;
     }
