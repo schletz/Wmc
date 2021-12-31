@@ -197,4 +197,6 @@ Die Businesslogik ist einfach:
   darf es erst gesetzt werden, wenn *firstVaccination* einen Datumswert besitzt. Ansonsten ist
   der Wert einfach nicht zu setzen. Auf https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set
   gibt es Informationen über setter.
+- *IsSave()* liefert *true* oder *false* zurück, je nach dem ob der Mitarbeiter zum übergebenen
+  Zeitpunkt mindestens einen gültigen Nachweis in der Collection der Nachweise gespeichert hat.
 
