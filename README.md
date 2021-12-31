@@ -19,7 +19,7 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
   - [Prototype, this und new](31_JavaScript/41_FunctionsPrototype.md)
   - [Arrow functions und Arraymethoden](31_JavaScript/42_FunctionsArrowFunctions.md)
 - [Classes](31_JavaScript/50_Classes.md)
-- Modules
+- [Modules](31_JavaScript/60_Modules.md)
 
 #### Single Page Application Frameworks I
 - Buildchain, Webpack, Development Tools

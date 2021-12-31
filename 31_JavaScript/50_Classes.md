@@ -96,3 +96,8 @@ Wir erkennen in diesem Code einige Neuerungen:
 - Im Konstruktor weisen wir mit this.variable die Membervariablen zu. Dies können wir auch
   in jeder anderen Methode machen. Diese Variablen haben natürlich vor ihrer Zuweisung den
   Wert *undefined*.
+
+## Übung
+
+Da wir gleich das Modulkonzept nutzen wollen, befindet sich die Übung am Ende des nächsten Kapitels
+(Module).

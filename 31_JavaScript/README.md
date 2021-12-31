@@ -9,4 +9,4 @@
   - [Prototype, this und new](41_FunctionsPrototype.md)
   - [Arrow functions und Arraymethoden](42_FunctionsArrowFunctions.md)
 - [Classes](50_Classes.md)
-- Modules
+- [Modules](60_Modules.md)

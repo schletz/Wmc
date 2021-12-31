@@ -164,3 +164,37 @@ exportiert wurde. Vom Usermodul können brauchen wir beide Objekte. Wir können 
 von *User* in verschiedenen Dateien (*person.mjs* und *index.mjs*) nutzen, ohne dass es zu
 Konflikten kommt.
 
+## Übung
+
+In der klassischen objektorientierten Programmierung würde ein kleines Programm, welches den
+3G Nachweis von MitarbeiterInnen verwalten kann, so modelliert werden:
+
+![](health_checker.svg)
+<sup>
+https://www.plantuml.com/plantuml/uml/dO_TIiD048NlzodcigNi2uZKIgjGA1HiwVsuEsa7zoTaDa9Gtzsa9RgffQXxDSoUETyvCqbOfTexTM1BGBvC3HHCpefI719L1Hg2vGOBIityGEO5tXIqR_8SeuEbxD2n7IqmqPOzWMs7iVfGoZWKWIr9wW-wkTF13VJouuVM-ZUEHojTb_fzEiZJe-PrHRPdTTVhOi6u3r5O_eayMLvXxj0O3fWuXfxyo9MaV7-6dcp8n60lA-x-aYwtk9BnmPSkDaI3W04zjLn95OVzQR_2Y-lCKTglvHEXNGVNh5ZIRSwR3hE_HhPmRssc6ELoaEzvFAZRYNws_QeHjJuhEgDWQ-y-0G00
+</sup>
+
+Entwickle nun eine JavaScript Lösung für dieses Modell. Dabei müssen natürlich Besonderheiten der
+Sprache JavaScript berücksichtigt werden:
+- Um eine read-only Collection zu simulieren, kannst du ein get Property für *safetyChecks* definieren.
+  Es liefert mit `function() { return myArray.values(); };` die Elemente als sogenannter *iterator*.
+- Achte auf die naming conventions der Properties (Kleinschreibung in JavaScript).
+- Es gibt keine Interfaces in JavaScript. Verwende daher normale Klassen, die dann mit *extends*
+  erweitert werden (siehe https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes).
+  Auch die Antwort von https://stackoverflow.com/questions/29480569/does-ecmascript-6-have-a-convention-for-abstract-classes/30560792
+  ist hilfreich wenn es darum geht, eine abstrakte Klasse oder ein Interface zu simulieren.
+- Die Methode *isValid()* im (simulierten) Interface kann in Javascript einfach *undefined* zurückgeben.
+  Das passiert bei der Deklaration der Funktion ohne Inhalt automatisch.
+- Prüfe bei *addSafetyCheck*, ob auch ein safety check als Argument übergeben wurde.
+- Deklariere jede Klasse in einem Modul und exportiere die Klasse.
+- Erstelle eine Datei *index.mjs* und teste die Implementierung mit geeigneten Aufrufen.
+
+Die Businesslogik ist einfach:
+- Ein Test ist 48h gültig.
+- Bei Cured (Genesung) liegt die Gültigkeit bei 180 Tagen.
+- Eine Impfung ist bis 270 Tage nach der Zweitimpfung gültig. Achte mit einem set Property darauf,
+  dass *secondVaccination* nicht überschrieben werden kann wenn es einen Wert besitzt. Außerdem
+  darf es erst gesetzt werden, wenn *firstVaccination* einen Datumswert besitzt. Ansonsten ist
+  der Wert einfach nicht zu setzen. Auf https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set
+  gibt es Informationen über setter.
+
