@@ -39,7 +39,7 @@ Schule eine Lizenz von Visual Studio Enterprise zur Verfügung.
 - Installiere die nachfolgenden Workloads und achte bei den Sprachpaketen darauf, nur *Englisch* auszuwählen.
 - Der Key wird im Unterricht ausgegeben.
 
-![](vs_workloads_20211223.png)
+![](vs_workloads_3.png)
 
 ### Alternativ: Verwenden von JetBrains Rider
 
