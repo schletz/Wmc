@@ -41,6 +41,23 @@ Schule eine Lizenz von Visual Studio Enterprise zur Verfügung.
 
 ![](vs_workloads_3.png)
 
+### Konfiguration des Linters in Visual Studio
+
+Öffne nach dem Setup die Konsole und gib die folgenden Befehle ein:
+
+```text
+npm install eslint@7
+node -e console.log(require('eslint').Linter.version);
+```
+
+Hier wird das Paket eslint, welches aus Visual Studio heraus angesprochen werden kann, installiert.
+Der 2. Befehl muss die Version 7 (z. B. 7.32.0) ausgeben. Mit Version 8 funktioniert das ESLint
+Plugin von Visual Studio nicht.
+
+Öffne danach Visual Studio und aktiviere unter *Tools - Options* den Linter:
+
+![](vs_litersettings.png)
+
 ### Alternativ: Verwenden von JetBrains Rider
 
 Eine andere weit verbreitete Entwicklungsumgebung - gerade unter macOS - ist Rider von JetBrains.
