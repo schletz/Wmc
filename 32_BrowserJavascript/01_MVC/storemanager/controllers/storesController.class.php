@@ -1,16 +1,29 @@
 <?php
 class StoresController extends Controller
 {
-    public function get() {
-        $this->viewData = array('message' => "Hello from Stores Controller, Action get!");
+    private array $stores;
+
+    public function get()
+    {
+        $this->viewData['stores'] = $this->stores;
     }
 
-    public function getAllStores() {  
-        return [1,2,3];
+    public function getAllStores()
+    {
+        return $this->stores;
     }
 
-    public function post() {
-
+    public function post()
+    {
     }
+
+    // Wird vor jeder Action Methode ausgeführt.
+    public function onExecute()
+    {
+        $this->stores = [
+            ['id' => 1, 'name' => 'Store1'],
+            ['id' => 2, 'name' => 'Store2'],
+            ['id' => 3, 'name' => 'Store3']
+        ];
+    }    
 }
-
