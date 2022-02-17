@@ -96,6 +96,12 @@ $controllerInstance->readRequestBody();
 $controllerInstance->onExecute();
 $data = $controllerInstance->$method();
 
+// Falls der Controller eine Redirect URL gesetzt hat, senden wir 302 recirect und beenden.
+if (!empty($controllerInstance->redirect)) {
+    header("Location: {$controllerInstance->redirect}");
+    exit(0);
+}
+
 // Die Action Methode lifert Daten zurück? Dann geben wir sie einfach als JSON aus und beenden.
 if (isset($data)) {
     header('Content-Type: application/json; charset=utf-8');
