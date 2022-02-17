@@ -1,0 +1,66 @@
+Folder PATH listing
+Volume serial number is 8ED7-FF8E
+C:.
+³   backup.cmd
+³   files.txt
+³   index.php
+³   layout.php
+³   notFound.php
+³   router.php
+³   test.php
+³   
+ÃÄÄÄcontrollers
+³       controller.class.php
+³       homeController.class.php
+³       productsController.class.php
+³       storesController.class.php
+³       
+ÃÄÄÄcss
+³       site.css
+³       
+ÃÄÄÄimg
+³       favicon.ico
+³       schullogo.png
+³       schullogoMitText.png
+³       
+ÃÄÄÄjs
+³       site.js
+³       
+ÃÄÄÄlib
+³   ÃÄÄÄbootstrap5
+³   ³       bootstrap.min.css
+³   ³       bootstrap.min.css.map
+³   ³       bootstrap.min.js
+³   ³       bootstrap.min.js.map
+³   ³       
+³   ÃÄÄÄfontawesome5
+³   ³       all.min.css
+³   ³       all.min.js
+³   ³       
+³   ÃÄÄÄvuejs3
+³   ³       vue.global.js
+³   ³       vue.global.prod.js
+³   ³       
+³   ÀÄÄÄwebfonts
+³           fa-brands-400.eot
+³           fa-brands-400.svg
+³           fa-brands-400.ttf
+³           fa-brands-400.woff
+³           fa-brands-400.woff2
+³           fa-regular-400.eot
+³           fa-regular-400.svg
+³           fa-regular-400.ttf
+³           fa-regular-400.woff
+³           fa-regular-400.woff2
+³           fa-solid-900.eot
+³           fa-solid-900.svg
+³           fa-solid-900.ttf
+³           fa-solid-900.woff
+³           fa-solid-900.woff2
+³           
+ÀÄÄÄviews
+        home.php
+        products.php
+        stores.php
+        stores.php.css
+        
