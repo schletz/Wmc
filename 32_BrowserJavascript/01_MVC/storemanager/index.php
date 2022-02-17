@@ -1,19 +1,16 @@
 <?php
+
 /**
  * Liest einen GET Parameter, der den Controller oder die Action definiert. Er darf nur aus
- * Buchstaben bestehen. Ist der Wert ungültig oder nicht vorhanden, wird der defaultValue
+ * Buchstaben bestehen. Das ist wichtig, da der Parameter auch zum Laden von Files verwendet
+ * wird. Ist der Wert ungültig oder nicht vorhanden, wird der defaultValue
  * zurückgegeben.
  */
 function readParam($paramName, $defaultValue)
 {
-    if (!isset($_GET[$paramName])) {
-        return $defaultValue;
-    }
-    $value = $_GET[$paramName];
-    if (preg_match('/^[a-zA-Z]{1,100}$/', $value) !== 1) {
-        return $defaultValue;
-    }
-    return $value;
+    if (!isset($_GET[$paramName])) return $defaultValue;
+    if (preg_match('/^[a-zA-Z]{1,100}$/', $_GET[$paramName]) !== 1) return $defaultValue;
+    return $_GET[$paramName];
 }
 /**
  * Falls die View eine Datei (viewname).php.css besitzt, schreiben wir einen HTML Link zu
@@ -107,4 +104,16 @@ if (isset($data)) {
 }
 
 $viewName = empty($controllerInstance->viewName) ? $controller : $controllerInstance->viewName;
+
+// Damit die Auswirkungen - falls Schadcode injected wird - abgefangen werden sagen wir dem Browser
+// welche Features unsere Seite braucht. So kann z. B. nicht durch ein Script der Standort
+// abgefragt werden, da wir dies in den Permissions schon ausschließen.
+header("X-Frame-Options: DENY");
+header("X-Content-Type-Options: nosniff");
+header("Referrer-Policy: no-referrer");
+header("Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()");
+// https://wiki.selfhtml.org/wiki/Sicherheit/Content_Security_Policy
+// 'unsafe-eval' wird für VueJS Templates in HTML Files benötigt.
+header("Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:");
+
 require('layout.php');
