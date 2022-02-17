@@ -20,7 +20,7 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - [Modules](31_JavaScript/60_Modules.md)
 
 #### JavaScript im Browser
-- [MVC Musterapplikation mit PHP](32_BrowserJavascript/01/../01_MVC/README.md
+- [MVC Musterapplikation mit PHP](32_BrowserJavascript/01/../01_MVC/README.md)
 
 #### Single Page Application Frameworks I
 
