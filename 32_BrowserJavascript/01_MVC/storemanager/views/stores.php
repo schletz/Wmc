@@ -1,5 +1,9 @@
 <h1>Stores</h1>
 <h3>Server gerenderte Tabelle</h3>
+<p>
+    Hier wird die Tabelle zeilenweise mit PHP aus der Variable <em>$viewData['stores']</em> gelesen
+    und dargestellt.
+</p>
 <table class="table table-sm">
     <colgroup>
         <col style="width:1em" />
