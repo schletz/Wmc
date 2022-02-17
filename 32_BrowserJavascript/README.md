@@ -2,7 +2,10 @@
 
 Damit wir Techniken wie Promises und Verarbeitung von Formularen im Browser testen können,
 verwenden wir das Musterprojekt in [storemanager](storemanager). Es ist eine kleine PHP
-Applikation, die aber bereits sehr viel kann.
+Applikation, die aber die Basis einer Architektur ist (MVC), die sehr viel kann.
+
+![](screenshot.png)
+
 
 ```
 │   index.php                             Startpunkt. Liest die GET Parameter.
