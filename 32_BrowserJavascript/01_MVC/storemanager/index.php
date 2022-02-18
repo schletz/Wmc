@@ -94,18 +94,19 @@ require("controllers/{$filename}");
 $controllerInstance = new $controllerClass;
 $controllerInstance->readRequestBody();
 $controllerInstance->onExecute();
-$data = $controllerInstance->$method();
+$response = $controllerInstance->$method();
 
-// Falls der Controller eine Redirect URL gesetzt hat, senden wir 302 recirect und beenden.
-if (!empty($controllerInstance->redirect)) {
-    header("Location: {$controllerInstance->redirect}");
+// Falls der Controller eine Redirect URL gesetzt hat, senden wir 302 redirect und beenden.
+if (isset($response) && $response['status'] == 302) {
+    header("Location: {$response['location']}");
     exit(0);
 }
 
-// Die Action Methode lifert Daten zurück? Dann geben wir sie einfach als JSON aus und beenden.
-if (isset($data)) {
+// Die Action Methode liefert Daten zurück? Dann geben wir sie einfach als JSON aus und beenden.
+if (isset($response) && isset($response['data'])) {
     header('Content-Type: application/json; charset=utf-8');
-    echo json_encode($controllerInstance->$method());
+    http_response_code(isset($response['status']) ? $response['status'] : 200);
+    echo json_encode($response['data']);
     exit(0);
 }
 

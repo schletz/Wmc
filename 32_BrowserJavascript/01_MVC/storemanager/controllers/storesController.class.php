@@ -10,7 +10,7 @@ class StoresController extends Controller
 
     public function getAllStores()
     {
-        return $this->stores;
+        return $this->ok($this->stores);
     }
 
     public function post()
@@ -25,5 +25,5 @@ class StoresController extends Controller
             ['id' => 2, 'name' => 'Store2'],
             ['id' => 3, 'name' => 'Store3']
         ];
-    }    
+    }
 }
