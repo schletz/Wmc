@@ -1,4 +1,6 @@
 <?php
+require('serviceProvider.class.php');
+require('controllers/controller.class.php');
 
 /**
  * Liest einen GET Parameter, der den Controller oder die Action definiert. Er darf nur aus
@@ -44,6 +46,22 @@ function renderBody()
         require('notFound.php');
     }
 }
+
+// *************************************************************************************************
+// SERVICES REGISTRIEREN
+// *************************************************************************************************
+
+$services = new ServiceProvider();
+// Wichtig C:\xampp\php zur PATH Variable hinzufügen. php -v in der Konsole muss
+// funktionieren. Dann Apache neu starten. Sonst wird das Modul nicht gefunden.
+$services->addService('db', function () {
+    $pdo = new PDO('sqlite:stores.db');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
+    return $pdo;
+});
+
+
 /**
  * Liest den Request und instanziert den entsprechenden Controller. Dabei werden folgende
  * GET Parameter gelesen:
@@ -56,7 +74,7 @@ function renderBody()
  * aufgerufen. In onExecute kann Code untergebracht werden, der bei jeder Requestart ausgeführt
  * wird (vgl. Filter in ASP.NET)
  * 
- * Liefert die Action Methode Daten zurück, so wirddas Ergebnis der Action Methode als JSON
+ * Liefert die Action Methode Daten zurück, so wird das Ergebnis der Action Methode als JSON
  * zurückgegben (also eine API).
  * Ansonsten wird der Inhalt des Properties $viewData in die Variable $viewData geschrieben,
  * damit die einzelnen Views darauf zugreifen können. Der Inhalt des Properties $viewName wird
@@ -75,8 +93,6 @@ function renderBody()
  * 
  */
 
-require('controllers/controller.class.php');
-
 $controller = readParam('controller', 'home');
 $action = readParam('action', '');
 
@@ -92,20 +108,18 @@ $method = strtolower($_SERVER['REQUEST_METHOD']) . $action;
 // Den entsprechenden Controller suchen, instanzieren und die entsprechende Methode aufrufen.
 require("controllers/{$filename}");
 $controllerInstance = new $controllerClass;
-$controllerInstance->readRequestBody();
 $controllerInstance->onExecute();
 $response = $controllerInstance->$method();
 
-// Falls der Controller eine Redirect URL gesetzt hat, senden wir 302 redirect und beenden.
-if (isset($response) && $response['status'] == 302) {
-    header("Location: {$response['location']}");
-    exit(0);
-}
-
 // Die Action Methode liefert Daten zurück? Dann geben wir sie einfach als bei komplexen Typen
 // als JSON aus (sonst als Text) und beenden.
-if (isset($response) && isset($response['data'])) {
-    http_response_code(isset($response['status']) ? $response['status'] : 200);
+if (isset($response) && isset($response['status'])) {
+    http_response_code($response['status']);
+    if ($response['status'] == 302) {
+        header("Location: {$response['location']}");
+        exit(0);
+    }
+    if (!isset($response['data'])) exit(0);
     if (is_array($response['data']) || is_object($response['data']))
         header('Content-Type: application/json; charset=utf-8');
     echo json_encode($response['data']);

@@ -23,10 +23,10 @@
     <main>
         <nav class="sidebar">
             <ul data-nav-group="Stores verwalten">
-                <li><a href="?controller=Stores">Storeliste</a></li>
+                <li><i class="fas fa-link"></i> <a href="?controller=Stores">Storeliste</a></li>
             </ul>
             <ul data-nav-group="Produkte verwalten">
-                <li><a href="?controller=Products">Produktliste</a></li>
+                <li><i class="fas fa-link"></i> <a href="?controller=Products">Produktliste</a></li>
             </ul>
         </nav>
         <div class="main-content">

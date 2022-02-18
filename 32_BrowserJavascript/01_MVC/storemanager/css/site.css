@@ -4,7 +4,6 @@
     --sidebar-groupheader-color: hsl(300, 25%, 50%);
     --sidebar-item-color: hsl(0, 0%, 0%);
     --sidebar-item-background-color: hsl(0, 0%, 90%);
-    --bs-font-sans-serif: "Segoe UI", sans-serif;
 }
 
 html, body {
@@ -27,12 +26,6 @@ header {
     padding: 0rem 1rem;
 }
 
-
-    header a {
-        text-decoration: none;
-    }
-
-
 .sidebar {
     background-color: var(--sidebar-background-color);
     padding-top: 1rem;
@@ -54,6 +47,7 @@ header {
 
     .sidebar a {
         text-decoration: none;
+        color: inherit;
     }
 
 
