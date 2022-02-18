@@ -4,7 +4,7 @@ class ProductsController extends Controller
     // GET /?controller=Products
     public function get()
     {
-        $this->viewData = array('message' => "Hello from Products Controller, Action get!");
+        return $this->view(array('message' => "Hello from Products Controller, Action get!"));
     }
 
     // GET /?controller=Products&action=AllProducts

@@ -36,7 +36,7 @@ function writeCssLink()
 function renderBody()
 {
     // Damit die View auf die Variable $viewData zugreifen kann, muss sie hier definiert werden.
-    $viewData = $GLOBALS['controllerInstance']->viewData;
+    $viewData = $GLOBALS['viewData'];
     // Sucht im Ordner Views nach dem festgelegten Viewnamen. Er ist standardmäßig der
     // Controllername, außer eine Controllermethode überschreibt $this->viewName
     $filename = "views/{$GLOBALS['viewName']}.php";
@@ -111,8 +111,8 @@ $controllerInstance = new $controllerClass;
 $controllerInstance->onExecute();
 $response = $controllerInstance->$method();
 
-// Die Action Methode liefert Daten zurück? Dann geben wir sie einfach als bei komplexen Typen
-// als JSON aus (sonst als Text) und beenden.
+// Die Action Methode einen Statuscode mit ok, ... zurück? Dann geben wir sie einfach
+// bei komplexen Typen als JSON aus (sonst als Text) und beenden.
 if (isset($response) && isset($response['status'])) {
     http_response_code($response['status']);
     if ($response['status'] == 302) {
@@ -126,7 +126,8 @@ if (isset($response) && isset($response['status'])) {
     exit(0);
 }
 
-$viewName = empty($controllerInstance->viewName) ? $controller : $controllerInstance->viewName;
+$viewName = empty($response['viewName']) ? $controller : $response['viewName'];
+$viewData = empty($response['data']) ? array() : $response['data'];
 
 // Damit die Auswirkungen - falls Schadcode injected wird - abgefangen werden sagen wir dem Browser
 // welche Features unsere Seite braucht. So kann z. B. nicht durch ein Script der Standort

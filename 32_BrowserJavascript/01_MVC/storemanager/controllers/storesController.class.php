@@ -8,7 +8,7 @@ class StoresController extends Controller
     {
         /** @var PDO $db */
         $db = $GLOBALS['services']->getInstance('db');
-        $this->viewData['stores'] = $db->query("SELECT * FROM Store")->fetchAll(PDO::FETCH_CLASS);
+        return $this->view(['stores' => $db->query("SELECT * FROM Store")->fetchAll(PDO::FETCH_CLASS)]);
     }
 
     /**
@@ -16,8 +16,6 @@ class StoresController extends Controller
      */
     public function getStore()
     {
-        // Sonst würden wir die View store (= controllername) laden.
-        $this->viewName = "storeDetails";
         if (!isset($this->getParams->guid)) return $this->redirect("?controller=stores");
         $guid = $this->getParams->guid;
 
@@ -26,7 +24,7 @@ class StoresController extends Controller
         $stmt = $db->prepare('SELECT * FROM Store WHERE Guid = :guid');
         $stmt->execute(['guid' => $guid]);
         // Alle Spalten werden als lowercase in Properties gemappt (Konfiguration)
-        $this->viewData['store'] = $stmt->fetchAll(PDO::FETCH_CLASS)[0];
+        return $this->view(['store' => $stmt->fetchAll(PDO::FETCH_CLASS)[0]], 'storeDetails');
     }
 
     /**
@@ -35,12 +33,8 @@ class StoresController extends Controller
     public function postStore()
     {
         $body = $this->body;
-        $this->viewName = "storeDetails";
-        // Die gesendeten Daten dem User zurückschicken, sonst gehen bei einem Fehler die
-        // Daten verloren.
-        $this->viewData['store'] = $body;
         if (strtotime($body->closedate) < time()) {
-            $this->viewData['error'] = "Das Datum muss in der Zukunft liegen.";
+            return $this->view(['store' => $body, 'error' => "Das Datum muss in der Zukunft liegen."], 'storeDetails');
             return;
         }
 
@@ -52,7 +46,7 @@ class StoresController extends Controller
             // Redirect after POST, sonst wird beim Aktualisieren das Formular nochmals gesendet.
             return $this->redirect("?controller=stores");
         } catch (Exception $e) {
-            $this->viewData['error'] = $e->getMessage();
+            return $this->view(['store' => $body, 'error' => $e->getMessage()], 'storeDetails');
         }
     }
 

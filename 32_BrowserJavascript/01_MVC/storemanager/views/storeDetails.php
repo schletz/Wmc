@@ -7,13 +7,13 @@ echo <<<HTML
 <h1>Details zum Store {$viewData['store']->name}</h1>
 <form method="post" action="?controller=stores&action=store">
     <input type="hidden" name="guid" value="{$viewData['store']->guid}" />
-    <div class="d-flex" style="gap:1rem">
-        <div> 
-            <label class="form-label" for="name">Name</label>
+    <div class="d-flex flex-wrap " style="gap:1rem">
+        <div class="d-flex align-items-center" style="gap:1rem"> 
+            <label for="name" class="flex-shrink-0">Name</label>
             <input class="form-control" type="text" name="name" value="{$viewData['store']->name}" />
         </div>
-        <div>
-            <label class="form-label" for="closeDate">Name</label>
+        <div class="d-flex align-items-center" style="gap:1rem">
+            <label for="closeDate" class="flex-shrink-0">Close Date</label>
             <input class="form-control" type="date" name="closedate" value="$closedate" />
         </div>
         <div>

@@ -2,11 +2,11 @@
 class HomeController extends Controller
 {
     public function get() {
-        $this->viewData = array('message' => "Hello from Home Controller, Action get!");
+        return $this->view(array('message' => "Hello from Home Controller, Action get!"));
     }
 
     public function post() {
-        $this->viewData = array('message' => "Hello from Home Controller, Action post!");
+        return $this->view(array('message' => "Hello from Home Controller, Action post!"));
     }
 }
 
