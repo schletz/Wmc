@@ -4,7 +4,7 @@ Damit wir Techniken wie Promises und Verarbeitung von Formularen im Browser test
 verwenden wir das Musterprojekt in [storemanager](storemanager). Es ist eine kleine PHP
 Applikation, die aber die Basis einer Architektur ist (MVC), die sehr viel kann.
 
-![](screenshot.png)
+![](screenshot2.png)
 
 
 ```
