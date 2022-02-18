@@ -102,10 +102,12 @@ if (isset($response) && $response['status'] == 302) {
     exit(0);
 }
 
-// Die Action Methode liefert Daten zurück? Dann geben wir sie einfach als JSON aus und beenden.
+// Die Action Methode liefert Daten zurück? Dann geben wir sie einfach als bei komplexen Typen
+// als JSON aus (sonst als Text) und beenden.
 if (isset($response) && isset($response['data'])) {
-    header('Content-Type: application/json; charset=utf-8');
     http_response_code(isset($response['status']) ? $response['status'] : 200);
+    if (is_array($response['data']) || is_object($response['data']))
+        header('Content-Type: application/json; charset=utf-8');
     echo json_encode($response['data']);
     exit(0);
 }

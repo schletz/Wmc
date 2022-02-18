@@ -3,6 +3,7 @@ abstract class Controller
 {
     public string $viewName = "";      // Wird vom Router auf den Defaultwert (= Controllername) gesetzt.
     public array $viewData = array();  // Wird in der Variable $viewData in den Views bereitgestellt.
+    public object $getParams;
     public object $body;               // Gelesener JSON Content (wenn vorhanden)
     abstract public function get();
 
@@ -23,6 +24,7 @@ abstract class Controller
         if (isset($_SERVER["CONTENT_TYPE"]) && $_SERVER["CONTENT_TYPE"] == "application/json") {
             $this->body = json_decode(file_get_contents("php://input"));
         }
+        $this->getParams = (object) $_GET;
         $this->body = (object) $_POST;
     }
 
