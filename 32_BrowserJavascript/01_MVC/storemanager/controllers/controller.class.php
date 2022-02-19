@@ -27,7 +27,9 @@ abstract class Controller
     {
     }
 
-    protected function view($data = null, $viewName = "") {
+    protected function view($data = null, $viewName = "")
+    {
+        $this->escapeData($data);
         return ['data' => $data, 'viewName' => $viewName];
     }
 
@@ -54,5 +56,20 @@ abstract class Controller
     protected function redirect(string $location)
     {
         return ['status' => 302, 'location' => $location];
+    }
+
+    /**
+     * Wandelt HTML Sonderzeichen für die Ausgabe in HTML Entities um. Das ist sehr wichtig,
+     * sonst kann ein User "<script>...</script> in die Textfelder schreiben!
+     */
+    private function escapeData($data)
+    {
+        foreach ($data as $key => $val) {
+            if (is_object($val) || is_array($val)) $this->escapeData($val);
+            else {
+                if (is_array($data)) $data[$key] = htmlspecialchars($val);
+                else $data->{$key} = htmlspecialchars($val);
+            }
+        }
     }
 }
