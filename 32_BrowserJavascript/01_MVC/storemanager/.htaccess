@@ -3,7 +3,22 @@ Deny from all
 Options -Indexes
 DirectoryIndex index.php
 
-<FilesMatch ^(|.+\.(png|jpeg|jpg|ico|svg|ttf|woff2?|eot|css(\.map)?|js(.map)?)|index.php)$>
+# Extensions for images
+<FilesMatch (png|jpeg|jpg|gif|ico|svg)$>
     Allow from all
 </FilesMatch>
 
+# Extensions for webfonts (e. g. font awesome)
+<FilesMatch (ttf|woff2?|eot)$>
+    Allow from all
+</FilesMatch>
+
+# Extensions for css/js with map file
+<FilesMatch (css(\.map)?|js(\.map)?)$>
+    Allow from all
+</FilesMatch>
+
+# No file or directory index file
+<FilesMatch ^(|index.php)$>
+    Allow from all
+</FilesMatch>
