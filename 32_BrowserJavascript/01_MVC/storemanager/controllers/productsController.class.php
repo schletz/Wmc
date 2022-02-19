@@ -4,7 +4,7 @@ class ProductsController extends Controller
     // GET /?controller=Products
     public function get()
     {
-        return $this->view(array('message' => "Hello from Products Controller, Action get!"));
+        return $this->view("Hello from Products Controller mit <script>bösem Script</script>, Action get!");
     }
 
     // GET /?controller=Products&action=AllProducts
@@ -40,5 +40,9 @@ class ProductsController extends Controller
     public function postCheckBody()
     {
         return $this->ok($this->body);
+    }
+
+    public function onExecute() {
+
     }
 }

@@ -19,6 +19,6 @@ DirectoryIndex index.php
 </FilesMatch>
 
 # No file or directory index file
-<FilesMatch ^(|index.php)$>
+<FilesMatch ^(index.php)?$>
     Allow from all
 </FilesMatch>

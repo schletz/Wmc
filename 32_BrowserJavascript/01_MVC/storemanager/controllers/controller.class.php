@@ -48,9 +48,10 @@ abstract class Controller
         return ['status' => 204];
     }
 
-    protected function badRequest($data)
+    protected function badRequest($data = null)
     {
-        return ['status' => 400, 'data' => $data];
+        if (isset($data)) return ['status' => 400, 'data' => $data];
+        return ['status' => 400];
     }
 
     protected function redirect(string $location)
@@ -62,8 +63,12 @@ abstract class Controller
      * Wandelt HTML Sonderzeichen für die Ausgabe in HTML Entities um. Das ist sehr wichtig,
      * sonst kann ein User "<script>...</script> in die Textfelder schreiben!
      */
-    private function escapeData($data)
+    private function escapeData(&$data)
     {
+        if (!is_object($data) && !is_array($data)) {
+            $data = htmlspecialchars($data);
+            return;
+        }
         foreach ($data as $key => $val) {
             if (is_object($val) || is_array($val)) $this->escapeData($val);
             else {

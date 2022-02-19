@@ -23,7 +23,7 @@ function writeCssLink()
 {
     // CSS Laden. Existiert ein File im Views Ordner mit dem Namen (viewname).php.css, so wird
     // darauf verwiesen. Da dies im Header sein muss, braucht es diese Logik.
-    $cssFile = __DIR__ . "/views/{$GLOBALS['viewName']}.php.css";
+    $cssFile = "views/{$GLOBALS['viewName']}.php.css";
     if (file_exists($cssFile)) {
         echo "<link rel=\"stylesheet\" href=\"{$cssFile}\" />";
     }
@@ -39,7 +39,7 @@ function renderBody()
     $viewData = $GLOBALS['viewData'];
     // Sucht im Ordner Views nach dem festgelegten Viewnamen. Er ist standardmäßig der
     // Controllername, außer eine Controllermethode überschreibt $this->viewName
-    $filename = __DIR__ . "/views/{$GLOBALS['viewName']}.php";
+    $filename = "views/{$GLOBALS['viewName']}.php";
     if (file_exists($filename)) {
         require($filename);
     } else {
@@ -54,6 +54,7 @@ function renderBody()
 $services = new ServiceProvider();
 // Wichtig C:\xampp\php zur PATH Variable hinzufügen. php -v in der Konsole muss
 // funktionieren. Dann Apache neu starten. Sonst wird das Modul nicht gefunden.
+// Unter Ubuntu muss mit sudo apt-get install -y php-pdo-sqlite das Modul installiert werden.
 $services->addService('db', function () {
     $pdo = new PDO('sqlite:stores.db');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -97,7 +98,7 @@ $controller = readParam('controller', 'home');
 $action = readParam('action', '');
 
 $filename = strtolower($controller) . "Controller.class.php";
-if (!file_exists(__DIR__ . "/controllers/{$filename}")) {
+if (!file_exists("controllers/{$filename}")) {
     $controller = 'home';
     $filename = 'homeController.class.php';
 }
@@ -108,8 +109,9 @@ $method = strtolower($_SERVER['REQUEST_METHOD']) . $action;
 // Den entsprechenden Controller suchen, instanzieren und die entsprechende Methode aufrufen.
 require("controllers/{$filename}");
 $controllerInstance = new $controllerClass;
-$controllerInstance->onExecute();
-$response = $controllerInstance->$method();
+$response = $controllerInstance->onExecute();
+if (!isset($response))
+    $response = $controllerInstance->$method();
 
 // Die Action Methode einen Statuscode mit ok, ... zurück? Dann geben wir sie einfach
 // bei komplexen Typen als JSON aus (sonst als Text) und beenden.
@@ -118,6 +120,14 @@ if (isset($response) && isset($response['status'])) {
     if ($response['status'] == 302) {
         header("Location: {$response['location']}");
         exit(0);
+    }
+    // Auf die API dürfen auch Server von localhost zugreifen. Dies ist für dev Server wichtig.
+    // Kann in Production weggenommen werden, da der Origin nach Belieben gesendet werden kann.
+    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers#example_preflight_request
+    if (isset($_SERVER['HTTP_ORIGIN']) && strpos($_SERVER['HTTP_ORIGIN'], 'localhost') !== false) {
+        header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+        header("Access-Control-Allow-Headers: Content-Type, x-requested-with");
     }
     if (!isset($response['data'])) exit(0);
     if (is_array($response['data']) || is_object($response['data']))
