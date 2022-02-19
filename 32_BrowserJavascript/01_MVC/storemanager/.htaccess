@@ -1,0 +1,9 @@
+Order deny,allow
+Deny from all
+Options -Indexes
+DirectoryIndex index.php
+
+<FilesMatch ^(|.+\.(png|jpeg|jpg|ico|svg|ttf|woff2?|eot|css(\.map)?|js(.map)?)|index.php)$>
+    Allow from all
+</FilesMatch>
+
