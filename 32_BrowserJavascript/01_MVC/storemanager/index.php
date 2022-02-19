@@ -23,7 +23,7 @@ function writeCssLink()
 {
     // CSS Laden. Existiert ein File im Views Ordner mit dem Namen (viewname).php.css, so wird
     // darauf verwiesen. Da dies im Header sein muss, braucht es diese Logik.
-    $cssFile = "views/{$GLOBALS['viewName']}.php.css";
+    $cssFile = __DIR__ . "/views/{$GLOBALS['viewName']}.php.css";
     if (file_exists($cssFile)) {
         echo "<link rel=\"stylesheet\" href=\"{$cssFile}\" />";
     }
@@ -39,7 +39,7 @@ function renderBody()
     $viewData = $GLOBALS['viewData'];
     // Sucht im Ordner Views nach dem festgelegten Viewnamen. Er ist standardmäßig der
     // Controllername, außer eine Controllermethode überschreibt $this->viewName
-    $filename = "views/{$GLOBALS['viewName']}.php";
+    $filename = __DIR__ . "/views/{$GLOBALS['viewName']}.php";
     if (file_exists($filename)) {
         require($filename);
     } else {
@@ -97,7 +97,7 @@ $controller = readParam('controller', 'home');
 $action = readParam('action', '');
 
 $filename = strtolower($controller) . "Controller.class.php";
-if (!file_exists("controllers/{$filename}")) {
+if (!file_exists(__DIR__ . "/controllers/{$filename}")) {
     $controller = 'home';
     $filename = 'homeController.class.php';
 }
@@ -126,7 +126,7 @@ if (isset($response) && isset($response['status'])) {
     exit(0);
 }
 
-$viewName = empty($response['viewName']) ? $controller : $response['viewName'];
+$viewName = strtolower(empty($response['viewName']) ? $controller : $response['viewName']);
 $viewData = empty($response['data']) ? array() : $response['data'];
 
 // Damit die Auswirkungen - falls Schadcode injected wird - abgefangen werden sagen wir dem Browser
