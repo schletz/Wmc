@@ -61,19 +61,22 @@ abstract class Controller
 
     /**
      * Wandelt HTML Sonderzeichen für die Ausgabe in HTML Entities um. Das ist sehr wichtig,
-     * sonst kann ein User "<script>...</script> in die Textfelder schreiben!
+     * sonst kann ein User "<script>...</script> in die Textfelder schreiben.
      */
     private function escapeData(&$data)
     {
-        if (!is_object($data) && !is_array($data)) {
+        if (is_string($data)) {
             $data = htmlspecialchars($data);
             return;
         }
+        $isArrayObj = is_object($data) << 1 | is_array($data);  // Bitmaske: Objekt oder Array
+        if (!$isArrayObj) return;
         foreach ($data as $key => $val) {
-            if (is_object($val) || is_array($val)) $this->escapeData($val);
-            else {
-                if (is_array($data)) $data[$key] = htmlspecialchars($val);
-                else $data->{$key} = htmlspecialchars($val);
+            if ($isArrayObj & 1) {                    // Array? (1. Bit gesetzt)
+                $this->escapeData($data[$key]);
+            }
+            if ($isArrayObj & 2) {                    // Object? (2. Bit gesetzt)
+                $this->escapeData($data->{$key});
             }
         }
     }
