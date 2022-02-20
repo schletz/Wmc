@@ -29,6 +29,9 @@ abstract class Controller
 
     protected function view($data = null, $viewName = "")
     {
+        if (preg_match('/^[a-z]{0,100}$/', $viewName) !== 1)
+            throw new InvalidArgumentException("Der Viewname $viewName darf nur aus Kleinbuchstaben bestehen.");
+
         $this->escapeData($data);
         return ['data' => $data, 'viewName' => $viewName];
     }

@@ -24,7 +24,7 @@ class StoresController extends Controller
         $stmt = $db->prepare('SELECT * FROM Store WHERE Guid = :guid');
         $stmt->execute(['guid' => $guid]);
         // Alle Spalten werden als lowercase in Properties gemappt (Konfiguration)
-        return $this->view(['store' => $stmt->fetchAll(PDO::FETCH_CLASS)[0]], 'storeDetails');
+        return $this->view(['store' => $stmt->fetchAll(PDO::FETCH_CLASS)[0]], 'storedetails');
     }
 
     /**
