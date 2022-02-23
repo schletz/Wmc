@@ -34,7 +34,7 @@ class StoresController extends Controller
     {
         $body = $this->body;
         if (strtotime($body->closedate) < time()) {
-            return $this->view(['store' => $body, 'error' => "Das Datum muss in der Zukunft liegen."], 'storeDetails');
+            return $this->view(['store' => $body, 'error' => "Das Datum muss in der Zukunft liegen."], 'storedetails');
             return;
         }
 
