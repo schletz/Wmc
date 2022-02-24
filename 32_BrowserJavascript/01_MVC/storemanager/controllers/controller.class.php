@@ -15,10 +15,22 @@ abstract class Controller
         $this->body = new stdClass();
         // Leere Werte nicht mappen, da sonst Leerstrings in die DB kommen (anstatt von NULL)
         foreach ($_POST as $key => $val) {
-            if (!empty($val)) {
-                $this->body->{$key} = $val;
-            }
+            if (empty($val)) continue;
+            $this->body->{$key} = $val;
         }
+    }
+
+    function bind($classname)
+    {
+        $model = new $classname();
+        // uninitialisierte Werte sollen auch gelistet werden, deswegen verwenden wir get_class_vars
+        // und nicht das instanzgebundene get_object_vars()
+        $properties = array_keys(get_class_vars(get_class($model)));
+        foreach ($properties as $key) {
+            if (empty($this->body->{$key})) continue;
+            $model->{$key} = $this->body->{$key};
+        }
+        return $model;
     }
     public function post()
     {

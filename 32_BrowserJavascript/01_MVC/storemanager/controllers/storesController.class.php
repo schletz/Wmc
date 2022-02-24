@@ -1,4 +1,5 @@
 <?php
+require('models/store.class.php');
 class StoresController extends Controller
 {
     /**
@@ -8,7 +9,8 @@ class StoresController extends Controller
     {
         /** @var PDO $db */
         $db = $GLOBALS['services']->getInstance('db');
-        return $this->view(['stores' => $db->query("SELECT * FROM Store")->fetchAll(PDO::FETCH_CLASS)]);
+        // Instanzen der Modelklasse Store in models/store.class.php liefern.
+        return $this->view(['stores' => $db->query("SELECT * FROM Store")->fetchAll(PDO::FETCH_CLASS, 'Store')]);
     }
 
     /**
@@ -24,7 +26,7 @@ class StoresController extends Controller
         $stmt = $db->prepare('SELECT * FROM Store WHERE Guid = :guid');
         $stmt->execute(['guid' => $guid]);
         // Alle Spalten werden als lowercase in Properties gemappt (Konfiguration)
-        return $this->view(['store' => $stmt->fetchAll(PDO::FETCH_CLASS)[0]], 'storedetails');
+        return $this->view(['store' => $stmt->fetchAll(PDO::FETCH_CLASS)[0], 'Store'], 'storedetails');
     }
 
     /**
@@ -48,13 +50,14 @@ class StoresController extends Controller
      */
     public function postStore()
     {
-        $body = $this->body;
-        $newStore = !isset($body->guid);
+        // Eine Instanz von Store aus dem Request Body lesen.
+        $store = $this->bind("Store");
+        $isNewStore = !isset($store->guid);
         // Im Fehlerfall schicken leiten wir zu dieser View zurück.
-        $viewName = $newStore ? "newstore" : "storedetails";
+        $viewName = $isNewStore ? "newstore" : "storedetails";
 
-        if (!empty($body->closedate) && strtotime($body->closedate) < time()) {
-            return $this->view(['store' => $body, 'error' => "Das Datum muss in der Zukunft liegen."], $viewName);
+        if (!empty($store->closedate) && strtotime($store->closedate) < time()) {
+            return $this->view(['store' => $store, 'error' => "Das Datum muss in der Zukunft liegen."], $viewName);
             return;
         }
 
@@ -62,17 +65,21 @@ class StoresController extends Controller
         $db = $GLOBALS['services']->getInstance('db');
         try {
             // INSERT or UPDATE?
-            if ($newStore) {
-                $stmt = $db->prepare('INSERT INTO Store (Guid, Name, CloseDate) VALUES (:guid, :name, :closeDate)');
-                $stmt->execute(['guid' => guid(), "name" => $body->name, "closeDate" => $body->closedate]);
+            if ($isNewStore) {
+                $store->guid = guid();
+                // Wir lesen vom Model, daher sind alle Parameter (= Properties der Klasse Store) kleinzuschreiben!
+                $stmt = $db->prepare('INSERT INTO Store (Guid, Name, CloseDate) VALUES (:guid, :name, :closedate)');
+                // Die Parameter müssen in ein Array konvertiert werden, sonst funktioniert das Mapping nicht.
+                $stmt->execute((array) $store);
             } else {
-                $stmt = $db->prepare('UPDATE Store SET Name = :name, CloseDate = :closeDate WHERE Guid = :guid');
-                $stmt->execute(['guid' => $body->guid, "name" => $body->name, "closeDate" => $body->closedate]);
+                // Wir lesen vom Model, daher sind alle Parameter kleinzuschreiben!
+                $stmt = $db->prepare('UPDATE Store SET Name = :name, CloseDate = :closedate WHERE Guid = :guid');
+                $stmt->execute((array) $store);
             }
             // Redirect after POST, sonst wird beim Aktualisieren das Formular nochmals gesendet.
             return $this->redirect("?controller=stores");
         } catch (Exception $e) {
-            return $this->view(['store' => $body, 'error' => $e->getMessage()], $viewName);
+            return $this->view(['store' => $store, 'error' => $e->getMessage()], $viewName);
         }
     }
 
@@ -83,7 +90,7 @@ class StoresController extends Controller
     {
         /** @var PDO $db */
         $db = $GLOBALS['services']->getInstance('db');
-        return $this->ok($db->query("SELECT * FROM Store")->fetchAll(PDO::FETCH_CLASS));
+        return $this->ok($db->query("SELECT * FROM Store")->fetchAll(PDO::FETCH_CLASS, 'Store'));
     }
 
     /**
