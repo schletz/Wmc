@@ -36,7 +36,7 @@
         </div>
     </main>
     <footer>
-        <img src="img/schullogo.png" style="height:32px;" class="me-3" />
+        <img src="img/schullogo.png" alt="Schullogo" style="height:32px;" class="me-3" />
         <strong class="pe-3">
             HTL Spengergasse - Abteilung Informatik
         </strong>

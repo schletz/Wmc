@@ -1,5 +1,4 @@
 <h1>Stores</h1>
-
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Mit PHP gerenderte Tabelle</h5>
@@ -11,15 +10,19 @@
         <table class="table table-sm storelist">
             <colgroup>
                 <col style="width:10%" />
-                <col style="width:50%" />
-                <col style="width:20%" />
-                <col style="width:20%" />
+                <col style="width:30%" />
+                <col style="width:15%" />
+                <col style="width:15%" />
+                <col style="width:15%" />
+                <col style="width:15%" />
             </colgroup>
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Close Date</th>
+                    <th>URL</th>
+                    <th>Manageraccount</th>
                     <th>Aktionen</th>
                 </tr>
             </thead>
@@ -32,6 +35,10 @@
                 <td>{$store->id}</td>
                 <td>{$store->name}</td>
                 <td>{$date}</td>
+                <td>
+                    <a href="{$store->url}" target="_blank">{$store->url}</a>
+                </td>
+                <td>{$store->username}</td>
                 <td><a href="?controller=stores&action=store&guid={$store->guid}" class="btn btn-sm btn-outline-info"><i class="fas fa-info"></i></a>
                 <a href="?controller=stores&action=deletestore&guid={$store->guid}" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></a></td>
             </tr>

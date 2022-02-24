@@ -14,12 +14,19 @@ abstract class Controller
         $this->getParams = (object) $_GET;
         $this->body = new stdClass();
         // Leere Werte nicht mappen, da sonst Leerstrings in die DB kommen (anstatt von NULL)
+        // Außerdem ist das trim wichtig, sonst kann z. B. die GUID mit Leerstelle danach nicht
+        // in der DB gefunden werden. --> wir wollen NIE Werte mit führenden oder nachfolgenden
+        // Leerstellen in der DB haben!
         foreach ($_POST as $key => $val) {
             if (empty($val)) continue;
-            $this->body->{$key} = $val;
+            $this->body->{$key} = trim($val);
         }
     }
 
+    /**
+     * Instanzier die übergebene Klasse und ordnet alle Properties, die es dort gibt, den
+     * Daten aus dem Request Body.
+     */
     function bind($classname)
     {
         $model = new $classname();
