@@ -98,6 +98,6 @@ class StoresController extends Controller
         $db = $GLOBALS['services']->getInstance('db');
         $stmt = $db->prepare('DELETE FROM Store WHERE Guid = :guid');
         $stmt->execute(['guid' => $guid]);
-        return $this->get();
+        return $this->redirect("?controller=stores");
     }    
 }

@@ -8,24 +8,28 @@ $closedate = !empty($viewData['store']->closedate)
     
 echo <<<HTML
 <h1>Neuen Store anlegen</h1>
-<form method="post" action="?controller=stores&action=newStore">
-<div class="d-flex flex-wrap " style="gap:1rem">
-    <div class="d-flex align-items-center" style="gap:1rem"> 
-        <label for="name" class="flex-shrink-0">Name</label>
-        <input class="form-control" type="text" name="name" value="{$viewData['store']->name}" />
+<div class="card">
+    <div class="card-body">
+        <form method="post" action="?controller=stores&action=newStore">
+        <div class="d-flex flex-wrap " style="gap:1rem">
+            <div class="d-flex align-items-center" style="gap:1rem"> 
+                <label for="name" class="flex-shrink-0">Name</label>
+                <input required minlength="2" maxlength="255" class="form-control" type="text" name="name" value="{$viewData['store']->name}" />
+            </div>
+            <div class="d-flex align-items-center" style="gap:1rem">
+                <label for="closeDate" class="flex-shrink-0">Close Date</label>
+                <input class="form-control" type="date" name="closedate" value="$closedate" />
+            </div>
+            <div>
+        </div>
+        </div>
+        <button class="mt-3 btn btn-primary" type="submit">Senden</button>
+        <button 
+            class="mt-3 btn btn-info"  type="button"
+            onclick="window.location.href='?controller=stores'">Zurück</button>
+        </form>
     </div>
-    <div class="d-flex align-items-center" style="gap:1rem">
-        <label for="closeDate" class="flex-shrink-0">Close Date</label>
-        <input class="form-control" type="date" name="closedate" value="$closedate" />
-    </div>
-    <div>
 </div>
-</div>
-<button class="mt-3 btn btn-primary" type="submit">Senden</button>
-<button 
-    class="mt-3 btn btn-info"  type="button"
-    onclick="window.location.href='?controller=stores'">Zurück</button>
-</form>
 HTML;
 if (!empty($viewData['error'])) {
     echo "<div class=\"border border-danger border-3 mt-3 p-1\">{$viewData['error']}</div>";

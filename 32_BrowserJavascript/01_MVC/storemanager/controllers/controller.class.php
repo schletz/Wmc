@@ -12,7 +12,13 @@ abstract class Controller
             return;
         }
         $this->getParams = (object) $_GET;
-        $this->body = (object) $_POST;
+        $this->body = new stdClass();
+        // Leere Werte nicht mappen, da sonst Leerstrings in die DB kommen (anstatt von NULL)
+        foreach ($_POST as $key => $val) {
+            if (!empty($val)) {
+                $this->body->{$key} = $val;
+            }
+        }
     }
     public function post()
     {

@@ -92,3 +92,17 @@ footer {
     border-top: 1px solid var(--sidebar-separator-color);
     padding: 1rem 1rem;
 }
+
+.textlink {
+    text-decoration: inherit;
+    font-weight:500;
+}
+.textlink::before {
+    content: "\00BB";
+    margin-right: 0.2em;
+}
+
+.card {
+    background-color: hsl(0, 0%, 97%);
+    margin-bottom: 1rem;
+}

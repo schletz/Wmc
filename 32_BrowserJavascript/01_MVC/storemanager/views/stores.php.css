@@ -1,3 +1,7 @@
-tr:hover {
+.storelist tr:hover {
     background-color: linen;
+}
+
+.storelist .button {
+    width:3em;
 }
