@@ -3,6 +3,14 @@ require('serviceProvider.class.php');
 require('controllers/controller.class.php');
 
 /**
+ * Replacement für die UUID Funktion, da die interne Funktion nicht immer neue Werte liefert.
+ */
+function guid() {
+    $data = random_bytes(16);
+    return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(strtoupper(bin2hex($data)), 4));
+}
+
+/**
  * Liest einen GET Parameter, der den Controller oder die Action definiert. Er darf nur aus
  * Buchstaben bestehen. Das ist wichtig, da der Parameter auch zum Laden von Files verwendet
  * wird. Ist der Wert ungültig oder nicht vorhanden, wird der defaultValue

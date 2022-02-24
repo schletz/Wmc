@@ -15,6 +15,9 @@ echo <<<HTML
         <div class="d-flex align-items-center" style="gap:1rem">
             <label for="closeDate" class="flex-shrink-0">Close Date</label>
             <input class="form-control" type="date" name="closedate" value="$closedate" />
+            <span 
+                style="margin-left: -4.5rem; cursor:pointer; font-size:16px; font-weight:bold; color:grey"
+                onclick="document.querySelector('input[name=closedate]').value = ''"><i class="fas fa-trash-alt"></i></span>
         </div>
         <div>
     </div>

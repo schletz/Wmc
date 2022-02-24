@@ -38,11 +38,13 @@ abstract class Controller
 
     protected function ok($data)
     {
+        $this->escapeData($data);
         return ['status' => 200, 'data' => $data];
     }
 
     protected function created($data)
     {
+        $this->escapeData($data);
         return ['status' => 201, 'data' => $data];
     }
 

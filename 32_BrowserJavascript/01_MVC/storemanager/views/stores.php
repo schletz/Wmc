@@ -4,6 +4,7 @@
     Hier wird die Tabelle zeilenweise mit PHP aus der Variable <em>$viewData['stores']</em> gelesen
     und dargestellt.
 </p>
+<p><a href="?controller=Stores&action=newStore">Neuen Store anlegen</a></p>
 <table class="table table-sm">
     <colgroup>
         <col style="width:1em" />
@@ -28,7 +29,8 @@
                 <td>{$store->id}</td>
                 <td>{$store->name}</td>
                 <td>{$date}</td>
-                <td><a href="?controller=stores&action=store&guid={$store->guid}" class="btn btn-primary btn-sm"><i class="fas fa-info"></i></a></td>
+                <td><a href="?controller=stores&action=store&guid={$store->guid}" class="btn btn-primary btn-sm"><i class="fas fa-info"></i></a>
+                <a href="?controller=stores&action=deletestore&guid={$store->guid}" class="btn btn-primary btn-sm"><i class="fas fa-trash"></i></a></td>
             </tr>
             HTML;
         }
