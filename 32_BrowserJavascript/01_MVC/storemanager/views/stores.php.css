@@ -2,6 +2,6 @@
     background-color: linen;
 }
 
-.storelist .button {
-    width:3em;
+.storelist .btn {
+    min-width:3em;
 }
