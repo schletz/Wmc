@@ -22,6 +22,8 @@ Lade die ZIP Version von XAMPP und entpacke den Inhalt in das Verzeichnis *C:\xa
 Füge danach *C:\xampp\php* zur Pfad Umgebungsvariable vo Windows hinzu, sonst funktioniert das
 Laden der Module nicht.
 
+Prüfe danach, ob in der Konsole der Befehl *php -v* die Versionsnummer anzeigt.
+
 ## Visual Studio Code
 
 Zum Entwickeln von JavaScript Code gibt es natürlich viele IDEs und Editoren. Wir werden Visual
