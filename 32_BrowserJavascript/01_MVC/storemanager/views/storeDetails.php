@@ -1,6 +1,6 @@
  <?php
     // Notice Fehler abschalten, da nicht alle Felder in viewData enthalten sind.
-    error_reporting(E_ALL & ~E_NOTICE);
+    error_reporting(E_ERROR);
     $closedate = !empty($viewData['store']->closedate)
         ? (new DateTime($viewData['store']->closedate))->format("Y-m-d")
         : "";
