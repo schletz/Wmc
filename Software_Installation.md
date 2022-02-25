@@ -14,6 +14,14 @@ C:\Users\MyUser>node --version
 v16.13.1
 ```
 
+## XAMPP
+
+Lade die ZIP Version von XAMPP und entpacke den Inhalt in das Verzeichnis *C:\xampp*. Die Datei
+*apache_start.bat* muss sich in *C:\xampp* befinden (und nicht in *C:\xampp\unterordner*).
+
+Füge danach *C:\xampp\php* zur Pfad Umgebungsvariable vo Windows hinzu, sonst funktioniert das
+Laden der Module nicht.
+
 ## Visual Studio Code
 
 Zum Entwickeln von JavaScript Code gibt es natürlich viele IDEs und Editoren. Wir werden Visual
@@ -26,43 +34,16 @@ Betriebssystem herunter.
 > Da Node.js Projekte nicht als Einzeldatei geöffnet werden können, ist diese Option sehr hilfreich!
 
 Danach installiere über das Extension Menü die folgenden Extensions:
+
 - *Vetur* für die Entwicklung von Vue.js Applikationen.
+- *PHP Extension Pack*
+- *PHP Intelephense*
 
-## Installation von Visual Studio 2022
+Öffne nun die Einstellungen (Drücke *F1* oder *SHIFT+CMD+P* für die Menüzeile. Gib dann  
+*settings* ein und wähle den Punkt *Preferences: Open Settings (JSON)*. Füge die folgenden
+Einstellungen in die Datei ein und speichere sie ab:
 
-Für die Backend Entwicklung kommt ASP.NET Core zum Einsatz.
-Die verbreitetste IDE zur Entwicklung im .NET Bereich ist Visual Studio. Microsoft stellt unserer
-Schule eine Lizenz von Visual Studio Enterprise zur Verfügung.
-
-- Lade die Testversion von Visual Studio **Enterprise** von https://visualstudio.microsoft.com/de/downloads/
-  herunter.
-- Installiere die nachfolgenden Workloads und achte bei den Sprachpaketen darauf, nur *Englisch* auszuwählen.
-- Der Key wird im Unterricht ausgegeben.
-
-![](vs_workloads_3.png)
-
-### Konfiguration des Linters in Visual Studio
-
-Öffne nach dem Setup die Konsole und gib die folgenden Befehle ein:
-
-```text
-npm install eslint@7
-node -e console.log(require('eslint').Linter.version);
+```json
+"php.executablePath": "C:/xampp/php",
+"php.validate.executablePath": "C:/xampp/php/php.exe",
 ```
-
-Hier wird das Paket eslint, welches aus Visual Studio heraus angesprochen werden kann, installiert.
-Der 2. Befehl muss die Version 7 (z. B. 7.32.0) ausgeben. Mit Version 8 funktioniert das ESLint
-Plugin von Visual Studio nicht.
-
-Öffne danach Visual Studio und aktiviere unter *Tools - Options* den Linter:
-
-![](vs_litersettings.png)
-
-### Alternativ: Verwenden von JetBrains Rider
-
-Eine andere weit verbreitete Entwicklungsumgebung - gerade unter macOS - ist Rider von JetBrains.
-Wer mit IntelliJ gut arbeiten konnte, kann auch mit der Schullizenz Rider beziehen. Logge dich dafür
-auf https://account.jetbrains.com/login ein. Wer noch keinen Zugang hat, kann mit der Schul Mailadresse
-eine Lizenz gratis beziehen. Nach dem Login steht Rider als Download zur Verfügung
-
-![](resharper_download_3.png)

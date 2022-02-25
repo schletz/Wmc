@@ -3,21 +3,23 @@
 ## Benötigte Software
 
 Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Software:
+
 - Installation von VS Code und Node.js für die Frontend Entwicklung
-- Installation von Visual Studio 2022 oder JetBrains Rider für die Backend Entwicklung
+- XAMPP mit PHP
+- Einen (S)FTP Client wie WinSCP
 
 ## Inhalt 
 
-#### Das MVC Konzept
+### Das MVC Konzept
 
 - Entwicklung mit PHP und Apache
 - Views und Routing
 - Controller
 - Datenbankzugriff
 
-[Musterapp: Store Manager](30_MVC)
+[Musterapp: Store Manager](30_MVC/storemanager/)
 
-#### JavaScript Sprachgrundlagen
+### JavaScript Sprachgrundlagen
 
 - [Intro](31_JavaScript/10_ECMAscript.md)
 - [Variablen und Datentypen](31_JavaScript/20_Variables.md)
@@ -29,7 +31,7 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - [Classes](31_JavaScript/50_Classes.md)
 - [Modules](31_JavaScript/60_Modules.md)
 
-#### JavaScript im Browser
+### JavaScript im Browser
 
 - Das document object, HTMLElement Nodes
 - Promises
@@ -37,7 +39,13 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - Templates mit Vue.js
 - Komplexeres Statemanagement mit Vue.js
   
-#### Single Page Application Frameworks
+### Single Page Application Frameworks
 
+- Node.js als Buildtool
+- Komponenten entwickeln
+- Wiederverwendbare Komponenten
+- Kommunikation mit dem Backend
+- Clientseitiges Routing
+- State Management
 
 [Zum Lehrplan](Lehrplan.md)
