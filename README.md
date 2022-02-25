@@ -8,7 +8,17 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 
 ## Inhalt 
 
+#### Das MVC Konzept
+
+- Entwicklung mit PHP und Apache
+- Views und Routing
+- Controller
+- Datenbankzugriff
+
+[Musterapp: Store Manager](30_MVC)
+
 #### JavaScript Sprachgrundlagen
+
 - [Intro](31_JavaScript/10_ECMAscript.md)
 - [Variablen und Datentypen](31_JavaScript/20_Variables.md)
 - [JSON, Arrays und Sets](31_JavaScript/30_JSON_Arrays.md)
@@ -20,8 +30,14 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - [Modules](31_JavaScript/60_Modules.md)
 
 #### JavaScript im Browser
-- [MVC Musterapplikation mit PHP](32_BrowserJavascript/01/../01_MVC/README.md)
 
-#### Single Page Application Frameworks I
+- Das document object, HTMLElement Nodes
+- Promises
+- Laden mit fetch
+- Templates mit Vue.js
+- Komplexeres Statemanagement mit Vue.js
+  
+#### Single Page Application Frameworks
+
 
 [Zum Lehrplan](Lehrplan.md)

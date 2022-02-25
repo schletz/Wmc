@@ -3,6 +3,11 @@ Deny from all
 Options -Indexes
 DirectoryIndex index.php
 
+# Serve index.php if URL is not a real file and keep URL (for client side routing in JS)
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^.*$ index.php [L]
+
 # Extensions for images
 <FilesMatch (png|jpeg|jpg|gif|ico|svg)$>
     Allow from all
@@ -20,5 +25,10 @@ DirectoryIndex index.php
 
 # No file or directory index file
 <FilesMatch ^(index.php)?$>
+    Allow from all
+</FilesMatch>
+
+# Files without Extensions (for client side routing in JS)
+<FilesMatch ^[a-zA-Z]+$>
     Allow from all
 </FilesMatch>
