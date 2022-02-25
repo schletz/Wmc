@@ -1,12 +1,12 @@
 Order deny,allow
 Deny from all
 Options -Indexes
-DirectoryIndex index.php
+DirectoryIndex index.html
 
 # Serve index.php if URL is not a real file and keep URL (for client side routing in JS)
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^.*$ index.php [L]
+RewriteRule ^.*$ index.html [L]
 
 # Extensions for images
 <FilesMatch (png|jpeg|jpg|gif|ico|svg)$>
@@ -24,7 +24,7 @@ RewriteRule ^.*$ index.php [L]
 </FilesMatch>
 
 # No file or directory index file
-<FilesMatch ^(index.php)?$>
+<FilesMatch ^(index.(html|php))?$>
     Allow from all
 </FilesMatch>
 
