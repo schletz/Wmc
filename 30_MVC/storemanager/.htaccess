@@ -1,34 +1,7 @@
-Order deny,allow
-Deny from all
 Options -Indexes
-DirectoryIndex index.html
+DirectoryIndex index.html index.php
 
 # Serve index.php if URL is not a real file and keep URL (for client side routing in JS)
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^.*$ index.html [L]
-
-# Extensions for images
-<FilesMatch (png|jpeg|jpg|gif|ico|svg)$>
-    Allow from all
-</FilesMatch>
-
-# Extensions for webfonts (e. g. font awesome)
-<FilesMatch (ttf|woff2?|eot)$>
-    Allow from all
-</FilesMatch>
-
-# Extensions for css/js with map file
-<FilesMatch (css(\.map)?|js(\.map)?)$>
-    Allow from all
-</FilesMatch>
-
-# No file or directory index file
-<FilesMatch ^(index.(html|php))?$>
-    Allow from all
-</FilesMatch>
-
-# Files without Extensions (for client side routing in JS)
-<FilesMatch ^[a-zA-Z]+$>
-    Allow from all
-</FilesMatch>
+RewriteRule ^(css|img|js|lib)/(.*)$ public/$1/$2 [END]
+RewriteRule ^(.*)$ index.php [END]

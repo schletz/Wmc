@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="lib/fontawesome5/all.min.css" />
     <link rel="stylesheet" href="css/site.css" />
     <?php
-        writeCssLink();
+    writeCss();
     ?>
     <script src="lib/fontawesome5/all.min.js"></script>
+    <script src="js/site.js" defer></script>
 </head>
 
 <body>
@@ -31,7 +32,7 @@
         </nav>
         <div class="main-content">
             <?php
-                renderBody();
+            renderBody();
             ?>
         </div>
     </main>
@@ -42,8 +43,6 @@
         </strong>
         &copy; Michael Schletz, 2022
     </footer>
-
-    <script src="js/site.js"></script>
 </body>
 
 </html>
