@@ -1,6 +1,3 @@
-Options -Indexes
-DirectoryIndex index.html index.php
-
 RewriteEngine On
 RewriteRule ^(css|img|js|lib)/(.*)$ public/$1/$2 [END]
 RewriteRule ^(.*)$ index.php [END]

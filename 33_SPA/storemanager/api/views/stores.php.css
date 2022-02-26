@@ -1,0 +1,7 @@
+.storelist tr:hover {
+    background-color: linen;
+}
+
+.storelist .btn {
+    min-width:3em;
+}

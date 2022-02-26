@@ -23,18 +23,19 @@ function readParam($paramName, $defaultValue)
     return $_GET[$paramName];
 }
 /**
- * Falls die View eine Datei (viewname).php.css besitzt, schreiben wir einen HTML Link zu
- * diesem CSS. Es kann im Layout im head Teil aufgerufen werden. Das ist nötig, da CSS nicht
- * im Body definiert werden darf.
+ * Falls die View eine Datei (viewname).php.css besitzt, schreiben wir den Inhalt des CSS Files
+ * in den Head. Das ist nötig, da CSS nicht im Body definiert werden darf.
  */
-function writeCssLink()
+function writeCss()
 {
     // CSS Laden. Existiert ein File im Views Ordner mit dem Namen (viewname).php.css, so wird
     // darauf verwiesen. Da dies im Header sein muss, braucht es diese Logik.
     $cssFile = "views/{$GLOBALS['viewName']}.php.css";
-    if (file_exists($cssFile)) {
-        echo "<link rel=\"stylesheet\" href=\"{$cssFile}\" />";
-    }
+    if (!file_exists($cssFile)) return;
+    $content = file_get_contents($cssFile);
+    echo "<style>";
+    echo $content;
+    echo "</style>";
 }
 
 /**
