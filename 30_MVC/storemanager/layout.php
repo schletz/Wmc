@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Store Manager</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- URL rewrite fügt bei css, img, js und lib den pfad public automatisch hinzu -->
     <link rel="stylesheet" href="lib/bootstrap5/bootstrap.min.css" />
     <!-- Font Awesome. Aus dem ZIP muss auch der Ordner webfonts in lib kopiert werden. -->
     <link rel="stylesheet" href="lib/fontawesome5/all.min.css" />
