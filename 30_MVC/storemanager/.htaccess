@@ -1,7 +1,6 @@
 Options -Indexes
 DirectoryIndex index.html index.php
 
-# Serve index.php if URL is not a real file and keep URL (for client side routing in JS)
 RewriteEngine On
 RewriteRule ^(css|img|js|lib)/(.*)$ public/$1/$2 [END]
 RewriteRule ^(.*)$ index.php [END]
