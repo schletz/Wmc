@@ -1,7 +1,3 @@
-<?php
-    // Notice Fehler abschalten, da nicht alle Felder in viewData enthalten sind.
-    error_reporting(E_ERROR);
-?>
 <h1>Stores</h1>
 <div class="card">
     <div class="card-body">
