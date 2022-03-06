@@ -8,13 +8,14 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <!-- URL rewrite fügt bei css, img, js und lib den pfad public automatisch hinzu -->
     <link rel="stylesheet" href="lib/bootstrap5/bootstrap.min.css" />
-    <!-- Font Awesome. Aus dem ZIP muss auch der Ordner webfonts in lib kopiert werden. -->
-    <link rel="stylesheet" href="lib/fontawesome5/all.min.css" />
+    <!-- Font Awesome. Aus dem ZIP muss auch der Ordner webfonts in lib kopiert werden, da
+    das CSS auf ../webfonts verweist. Die definierten CSS Klassen schreiben nur das Zeichen als
+    Content before in der Webfonts Schriftart -->
+    <link rel="stylesheet" href="lib/fontawesome6/all.min.css" />
     <link rel="stylesheet" href="css/site.css" />
     <?php
     writeCss();
     ?>
-    <script src="lib/fontawesome5/all.min.js"></script>
     <script src="js/site.js" defer></script>
 </head>
 
@@ -25,10 +26,10 @@
     <main>
         <nav class="sidebar">
             <ul data-nav-group="Stores verwalten">
-                <li><i class="fas fa-link"></i> <a href="?controller=Stores">Storeliste</a></li>
+                <li><i class="fa-solid fa-link"></i> <a href="?controller=Stores">Storeliste</a></li>
             </ul>
             <ul data-nav-group="Produkte verwalten">
-                <li><i class="fas fa-link"></i> <a href="?controller=Products">Produktliste</a></li>
+                <li><i class="fa-solid fa-link"></i> <a href="?controller=Products">Produktliste</a></li>
             </ul>
         </nav>
         <div class="main-content">
