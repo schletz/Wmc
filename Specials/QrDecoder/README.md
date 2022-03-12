@@ -1,6 +1,6 @@
 # Reader für COVID QR Codes
 
-![](screenshot.png)
+![](screenshot2.png)
 
 ## Starten der Applikation
 

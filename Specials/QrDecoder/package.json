@@ -3,10 +3,11 @@
     "base45-web": "^1.0.2",
     "buffer": "^6.0.3",
     "cbor-web": "^8.1.0",
-    "pako": "^2.0.4",
-    "html5-qrcode": "^2.2.0",
-    "stream-browserify": "^3.0.0",
     "html-webpack-plugin": "^5.5.0",
+    "html5-qrcode": "^2.2.0",
+    "pako": "^2.0.4",
+    "qrcode": "^1.5.0",
+    "stream-browserify": "^3.0.0",
     "webpack": "^5.65.0"
   },
   "scripts": {

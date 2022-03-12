@@ -6,69 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Decoder Test</title>
-    <style>
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            background-color: hsl(203, 100%, 98%);
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            margin: 0;
-        }
-
-        #container {
-            margin: 1rem;
-            border: 2px solid #888;
-            border-radius: 5px;
-            padding: 1rem;
-            background-color: #FFF;
-        }
-
-        main {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: stretch;
-            gap: 0.4rem;
-        }
-
-        main>div {
-            flex: 1 1 40rem;
-            display: flex;
-            flex-direction: column;
-        }
-
-        main>div>div:last-child,
-        main>div>pre:last-child {
-            flex-grow: 1;
-        }
-
-        input,
-        button,
-        textarea {
-            padding: 0.5rem;
-        }
-
-        pre {
-            white-space: pre-wrap;
-            background-color: #EEE;
-            padding: 0.5rem;
-            border: 1px solid #999;
-        }
-
-        pre:empty {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="main.css" />
 </head>
 
 <body>
@@ -84,49 +22,79 @@
         <main>
             <div>
                 <h4>Scanbereich</h4>
-                <div id="qr-reader"></div>
+                <div class="content" id="qr-reader"></div>
             </div>
             <div>
                 <h4>Raw content</h4>
-                <div style="display: flex; gap:0.4rem;">
+                <div class="content" style="display: flex; gap:0.4rem;">
                     <textarea style="flex-grow: 1;" id="qr-content"></textarea>
-                    <button style="align-self: flex-start" ; type="button" onclick="decodeQrContent()">Decode!</button>
+                    <button style="align-self: flex-start" type="button" onclick="decodeQrContent()">Decode!</button>
                 </div>
             </div>
             <div>
                 <h4>Decoded</h4>
-                <pre id="result"></pre>
+                <pre class="content" id="result"></pre>
+            </div>
+            <div>
+                <h4>Neuen QR erzeugen</h4>
+                <p>Dieser QR Code wird auf Basis des eingelesenen Codes neu erzeugt. Die
+                    Signaturprüfung wird allerdings bei diesem Code in Kontrollapps fehlschlagen.
+                </p>
+                <div class="new-qr-form">
+                    <div>
+                        <label>Nachname:</label>
+                        <input type="text" id="new-qr-lastname" />
+                    </div>
+                    <div>
+                        <label>Vorname:</label>
+                        <input type="text" id="new-qr-firstname" />
+                    </div>
+                    <div>
+                        <label>Geburtsdatum:</label>
+                        <input type="text" id="new-qr-birth" placeholder="YYYY-MM-DD" />
+                    </div>
+                    <div>
+                        <button type="button" onclick="generateNewQrCode()">Erzeugen</button>
+                    </div>
+                </div>
+                <canvas style="display:none" id="new-qr-canvas"></canvas>
             </div>
             <div>
                 <h4>Log</h4>
-                <pre id="log"></pre>
+                <pre class="content" id="log"></pre>
             </div>
+        </main>
     </div>
-    </main>
     <script>
-        function onScanSuccess(decodedText, decodedResult) {
-            document.getElementById("qr-content").value = decodedText;
-            log("Scan erfolgreich")
-        }
-
-        function onScanFailure(error) {
-        }
-
         // https://github.com/mebjas/html5-qrcode
         let html5QrcodeScanner = new QrDecoder.Html5QrcodeScanner("qr-reader", { fps: 10 }, false);
-        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
-
+        html5QrcodeScanner.render(decodedText => {
+            document.getElementById("qr-content").value = decodedText;
+        });
 
         function decodeQrContent() {
             try {
                 const decoded = QrDecoder.decode(document.getElementById("qr-content").value);
-                document.getElementById("result").innerText = JSON.stringify(decoded, null, 2);
+                document.getElementById("result").innerText = JSON.stringify(decoded.payload, null, 2);
             }
             catch (e) {
                 log("Fehler beim Dekodieren", e);
             }
         }
 
+        function generateNewQrCode() {
+            if (!document.getElementById("qr-content").value) {
+                alert("Du musst zuerst einen QR Code einscannen, um ihn ändern zu können.");
+            }
+            const decoded = QrDecoder.decode(document.getElementById("qr-content").value);
+            const newData = QrDecoder.generateQrData(
+                decoded.cborEncoded,
+                document.getElementById("new-qr-lastname").value,
+                document.getElementById("new-qr-firstname").value,
+                document.getElementById("new-qr-birth").value);
+            QrDecoder.QrCode.toCanvas(document.getElementById('new-qr-canvas'), newData);
+            document.getElementById('new-qr-canvas').style.display = "block";
+        }
         function log(title, data) {
             const logElem = document.getElementById("log");
             const date = new Date().toISOString();
