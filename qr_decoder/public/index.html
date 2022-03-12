@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Decoder Test</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: #F2F2F2;
+        }
+
+        #container {
+            max-width: 768px;
+            margin: 1rem auto;
+            border: 2px solid #888;
+            border-radius: 5px;
+            padding: 1rem;
+            background-color: #FFF;
+        }
+
+        input,
+        button,
+        textarea {
+            padding: 0.5rem;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            background-color: #EEE;
+            padding: 0.5rem;
+            border: 1px solid #999;
+        }
+
+        pre:empty {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>QR Demo</h1>
+        <div>
+            <p>Diese App demonstriert den QR Scanner von
+                <a href="https://github.com/mebjas/html5-qrcode"
+                    target="_blank">https://github.com/mebjas/html5-qrcode</a>. Sie muss mit
+                https verwendet werden, da sonst kein Zugriff auf die Kamera möglich ist.
+            </p>
+        </div>
+        <div id="qrReader" style="margin-bottom:1rem"></div>
+
+        <div>
+            <h4>Raw content</h4>
+            <div style="display: flex; gap:0.4rem; align-items:flex-start;">
+                <textarea style="flex-grow: 1" rows="10" id="qrContent"></textarea>
+                <button type="button" onclick="decodeQrContent()">Decode!</button>
+            </div>
+        </div>
+        <div>
+            <h4>Decoded</h4>
+            <pre id="result"></pre>
+        </div>
+        <div>
+            <h4>Log</h4>
+            <pre id="log"></pre>
+        </div>
+    </div>
+    <script>
+        function onScanSuccess(decodedText, decodedResult) {
+            document.getElementById("qrContent").value = decodedText;
+            log("Scan erfolgreich")
+        }
+
+        function onScanFailure(error) {
+        }
+
+        // https://github.com/mebjas/html5-qrcode
+        let html5QrcodeScanner = new QrDecoder.Html5QrcodeScanner("qrReader", { fps: 10 }, false);
+        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+
+        function decodeQrContent() {
+            try {
+                const decoded = QrDecoder.decode(document.getElementById("qrContent").value);
+                document.getElementById("result").innerText = decoded;
+            }
+            catch (e) {
+                log("Fehler beim Dekodieren", e);
+            }
+        }
+
+        function log(title, data) {
+            const logElem = document.getElementById("log");
+            const date = new Date().toISOString();
+            logElem.innerText = logElem.innerText + date + " " + title + (data ? "\r\n" + data : "") + "\r\n";
+        }
+
+    </script>
+
+</body>
+
+</html>
