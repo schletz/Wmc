@@ -1,16 +1,12 @@
 {
   "dependencies": {
-    "base45": "^2.0.1",
+    "html5-qrcode": "^2.2.0",
     "base45-web": "^1.0.2",
-    "buffer": "^6.0.3",
     "cbor-web": "^8.1.0",
-    "fflate": "^0.7.3",
-    "html-webpack-plugin": "^5.5.0",
-    "i": "^0.3.7",
-    "nofilter": "^3.1.0",
     "pako": "^2.0.4",
-    "process": "^0.11.10",
+    "buffer": "^6.0.3",
     "stream-browserify": "^3.0.0",
+    "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.65.0"
   },
   "scripts": {

@@ -10,6 +10,7 @@ module.exports = {
     },
     compress: true,
     port: 9000,
+    https: true
   },
   output: {
     filename: '[name].bundle.js',
@@ -19,6 +20,7 @@ module.exports = {
   resolve: {
     fallback: { stream: require.resolve("stream-browserify"),}
   },
+  
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html',

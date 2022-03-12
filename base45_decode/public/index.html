@@ -32,19 +32,45 @@
 
 <body>
     <div style="max-width: 768px; margin: 1rem auto; border:1px solid #888; padding:1rem">
+        <div>
+            <div id="qrReader"></div>
+
+        </div>
         <div style="display: flex; gap:0.4rem; align-items:flex-start;">
-            <textarea style="flex-grow: 1" rows="10" id="qrContent">HC1:NCFK80R80T9WTWGVLKG59C:PG4NGHHC85X*4FBB$*4FN0IDC.WEWY0ADCX5K*70TB8D97TK0F90IECSHG3KCZPCNF6OF63W5CA7*96/SA8:6DL61G73564KCAWE6T9G%6G%67W5/JCE$D8+9TB84KC*PCUV3REDY CVKEZED234X34:X8PR8379*KENLFM-DF195JCWJCT3ETB8WJC0FD$F5AIA%G7X+AQB9746IG77TA:F6FL6RX8:F6OCA/HA+H9YX89A6UCAX+A 1BN*9TH8+EDC8FHZ95/D QEALEN44:+C%69AECAWE1Q5HC8 QE*KE0EC9WEQDD+Q6TW6FA7C464KC*KETF6A46.96646C56..DX%DLPCG/D0ED$B91OA:S9E+9ZJC5/D0O96$CSQEZED73DI3D8WERB8LTAHZA JC2/DEC8AWE6%E$PC5$CUZC$$5Y$5JPCT3E6JD646KF6B463W5IG6F988*SA$GYQA5BGGX1%YGZ81YP4$/SQ K228.:NK4L%IC2WUH%P81NW020T6PWL*4FO Q--KI5D/ 9B.QY6MNJ4CKATRJ..DDSTK7VI2</textarea>
+            <textarea style="flex-grow: 1" rows="10" id="qrContent"></textarea>
             <button type="button" onclick="decodeQrContent()">Decode!</button>
         </div>
         <div>
             <h4>Output</h4>
             <pre id="result"></pre>
         </div>
+        <div>
+            <h4>Log</h4>
+            <pre id="log"></pre>
+        </div>
     </div>
     <script>
+        function onScanSuccess(decodedText, decodedResult) {
+            document.getElementById("qrContent").value = decodedText;
+            log("Scan erfolgreich")
+        }
+
+        function onScanFailure(error) {
+        }
+
+        // https://github.com/mebjas/html5-qrcode
+        let html5QrcodeScanner = new QrDecoder.Html5QrcodeScanner("qrReader", { fps: 10 }, false);
+        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+
         function decodeQrContent() {
             const decoded = QrDecoder.decode(document.getElementById("qrContent").value);
-            document.getElementById("result").innerText = decoded
+            document.getElementById("result").innerText = decoded;
+        }
+
+        function log(title, data) {
+            var logElem = document.getElementById("log");
+            logElem.innerText = logElem.innerText + title + (data ? "\r\n" + JSON.stringify(data) : "") + "\r\n";
         }
 
     </script>

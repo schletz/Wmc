@@ -1,5 +1,6 @@
 import base45 from 'base45-web'
 import pako from 'pako'
+import { Html5QrcodeScanner } from "html5-qrcode"
 import { Decoder } from 'cbor-web'
 import { Buffer } from 'Buffer'
 
@@ -16,5 +17,6 @@ function decode(base45String) {
 }
 
 export {
-    decode
+    decode,
+    Html5QrcodeScanner
 };
