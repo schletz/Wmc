@@ -120,7 +120,7 @@
         function decodeQrContent() {
             try {
                 const decoded = QrDecoder.decode(document.getElementById("qr-content").value);
-                document.getElementById("result").innerText = decoded;
+                document.getElementById("result").innerText = JSON.stringify(decoded, null, 2);
             }
             catch (e) {
                 log("Fehler beim Dekodieren", e);
