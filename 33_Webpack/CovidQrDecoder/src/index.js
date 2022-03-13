@@ -4,6 +4,7 @@ import { Html5QrcodeScanner } from "html5-qrcode"
 import { Decoder, Encoder } from 'cbor-web'
 import { Buffer } from 'Buffer'
 import QrCode from 'qrcode'
+import formatHighlight from 'json-format-highlight'
 
 // Sucht nach dem Key "ver" in den Maps. Diese können verschachtelt sein.
 // Siehe https://dgc.a-sit.at/ehn/
@@ -50,5 +51,6 @@ export {
     decode,
     generateQrData,
     Html5QrcodeScanner,
-    QrCode
+    QrCode,
+    formatHighlight
 };

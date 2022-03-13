@@ -1,25 +1,23 @@
+:root {
+    --back-color: hsl(203, 100%, 98%);
+    --color: hsl(203, 100%, 40%);
+    --gray-back-color: #EEE;
+    --border-color: #999;
+}
+
 html,
 body {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: hsl(203, 100%, 98%);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin: 0;
+    font-family: 'Gill Sans MT', 'Gill Sans', 'Lucida Sans', 'Trebuchet MS', sans-serif;
+    background-color: var(--back-color);
 }
 
 #container {
     margin: 1rem;
-    border: 2px solid #888;
+    border: 2px solid var(--border-color);
     border-radius: 5px;
     padding: 1rem;
     background-color: #FFF;
@@ -32,10 +30,17 @@ main {
     gap: 0.4rem;
 }
 
-main>div {
+.card {
     flex: 1 1 40rem;
     display: flex;
     flex-direction: column;
+}
+
+.card-title {
+    margin: 0;
+}
+.card-content {
+    flex-grow: 1;
 }
 
 .new-qr-form {
@@ -50,21 +55,30 @@ main>div {
     justify-content: flex-end;
 }
 
-.content {
-    flex-grow: 1;
-}
-
 input,
 button,
-textarea {
+textarea,
+pre {
     padding: 0.5rem;
+    font-family: 'Gill Sans MT', 'Gill Sans', 'Lucida Sans', 'Trebuchet MS', sans-serif;
+}
+button {
+    background-color: white;
+    border:2px solid var(--border-color);
+    border-radius: 3px;
+}
+button:hover {
+    background-color: var(--back-color);
 }
 
 pre {
     white-space: pre-wrap;
-    background-color: #EEE;
-    padding: 0.5rem;
-    border: 1px solid #999;
+    background-color: var(--gray-back-color);
+    border: 1px solid var(--border-color);
     margin:0;
     min-height: 3em;
+}
+
+a {
+    color: var(--color);
 }

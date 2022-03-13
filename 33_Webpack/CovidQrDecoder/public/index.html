@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
 <body>
     <div id="container">
         <header>
-            <h1>QR Demo</h1>
+            <h1>COVID QR Demo</h1>
             <p>Diese App demonstriert den QR Scanner von
                 <a href="https://github.com/mebjas/html5-qrcode"
                     target="_blank">https://github.com/mebjas/html5-qrcode</a>. Sie muss mit
@@ -20,48 +20,50 @@
             </p>
         </header>
         <main>
-            <div>
-                <h4>Scanbereich</h4>
-                <div class="content" id="qr-reader"></div>
+            <div class="card">
+                <h4 class="card-title">Scanbereich</h4>
+                <div class="card-content" id="qr-reader"></div>
             </div>
-            <div>
-                <h4>Raw content</h4>
-                <div class="content" style="display: flex; gap:0.4rem;">
+            <div class="card">
+                <h4 class="card-title">Raw content</h4>
+                <div class="card-content" style="display: flex; gap:0.4rem;">
                     <textarea style="flex-grow: 1;" id="qr-content"></textarea>
                     <button style="align-self: flex-start" type="button" onclick="decodeQrContent()">Decode!</button>
                 </div>
             </div>
-            <div>
-                <h4>Decoded</h4>
-                <pre class="content" id="result"></pre>
+            <div class="card">
+                <h4 class="card-title">Decoded</h4>
+                <pre class="card-content" id="result"></pre>
             </div>
-            <div>
-                <h4>Neuen QR erzeugen</h4>
-                <p>Dieser QR Code wird auf Basis des eingelesenen Codes neu erzeugt. Die
-                    Signaturprüfung wird allerdings bei diesem Code in Kontrollapps fehlschlagen.
-                </p>
-                <div class="new-qr-form">
-                    <div>
-                        <label>Nachname:</label>
-                        <input type="text" id="new-qr-lastname" />
+            <div class="card">
+                <h4 class="card-title">Neuen QR erzeugen</h4>
+                <div class="card-content">
+                    <p>Dieser QR Code wird auf Basis des eingelesenen Codes neu erzeugt. Die
+                        Signaturprüfung wird allerdings bei diesem Code in Kontrollapps fehlschlagen.
+                    </p>
+                    <div class="new-qr-form">
+                        <div>
+                            <label>Nachname:</label>
+                            <input type="text" id="new-qr-lastname" />
+                        </div>
+                        <div>
+                            <label>Vorname:</label>
+                            <input type="text" id="new-qr-firstname" />
+                        </div>
+                        <div>
+                            <label>Geburtsdatum:</label>
+                            <input type="text" id="new-qr-birth" placeholder="YYYY-MM-DD" />
+                        </div>
+                        <div>
+                            <button type="button" onclick="generateNewQrCode()">Erzeugen</button>
+                        </div>
                     </div>
-                    <div>
-                        <label>Vorname:</label>
-                        <input type="text" id="new-qr-firstname" />
-                    </div>
-                    <div>
-                        <label>Geburtsdatum:</label>
-                        <input type="text" id="new-qr-birth" placeholder="YYYY-MM-DD" />
-                    </div>
-                    <div>
-                        <button type="button" onclick="generateNewQrCode()">Erzeugen</button>
-                    </div>
+                    <canvas style="display:none" id="new-qr-canvas"></canvas>
                 </div>
-                <canvas style="display:none" id="new-qr-canvas"></canvas>
             </div>
-            <div>
-                <h4>Log</h4>
-                <pre class="content" id="log"></pre>
+            <div class="card">
+                <h4 class="card-title">Log</h4>
+                <pre class="card-content" id="log"></pre>
             </div>
         </main>
     </div>
@@ -75,7 +77,8 @@
         function decodeQrContent() {
             try {
                 const decoded = QrDecoder.decode(document.getElementById("qr-content").value);
-                document.getElementById("result").innerText = JSON.stringify(decoded.payload, null, 2);
+                var formatted = QrDecoder.formatHighlight(JSON.stringify(decoded.payload, null, 2));
+                document.getElementById("result").innerHTML = formatted;
             }
             catch (e) {
                 log("Fehler beim Dekodieren", e);
