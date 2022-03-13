@@ -54,6 +54,11 @@ Installiere folgende Software:
 - Clientseitiges Routing
 - State Management
 
+## Nutzungsbedingungen
+
+Dieses Repository kann frei im Unterricht verwendet werden. Bei der Verwendung von Unterlagen
+oder Beispielen ist die Originalquelle (**https://github.com/schletz/Wmc**) anzugeben.
+
 ## Lehrplan
 
 [Zum Lehrplan](Lehrplan.md)
