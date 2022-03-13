@@ -25,9 +25,9 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - Variablen und Datentypen
 - JSON, Arrays und Sets
 - Funktionen
-  - [Callbacks und Closures
-  - [Prototype, this und new
-  - [Arrow functions und Arraymethoden
+  - Callbacks und Closures
+  - Prototype, this und new
+  - Arrow functions und Arraymethoden
 - Classes
 - Modules
 
