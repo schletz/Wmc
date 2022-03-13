@@ -16,7 +16,7 @@ function decodePayload(map) {
 }
 
 function decode(base45String) {
-    const match = /HC1\:(?<data>[ \$\%\*\+\-\.\/\:0-9A-Z]+)/.exec(base45String);
+    const match = /HC1:(?<data>[ $%*+\-./:0-9A-Z]+)/.exec(base45String);
     if (!match) { throw "Invalid healthcare code or invalid base45 string."; }
     const decodedData = Buffer.from(base45.decode(match.groups.data));
     const cborEncoded = pako.inflate(decodedData);
