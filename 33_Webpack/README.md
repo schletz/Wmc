@@ -59,7 +59,7 @@ CovidQrDemo
              index.js
 ```
 
-## Schritt 2: Konfiguration von Webpack
+## Schritt 2: Nutzen von Webpack
 
 Node.js baut stark auf den Package Manager *npm* auf. Es können Zusatzpakete geladen werden,
 sodass wir nicht alles selbst entwickeln müssen.
@@ -296,7 +296,7 @@ exportierte Funktion nun in HTML aufrufen:
 </html>
 ```
 
-## Der Linter EsLint
+## Schritt 3: Der Linter EsLint
 
 Schreiben wir in der Datei *index.js* z. B. den Befehl *return base45.decode(undefinedVariable);*
 erscheint kein Fehler. Erst in der Browserkonsole bekommen wir den Hinweis, dass die Variable
@@ -332,7 +332,7 @@ nur Dateien innerhalb dieses Ordners prüfen wollen.
 Nun muss in der Datei *index.js* der Befehl *return base45.decode(undefinedVariable);* rot
 unterstrichen sein.
 
-## Babel: Neue ECMAScript Features übersetzen
+## Schritt 4: Babel - neue ECMAScript Features übersetzen
 
 Unser Code wird im Browser ausgeführt. Dadurch haben wir allerdings keinen Einfluss darauf, welche
 Features die JavaScript Engine unterstützt. Manche verwenden noch ändere Browser, die neue
