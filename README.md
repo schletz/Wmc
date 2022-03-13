@@ -12,14 +12,16 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 
 ### Das MVC Konzept
 
+[Zum Inhalt](30_MVC)
+
 - Entwicklung mit PHP und Apache
 - Views und Routing
 - Controller
 - Datenbankzugriff
 
-[Zum Inhalt](30_MVC)
-
 ### JavaScript Sprachgrundlagen
+
+[Zum Inhalt](31_JavaScript)
 
 - Intro
 - Variablen und Datentypen
@@ -31,9 +33,10 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - Classes
 - Modules
 
-[Zum Inhalt](31_JavaScript)
 
 ### JavaScript im Browser: Vue.js Templates
+
+[Zum Inhalt](32_VueJsTemplates)
 
 - Das document object, HTMLElement Nodes
 - Promises
@@ -41,26 +44,25 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - Templates mit Vue.js
 - Komplexeres Statemanagement mit Vue.js
 
-[Zum Inhalt](32_VueJsTemplates)
 
 ### Node.js Projekte erstellen
+
+[Zum Inhalt](33_Webpack)
 
 - Webpack
 - EsLint
 - Babel
 
-[Zum Inhalt](33_Webpack)
 
 ### Single Page Application Frameworks
 
-- Node.js als Buildtool
+[Zum Inhalt](34_SPA)
+
 - Komponenten entwickeln
 - Wiederverwendbare Komponenten
 - Kommunikation mit dem Backend
 - Clientseitiges Routing
 - State Management
-
-[Zum Inhalt](34_SPA)
 
 ## Lehrplan
 
