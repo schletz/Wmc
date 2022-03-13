@@ -1,8 +1,8 @@
 # Webentwicklung und Mobile Computing an der HTL Spengergasse
 
-## Benötigte Software
+## Benötigte Software ([zur Anleitung](Software_Installation.md))
 
-Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Software:
+Installiere folgende Software:
 
 - Installation von VS Code und Node.js für die Frontend Entwicklung
 - XAMPP mit PHP
