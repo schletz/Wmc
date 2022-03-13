@@ -19,7 +19,7 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - Controller
 - Datenbankzugriff
 
-### JavaScript Sprachgrundlagen [Zum Inhalt](31_JavaScript)
+### JavaScript Sprachgrundlagen ([Zum Inhalt](31_JavaScript))
 
 - Intro
 - Variablen und Datentypen
