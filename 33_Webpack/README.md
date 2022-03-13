@@ -20,6 +20,21 @@ Auf *https://localhost:9000* wird nun der Dev Server mit der Applikation gestart
 Zum Verständnis werden die erforderlichen Schritte um ein Projekt mit Webpack zu erstellen 
 in den nachfolgenden Punkten erklärt.
 
+## Erstmaliger Start von node Projekten
+
+Jedes Node.js Projekt besitzt ein Verzeichnis *node_modules* zum Speichern der installierten
+Pakete, die von der Applikation benötigt werden. Wird ein Node.js Projekt geklont, muss
+mit
+
+```
+npm install
+```
+
+dieses Verzeichnis neu erstellt und die Pakete geladen werden. Das Verzeichnis *node_modules*
+sollte daher nicht in einem Repository liegen (verwendet *.gitignore*) und kann auch gefahrlos
+gelöscht werden. Das ist bei der Weitergabe von Projekten sinnvoll, da sehr viele Dateien in diesem
+Verzeichnis sind.
+
 ## Anlegen des Projektes
 
 Lege ein Verzeichnis *CovidQrDemo* an.
