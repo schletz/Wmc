@@ -31,7 +31,7 @@ npm install
 ```
 
 dieses Verzeichnis neu erstellt und die Pakete geladen werden. Das Verzeichnis *node_modules*
-sollte daher nicht in einem Repository liegen (verwendet *.gitignore*) und kann auch gefahrlos
+sollte daher nicht in einem Repository liegen (verwende *.gitignore*) und kann auch gefahrlos
 gelöscht werden. Das ist bei der Weitergabe von Projekten sinnvoll, da sehr viele Dateien in diesem
 Verzeichnis sind.
 
