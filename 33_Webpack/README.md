@@ -22,16 +22,23 @@ in den nachfolgenden Punkten erklärt.
 
 ## Anlegen des Projektes
 
-Lege ein Verzeichnis *CovidQrDemo* an. Starte in diesem Verzeichnis mit *npm init* den Assistenten.
+Lege ein Verzeichnis *CovidQrDemo* an.
 
 ```
 md CovidQrDemo
 cd CovidQrDemo
-npm init -y
 ```
 
-Es entsteht nun eine Datei *package.json*, die die eingegebenen Informationen speichert. Natürlich
-kann diese Datei noch nachträglich geändert werden.
+Lege eine leere Datei mit dem Namen *package.json* an. Dies ist die wichtigste Datei bei
+Node.js Projekten. Als ersten Eintrag definieren wir *index.js* als Startdatei:
+
+**package.json**
+
+```json
+{
+  "main": "index.js"
+}
+```
 
 ## Schritt 1: Anlegen der Ordnerstruktur
 
