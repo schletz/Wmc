@@ -74,18 +74,7 @@ CovidQrDemo
              index.js
 ```
 
-## Schritt 2: Nutzen von Webpack
-
-Node.js baut stark auf den Package Manager *npm* auf. Es können Zusatzpakete geladen werden,
-sodass wir nicht alles selbst entwickeln müssen.
-
-### Was ist Webpack?
-
-Durch den Einsatz von Paketen ergeben sich *Abhängigkeiten* (Dependencies). Wenn wir einfach
-unsere index.js Datei im Browser einbinden, werden die Funktionen aus den Zusatzpaketen nicht
-gefunden. Der Browser kann auch keine Pakete einfach nachinstallieren. Wir brauchen also einen
-Mechanismus, der unseren Code samt den verwendeten Code aus den Paketen zusammenbündelt. Diese
-Datei nennt man *bundle*. Diese Datei kann dann mit *script src* eingebunden werden.
+## Schritt 2: Verwendung von npm
 
 ### Laden des ersten Paketes: base45
 
@@ -155,6 +144,20 @@ Oft findet man Code, der *require* statt *import* verwendet. Das Schlüsselwort 
 in Node.js Projekten, die Module verwenden, zulässig. Es ist die bevorzugte Variante, da auch
 spezifische Objekte aus dem Modul geladen werden können. Außerhalb von Modulen wird *require()*
 verwendet.
+
+
+## Schritt 3: Nutzen von Webpack
+
+Node.js baut stark auf den Package Manager *npm* auf. Es können Zusatzpakete geladen werden,
+sodass wir nicht alles selbst entwickeln müssen.
+
+### Was ist Webpack?
+
+Durch den Einsatz von Paketen ergeben sich *Abhängigkeiten* (Dependencies). Wenn wir einfach
+unsere index.js Datei im Browser einbinden, werden die Funktionen aus den Zusatzpaketen nicht
+gefunden. Der Browser kann auch keine Pakete einfach nachinstallieren. Wir brauchen also einen
+Mechanismus, der unseren Code samt den verwendeten Code aus den Paketen zusammenbündelt. Diese
+Datei nennt man *bundle*. Diese Datei kann dann mit *script src* eingebunden werden.
 
 ### Installation von Webpack
 
@@ -313,7 +316,7 @@ exportierte Funktion nun in HTML aufrufen:
 </html>
 ```
 
-## Schritt 3: Der Linter EsLint
+## Schritt 4: Der Linter EsLint
 
 Schreiben wir in der Datei *index.js* z. B. den Befehl *return base45.decode(undefinedVariable);*
 erscheint kein Fehler. Erst in der Browserkonsole bekommen wir den Hinweis, dass die Variable
@@ -374,7 +377,7 @@ die Datei *.eslintrc.json* editieren.
 Nun muss in der Datei *index.js* der Befehl *return base45.decode(undefinedVariable);* rot
 unterstrichen sein.
 
-## Schritt 4: Babel - neue ECMAScript Features übersetzen
+## Schritt 5: Babel - neue ECMAScript Features übersetzen
 
 Unser Code wird im Browser ausgeführt. Dadurch haben wir allerdings keinen Einfluss darauf, welche
 Features die JavaScript Engine unterstützt. Manche verwenden noch ändere Browser, die neue
