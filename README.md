@@ -17,19 +17,21 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - Controller
 - Datenbankzugriff
 
-[Zum Inhalt](30_MVC/README.md)
+[Zum Inhalt](30_MVC)
 
 ### JavaScript Sprachgrundlagen
 
-- [Intro](31_JavaScript/10_ECMAscript.md)
-- [Variablen und Datentypen](31_JavaScript/20_Variables.md)
-- [JSON, Arrays und Sets](31_JavaScript/30_JSON_Arrays.md)
+- Intro
+- Variablen und Datentypen
+- JSON, Arrays und Sets
 - Funktionen
-  - [Callbacks und Closures](31_JavaScript/40_FunctionsCallback.md)
-  - [Prototype, this und new](31_JavaScript/41_FunctionsPrototype.md)
-  - [Arrow functions und Arraymethoden](31_JavaScript/42_FunctionsArrowFunctions.md)
-- [Classes](31_JavaScript/50_Classes.md)
-- [Modules](31_JavaScript/60_Modules.md)
+  - [Callbacks und Closures
+  - [Prototype, this und new
+  - [Arrow functions und Arraymethoden
+- Classes
+- Modules
+
+[Zum Inhalt](31_JavaScript)
 
 ### JavaScript im Browser: Vue.js Templates
 
@@ -39,7 +41,7 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - Templates mit Vue.js
 - Komplexeres Statemanagement mit Vue.js
 
-[Zum Inhalt](32_VueJsTemplates/README.md)
+[Zum Inhalt](32_VueJsTemplates)
 
 ### Node.js Projekte erstellen
 
@@ -47,7 +49,7 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - EsLint
 - Babel
 
-[Zum Inhalt](33_Webpack/README.md)
+[Zum Inhalt](33_Webpack)
 
 ### Single Page Application Frameworks
 
@@ -58,7 +60,7 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - Clientseitiges Routing
 - State Management
 
-[Zum Inhalt](34_SPA/README.md)
+[Zum Inhalt](34_SPA)
 
 ## Lehrplan
 
