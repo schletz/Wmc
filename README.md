@@ -10,9 +10,7 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 
 ## Inhalt 
 
-### Das MVC Konzept
-
-[Zum Inhalt](30_MVC)
+### Das MVC Konzept ([Zum Inhalt](30_MVC))
 
 - Entwicklung mit PHP und Apache
 - Views und Routing
@@ -32,9 +30,7 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - Modules
 
 
-### JavaScript im Browser: Vue.js Templates
-
-[Zum Inhalt](32_VueJsTemplates)
+### JavaScript im Browser: Vue.js Templates ([Zum Inhalt](32_VueJsTemplates))
 
 - Das document object, HTMLElement Nodes
 - Promises
@@ -43,18 +39,14 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - Komplexeres Statemanagement mit Vue.js
 
 
-### Node.js Projekte erstellen
-
-[Zum Inhalt](33_Webpack)
+### Node.js Projekte erstellen ([Zum Inhalt](33_Webpack))
 
 - Webpack
 - EsLint
 - Babel
 
 
-### Single Page Application Frameworks
-
-[Zum Inhalt](34_SPA)
+### Single Page Application Frameworks ([Zum Inhalt](34_SPA))
 
 - Komponenten entwickeln
 - Wiederverwendbare Komponenten
