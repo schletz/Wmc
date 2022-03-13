@@ -17,7 +17,7 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - Controller
 - Datenbankzugriff
 
-[Musterapp: Store Manager](30_MVC/storemanager/)
+[Zum Inhalt](30_MVC/README.md)
 
 ### JavaScript Sprachgrundlagen
 
@@ -31,14 +31,24 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - [Classes](31_JavaScript/50_Classes.md)
 - [Modules](31_JavaScript/60_Modules.md)
 
-### JavaScript im Browser
+### JavaScript im Browser: Vue.js Templates
 
 - Das document object, HTMLElement Nodes
 - Promises
 - Laden mit fetch
 - Templates mit Vue.js
 - Komplexeres Statemanagement mit Vue.js
-  
+
+[Zum Inhalt](32_VueJsTemplates/README.md)
+
+### Node.js Projekte erstellen
+
+- Webpack
+- EsLint
+- Babel
+
+[Zum Inhalt](33_Webpack/README.md)
+
 ### Single Page Application Frameworks
 
 - Node.js als Buildtool
@@ -47,5 +57,9 @@ Installiere mit Hilfe der [Anleitung](Software_Installation.md) folgende Softwar
 - Kommunikation mit dem Backend
 - Clientseitiges Routing
 - State Management
+
+[Zum Inhalt](34_SPA/README.md)
+
+## Lehrplan
 
 [Zum Lehrplan](Lehrplan.md)
