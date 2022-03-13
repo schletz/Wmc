@@ -11,5 +11,5 @@ REM Dateiname GfsDownloader20190107.7z z. B. generieren
 SET FILENAME=%CurrDirName%%mydate%.zip
 
 del /F /Q "%OUTPATH%\%CurrDirName%*.zip"
-%ZIP% a -mx=9 "%OUTPATH%\%FILENAME%" "..\%CurrDirName%"  -xr!node_modules
+%ZIP% a -mx=9 "%OUTPATH%\%FILENAME%" "..\%CurrDirName%"  -xr!node_modules -xr!dist
 pause
