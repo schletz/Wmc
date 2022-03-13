@@ -20,7 +20,11 @@ Auf *https://localhost:9000* wird nun der Dev Server mit der Applikation gestart
 Zum Verständnis werden die erforderlichen Schritte um ein Projekt mit Webpack zu erstellen 
 in den nachfolgenden Punkten erklärt.
 
-## Erstmaliger Start von node Projekten
+## Öffnen und starten von node Projekten
+
+Öffne das Projekt **immer mit "Open Folder"** in VS Code. Öffne keine Einzeldateien, da sonst
+die anderen Dateien im Projekt nicht eingelesen werden. Die Konsole wird in VS Code mit *CTRL+Ö*
+geöffnet. Hier könenn npm Befehle oder andere Befehle eingegeben werden.
 
 Jedes Node.js Projekt besitzt ein Verzeichnis *node_modules* zum Speichern der installierten
 Pakete, die von der Applikation benötigt werden. Wird ein Node.js Projekt geklont, muss
@@ -144,10 +148,17 @@ export {
 #### import oder require?
 
 Oft findet man Code, der *require* statt *import* verwendet. Das Schlüsselwort *import* ist nur
-in Node.js Projekten, die Module verwenden, zulässig. Es ist die bevorzugte Variante, da auch
-spezifische Objekte aus dem Modul geladen werden können. Außerhalb von Modulen wird *require()*
-verwendet.
+in Modulen zulässig. Module sind js Dateien, die mit dem *export* Statement Klassen, Funktionen oder
+andere Objekte exportieren. Es ist die bevorzugte Variante, da auch
+spezifische Objekte aus dem Modul geladen werden können. So verwenden wir z. B. beim Import des
+Modules *Buffer* nur die Klasse *Buffer*. Es steht z. B. auch *Blob* zur Verfügung, was wir
+allerdings nicht brauchen. Je weniger Objekte wir importieren, desto kleiner wird das Bundle.
+Außerhalb von Modulen wird *require()* zum Einbinden von Codedateien verwendet.
 
+Weitere Informationen gibt es im MDN zum  
+[import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+oder [export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
+Statement.
 
 ## Schritt 3: Nutzen von Webpack
 
@@ -226,23 +237,24 @@ module.exports = {
   mode: 'production',
   devServer: {
     static: {
-      directory: path.join(__dirname, 'public'),
+      directory: path.join(__dirname, 'public'),  // Absoluten Pfad erzeugen.
     },
     compress: true,
     port: 9000,
     https: true
   },
   output: {
-    filename: '[name].bundle.js',
-    libraryTarget: "var",
-    library: "QrDecoder",
-    clean: true
+    filename: '[name].bundle.js',        // Kann z. B. in qrDecoder.js geändert werden.
+    libraryTarget: "var",                // Das exportiere Modul als Variable global deklarieren.
+    library: "QrDecoder",                // Variablenname für den HTML Export.
+    clean: true                          // Ausgabeverzeichnis leeren.
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'public/index.html',
-      inject: 'head',
-      scriptLoading: 'blocking'
+      template: 'public/index.html',    // Wo soll script src eingefügt werden?
+      inject: 'head',                   // <script src=".."> im head einfügen (nicht am Ende von <body>).
+      scriptLoading: 'blocking'         // Sonst würde mit defer die Variable QrDecoder 
+                                        // erst nach dem Laden des HTML Inhaltes deklariert werden.
     })],
 }
 ```
@@ -449,4 +461,39 @@ Die Anweisung *base45String ??= "";* wurde durch folgenden Block ersetzt:
 
 ```javascript
 (_base45String = base45String) !== null && _base45String !== void 0 ? _base45String : base45String = "";
+```
+
+## Schritt 6: Kopieren einer CSS Datei
+
+Möchten wir das CSS Layout z. B. in der Datei *public/main.css* anlegen, muss sie von Webpack beim
+Buildvorgang mitkopiert werden. Dafür brauchen wir das Paket *copy-webpack-plugin*:
+
+```
+npm install copy-webpack-plugin --save-dev
+```
+
+Danach können wir das Paket in unserer Webpack Konfiguration einbinden und alle CSS Dateien
+im Ordner *public* in das Ausgabeverzeichnis (*dist*) kopieren.
+
+**webpack.config.js**
+
+```javascript
+// ...
+const CopyPlugin = require('copy-webpack-plugin');
+
+module.exports = {
+  // ...
+  plugins: [
+    // ...
+    new CopyPlugin({
+      patterns: [
+        {
+          context: "public",
+          from: '*.css',
+          to: ''
+        }
+      ]
+    }),
+}
+
 ```
