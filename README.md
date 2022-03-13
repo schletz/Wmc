@@ -10,14 +10,14 @@ Installiere folgende Software:
 
 ## Inhalt 
 
-### Das MVC Konzept ([zum Inhalt](30_MVC))
+### 1 Das MVC Konzept ([zum Inhalt](30_MVC))
 
 - Entwicklung mit PHP und Apache
 - Views und Routing
 - Controller
 - Datenbankzugriff
 
-### JavaScript Sprachgrundlagen ([zum Inhalt](31_JavaScript))
+### 2 JavaScript Sprachgrundlagen ([zum Inhalt](31_JavaScript))
 
 - Intro
 - Variablen und Datentypen
@@ -30,7 +30,7 @@ Installiere folgende Software:
 - Modules
 
 
-### JavaScript im Browser: Vue.js Templates ([zum Inhalt](32_VueJsTemplates))
+### 3 JavaScript im Browser: Vue.js Templates ([zum Inhalt](32_VueJsTemplates))
 
 - Das document object, HTMLElement Nodes
 - Promises
@@ -39,14 +39,14 @@ Installiere folgende Software:
 - Komplexeres Statemanagement mit Vue.js
 
 
-### Node.js Projekte erstellen ([zum Inhalt](33_Webpack))
+### 4 Node.js Projekte erstellen ([zum Inhalt](33_Webpack))
 
 - Webpack
 - EsLint
 - Babel
 
 
-### Single Page Application Frameworks ([zum Inhalt](34_SPA))
+### 5 Single Page Application Frameworks ([zum Inhalt](34_SPA))
 
 - Komponenten entwickeln
 - Wiederverwendbare Komponenten
