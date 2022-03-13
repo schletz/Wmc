@@ -34,7 +34,7 @@ Node.js Projekten. Als ersten Eintrag definieren wir *index.js* als Startdatei:
 
 **package.json**
 
-```json
+```javascript
 {
   "main": "index.js"
 }
@@ -80,7 +80,7 @@ Google *npm base45* ein, erhalten wir 2 Suchergebnisse: *base45 - npm* und *base
 
 Bevor ein Paket geladen wird, kontrollieren wir auf der npm Seite einige Punkte:
 
-- Wann wurde das Paket zuletzt aktualisiert? Verwende keine Pakete, dessen letztes Update schon
+- Wann wurde das Paket zuletzt aktualisiert? Verwende keine Pakete, deren letztes Update schon
   jahrelang zurück liegt.
 - In welcher Version liegt das Paket vor? Verwende keine Pakete, die nur in der Version 0
   vorliegen.
@@ -115,17 +115,18 @@ Nun verwenden wir das Paket und schreiben eine einfache Decode Funktion. Sie pr�
 regulären Ausdruck, ob nur gültige Base45 Zeichen im String vorkommen.
 
 Der Befehl *import* wirkt wie using in C#. Erst nach dem *import* Befehl kann das Paket unter dem
-angegebenen Namen genutzt werden.
+angegebenen Namen genutzt werden. Das Paket *buffer* gehört zu den Standardpaketen von Node.js
+und muss daher nicht mit npm installiert werden.
 
 ```javascript
 import base45 from 'base45-web'
+import { Buffer } from 'buffer'
 
 function decode(base45String) {
     base45String ??= "";  // Avoid null
     const match = /^([ $%*+\-./:0-9A-Z]+)$/.exec(base45String);
     if (!match) { throw "Invalid base45 string."; }
-
-    return base45.decode(base45String);
+    return Buffer.from(base45.decode(base45String)).toString('utf-8');
 }
 
 export {
@@ -140,8 +141,6 @@ in Node.js Projekten, die Module verwenden, zulässig. Es ist die bevorzugte Var
 spezifische Objekte aus dem Modul geladen werden können. Außerhalb von Modulen wird *require()*
 verwendet.
 
-> In [CovidQrDecoder](CovidQrDecoder) befindet sich ein lauffähiges Projekt.
-
 ### Installation von Webpack
 
 Webpack ist ein sehr mächtiges Paket. Auf [der Projektseite](https://webpack.js.org/guides/getting-started)
@@ -149,7 +148,7 @@ siehst du die vielen Konfigurationsmöglichkeiten.
 
 Wir installieren 3 Pakete: *webpack*, *webpack-cli* und das *html-webpack-plugin*. 
 Der Parameter *save-dev* gibt an, dass das
-Paket nur zur Entwicklung benötigt wird. Es wird in der Datei *package.json* als devDependency
+Paket nur zur Entwicklung benötigt wird. Es wird in der Datei *package.json* unter *devDependencies*
 eingetragen.
 
 ```
@@ -164,11 +163,12 @@ an:
 - **serve** startet einen dev Server, um bei der Entwicklung das Projekt sofort im Browser testen
   zu können.
 
-Ergänze nun den *scripts* Eintrag in der Datei *package.json*:
+Ergänze nun den *scripts* Eintrag in der Datei *package.json*. Die Dependencies wurden schon von npm
+hinzugefügt.
 
 **package.json**
 
-```json
+```javascript
 {
   "main": "index.js",
   "scripts": {
@@ -195,6 +195,8 @@ auch die Datei *package.json* ist) angelegt werden. Webpack hat eine Menge zu er
   den Namen *QrDecoder*. 
 - Die Datei *public/index.html* soll gelesen und ein *script* element eingefügt werden, welches das
   Bundle lädt.
+- Zusätzliche Plugins müssen ausgeführt werden, um z. B. den Code in ältere ECMAScript Versionen zu
+  übersetzen (Babel).
 
 **webpack.config.js**
 
@@ -326,8 +328,33 @@ npm init @eslint/config
   > JSON
 ```
 
-Es wird nun eine Datei *eslintrc.json* erzeugt. Verschiebe diese Datei in den Ordner *src*, da wir
-nur Dateien innerhalb dieses Ordners prüfen wollen.
+Es wird nun eine Datei *.eslintrc.json* erzeugt. Verschiebe diese Datei in den Ordner *src*, da wir
+nur Dateien innerhalb dieses Ordners prüfen wollen. Jetzt passen wir noch 2 Regeln an, indem wir
+die Datei *.eslintrc.json* editieren.
+
+- **commonjs** um *require* auch in Modulen nutzen zu können.
+- **no-unused-vars** deaktivieren wir, d. h. beim Anlegen von nicht verwendeten Variablen wird kein
+  Fehler angezeigt.
+
+**.eslintrc.json**
+
+```javascript
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "commonjs": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-unused-vars": "off"
+    }
+}
+```
 
 Nun muss in der Datei *index.js* der Befehl *return base45.decode(undefinedVariable);* rot
 unterstrichen sein.
@@ -381,7 +408,7 @@ Das verwendete Set an Regeln wird in einer eigenen Datei (*babel.config.json*) d
 
 **babel.config.json**
 
-```json
+```javascript
 {
     "presets": [
         "@babel/preset-env"
