@@ -76,6 +76,9 @@ CovidQrDemo
 
 ## Schritt 2: Verwendung von npm
 
+Node.js baut stark auf den Package Manager *npm* auf. Es können Zusatzpakete geladen werden,
+sodass wir nicht alles selbst entwickeln müssen.
+
 ### Laden des ersten Paketes: base45
 
 Wir möchten COVID QR Codes auswerten. Der Inhalt hat eine spezielle Codierung: base45. Hier werden
@@ -147,9 +150,6 @@ verwendet.
 
 
 ## Schritt 3: Nutzen von Webpack
-
-Node.js baut stark auf den Package Manager *npm* auf. Es können Zusatzpakete geladen werden,
-sodass wir nicht alles selbst entwickeln müssen.
 
 ### Was ist Webpack?
 
