@@ -5,6 +5,9 @@ dekodieren soll.
 
 ![](screenshot2.png)
 
+Auf [qr.schletz.webspace.spengergasse.at](https://qr.schletz.webspace.spengergasse.at)
+ist eine Livedmo der Applikation abrufbar.
+
 ## Starten des Projektes
 
 Im Ordner [CovidQrDecoder](CovidQrDecoder) befindet sich ein fertig implementiertes Projekt.
