@@ -72,16 +72,15 @@
         // https://github.com/mebjas/html5-qrcode
         let html5QrcodeScanner = new QrDecoder.Html5QrcodeScanner("qr-reader", { fps: 10 }, false);
         html5QrcodeScanner.render(decodedText => {
-            if (document.getElementById("qr-reader").classList.contains("active")) { return; }
-            document.getElementById("qr-reader").classList.add("active");
-            document.getElementById("qr-content").classList.add("active");
+            if (document.getElementById("container").classList.contains("active")) { return; }
+            document.getElementById("container").classList.add("active");
             // Nach 1s wird der Reader wieder freigegeben. Sonst erkennt er mehrmals hintereinander
             // den QR Code.
             window.setTimeout(() => {
-                document.getElementById("qr-reader").classList.remove("active");
-                document.getElementById("qr-content").classList.remove("active");
+                document.getElementById("container").classList.remove("active");
             }, 3000);
             document.getElementById("qr-content").value = decodedText;
+            document.getElementById("qr-content").scrollIntoView(true);
         });
 
         function decodeQrContent() {
