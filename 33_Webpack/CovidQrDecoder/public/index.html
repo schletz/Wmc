@@ -80,6 +80,7 @@
                 document.getElementById("container").classList.remove("active");
             }, 3000);
             document.getElementById("qr-content").value = decodedText;
+            document.getElementById("result").innerHTML = "";
             document.getElementById("qr-content").scrollIntoView(true);
         });
 
