@@ -1,5 +1,6 @@
 :root {
     --back-color: hsl(203, 100%, 98%);
+    --back-color-stronger: hsl(203, 100%, 95%);
     --color: hsl(203, 100%, 40%);
     --gray-back-color: #EEE;
     --border-color: #999;
@@ -62,13 +63,28 @@ pre {
     padding: 0.5rem;
     font-family: 'Gill Sans MT', 'Gill Sans', 'Lucida Sans', 'Trebuchet MS', sans-serif;
 }
+.active {
+    border-style: solid;
+    animation: activated-field 0.1s alternate 5;
+}
+
+@keyframes activated-field {
+    0% {
+        background-color:var(--back-color-stronger);
+    };
+    100% {
+        background-color:inherit;
+    };
+  }
+
+
 button {
     background-color: white;
     border:2px solid var(--border-color);
     border-radius: 3px;
 }
 button:hover {
-    background-color: var(--back-color);
+    background-color: var(--back-color-stronger);
 }
 
 pre {
