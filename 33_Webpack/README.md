@@ -155,7 +155,7 @@ Modules *Buffer* nur die Klasse *Buffer*. Es steht z. B. auch *Blob* zur Verfüg
 allerdings nicht brauchen. Je weniger Objekte wir importieren, desto kleiner wird das Bundle.
 Außerhalb von Modulen wird *require()* zum Einbinden von Codedateien verwendet.
 
-Weitere Informationen gibt es im MDN zum  
+Weitere Informationen gibt es im MDN zum
 [import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 oder [export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
 Statement.
@@ -401,9 +401,9 @@ ES2015 Version für den Browser angegeben.
 
 Um Babel für unser Projekt nutzen zu können, installieren wir zuerst 3 Pakete:
 
-- **@babel/core** Das Kernbapet von babel
+- **@babel/core** Das Kernpaket von babel
 - **@babel/preset-env** Vordefinierte Presets, welche Syntax in welche Version übersetzt werden muss.
-- **abel-loader** für webpack, da unser Code vor dem Erstellen des Bundles von Babel verarbeitet
+- **babel-loader** für webpack, da unser Code vor dem Erstellen des Bundles von Babel verarbeitet
   werden muss.
 
 ```
