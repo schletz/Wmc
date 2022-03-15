@@ -389,7 +389,10 @@ die Datei *.eslintrc.json* editieren.
 }
 ```
 
-Nun muss in der Datei *index.js* der Befehl *return base45.decode(undefinedVariable);* rot
+### Extension für VS Code
+
+Um die festgestellten Probleme auch in VS Code zu sehen, muss die Extension *ESLint* installiert
+werden. Danach muss in der Datei *index.js* der Befehl *return base45.decode(undefinedVariable);* rot
 unterstrichen sein.
 
 ## Schritt 5: Babel - neue ECMAScript Features übersetzen
