@@ -73,3 +73,11 @@ oder Beispielen ist die Originalquelle (**https://github.com/schletz/Wmc**) anzu
 ## Lehrplan
 
 [Zum Lehrplan](Lehrplan.md)
+
+## Klonen des Repositories
+Installiere die neueste Version von git mit den Standardeinstellungen. Gehe danach in die Windows Eingabeaufforderung (cmd) und führe in einem geeigneten Ordner (z. B. C:\WMC) den Befehl aus:
+```
+git clone https://github.com/schletz/Wmc.git
+```
+
+Soll der neueste Stand vom Server geladen werden, führe die Datei resetGit.cmd aus. Achtung: alle lokalen Änderungen werden dabei zurückgesetzt.
