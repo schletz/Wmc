@@ -5,6 +5,8 @@
 Installiere folgende Software:
 
 - Installation von VS Code und Node.js für die Frontend Entwicklung
+  - Wichtig bei der Installation von Node.js: Installiere den Server inm *C:\nodejs* und füge
+    mit der Option "Add to PATH" diesen Pfad zur Umgebungsvariable hinzu.
 - XAMPP mit PHP
 - Einen (S)FTP Client wie WinSCP
 
