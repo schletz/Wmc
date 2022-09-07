@@ -13,6 +13,9 @@ Installiere folgende Software:
     Direktlink: https://downloads.sourceforge.net/project/xampp/XAMPP%20Windows/8.1.6/xampp-portable-windows-x64-8.1.6-0-VS16.7z?ts=gAAAAABjGJYFUsmmuPBXjV6Da59CzLHEtKEkGRAr7yWHvRN_RWdp3ljVfNM3cLJitAhKi_VZprTVY9d6dQVLNQAF_-ZRpFFDOg%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fxampp%2Ffiles%2FXAMPP%2520Windows%2F8.1.6%2Fxampp-portable-windows-x64-8.1.6-0-VS16.7z%2Fdownload
   - Das 7z File öffnen und den xampp Ordner auf *C:* ziehen. Es muss jeder einen Ordner *C:\xampp*
     haben.
+  - Im Startmenü "Systemumgebungsvariablen" eingeben. Danach auf "Umgebungsvariablen" klicken und
+    im Bereich "System variables" zur Variable *PATH* den Wert *C:\xampp\php* hinzufügen. In
+    der Konsole muss der Befehl *php --version* version.
     
 - Einen (S)FTP Client wie WinSCP
 
