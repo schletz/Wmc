@@ -17,7 +17,7 @@ Installiere folgende Software:
     im Bereich "System variables" zur Variable *PATH* den Wert *C:\xampp\php* hinzufügen. In
     der Konsole muss der Befehl *php --version* funktionieren.
   - Die Datei *xampp-control.exe* starten und den Server *Apache* starten.
-    
+  - Den *Inhalt* von *C:\xampp\htdocs* mit Shift+Entf löschen.
 - Einen (S)FTP Client wie WinSCP
 
 ## Inhalt 
