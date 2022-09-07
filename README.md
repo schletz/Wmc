@@ -20,7 +20,7 @@ Installiere folgende Software:
   - Den *Inhalt* von *C:\xampp\htdocs* mit Shift+Entf löschen.
   - Nach dem Klonen des Repositories die Eingabeaufforderung als Admin öffnen. In
     *C:\xampp\htdocs* den Befehl
-    `mklink /D storemanager C:\WMC\30_MVC\storemanager`
+    `mklink /D storemanager C:\WMC\wmc\30_MVC\storemanager`
     eingeben.
 - Einen (S)FTP Client wie WinSCP
 
