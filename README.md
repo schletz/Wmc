@@ -16,6 +16,7 @@ Installiere folgende Software:
   - Im Startmenü "Systemumgebungsvariablen" eingeben. Danach auf "Umgebungsvariablen" klicken und
     im Bereich "System variables" zur Variable *PATH* den Wert *C:\xampp\php* hinzufügen. In
     der Konsole muss der Befehl *php --version* funktionieren.
+  - Die Datei *xampp-control.exe* starten und den Server *Apache* starten.
     
 - Einen (S)FTP Client wie WinSCP
 
