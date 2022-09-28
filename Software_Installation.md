@@ -42,10 +42,26 @@ Danach installiere über das Extension Menü die folgenden Extensions:
 - *PHP Intelephense*
 
 Öffne nun die Einstellungen (Drücke *F1* oder *SHIFT+CMD+P* für die Menüzeile. Gib dann  
-*settings* ein und wähle den Punkt *Preferences: Open Settings (JSON)*. Füge die folgenden
+*settings* ein und wähle den Punkt *Preferences: Open User Settings (JSON)*. Füge die folgenden
 Einstellungen in die Datei ein und speichere sie ab:
 
 ```json
-"php.executablePath": "C:/xampp/php",
-"php.validate.executablePath": "C:/xampp/php/php.exe",
+{
+    "editor.bracketPairColorization.enabled": true,    
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.minimap.enabled": false,
+    "editor.rulers": [
+        100
+    ],    
+    "vetur.format.options.tabSize": 4,
+    "vetur.format.options.useTabs": false,
+    "vetur.format.defaultFormatterOptions": {
+        "prettier": {
+            "printWidth": 100,
+            "singleQuote": true
+        }     
+    },
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "extensions.ignoreRecommendations": true
+}
 ```
