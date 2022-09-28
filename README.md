@@ -45,30 +45,15 @@ Installiere folgende Software:
 - Classes
 - Modules
 
+### 3 Eine Vue.js Applikation erstellen: Projekt Spengernews
 
-### 3 JavaScript im Browser: Vue.js Templates ([zum Inhalt](32_VueJsTemplates))
+- [Teil 1: Anlegen der App](Projects/spengernews_01/README.md)
 
-- Das document object, HTMLElement Nodes
-- Promises
-- Laden mit fetch
-- Templates mit Vue.js
-- Komplexeres Statemanagement mit Vue.js
-
-
-### 4 Node.js Projekte erstellen ([zum Inhalt](33_Webpack))
+### 4 Node.js Projekte ohne SPA Framework erstellen ([zum Inhalt](33_Webpack))
 
 - Webpack
 - EsLint
 - Babel
-
-
-### 5 Single Page Application Frameworks ([zum Inhalt](34_SPA))
-
-- Komponenten entwickeln
-- Wiederverwendbare Komponenten
-- Kommunikation mit dem Backend
-- Clientseitiges Routing
-- State Management
 
 ## Nutzungsbedingungen
 
