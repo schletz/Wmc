@@ -35,6 +35,24 @@ Diese Bereiche werden als *components* abgebildet. Eine Component ist ein eigens
 - Logik beinhaltet.
 - Daten über fetch nachladen kann.
 
+In Vue.js werden im Ordner *components* Dateien mit der Endung *.vue* angelegt. Sie müssen aus mehreren
+Worten bestehen (also NewsFlash statt Newsflash), um eine Verwechslung mit html Elementen auszuschließen.
+
+In der Datei [App.vue](src/App.vue) werden die Komponenten wie HTML Elemente eingebunden:
+
+```javascript
+<script setup>
+import ImagePanel from './components/ImagePanel.vue'
+import NewsFlash from './components/NewsFlash.vue'
+</script>
+
+<template>
+  <h1>Spengernews</h1>
+  <ImagePanel></ImagePanel>
+  <NewsFlash></NewsFlash>  
+</template>
+```
+
 ## Wichtige npm Befehle
 
 Du kannst in dem Verzeichnis, wo auch die Datei *package.json* ist, mehrere Kommandos ausführen.
