@@ -2,7 +2,7 @@
 
 ## Definition eigener Styles
 
-Im Template sind im Ordner *src/assets* bereits CSS definitionen enthalten. Da wir von 0 weg beginnen
+Im Template sind im Ordner *src/assets* bereits CSS Definitionen enthalten. Da wir von 0 weg beginnen
 möchten, löschen wir alle CSS Dateien in diesem Ordner. *Wichtig:* In der Datei *main.js* wird
 darauf verwiesen, daher muss das entsprechende import Statement ebenfalls entfernt werden.
 
@@ -94,3 +94,7 @@ der Webserver verwendet. Tausche die Datei durch folgenden Inhalt:
 }
 ```
 
+Die anderen Dateien (WeatherForecast.cs und der Ordner Controller) können gelöscht werden.
+Der Server kann in Visual Studio mit *F5* oder von der Konsole aus mit `dotnet run` gestartet werden.
+Er hört auf den Port 5000 (http) und 5001 (https). Wenn du im Browser die Adresse
+*https://localhost:5001/news/12* eingibst, sollte ein JSON mit den ausgelieferten Daten erscheinen.
