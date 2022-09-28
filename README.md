@@ -47,8 +47,8 @@ Installiere folgende Software:
 
 ### 3 Eine Vue.js Applikation erstellen: Projekt Spengernews
 
-- [Teil 1: Anlegen der App](Projects/spengernews_01/README.md)
-- [Teil 2: Scoped Styles und minimal API (.NET) als Backend](Projects/spengernews_02/README.md)
+- [Teil 1: Anlegen der App](32_Vuejs/Teil01/README.md)
+- [Teil 2: Scoped Styles und minimal API (.NET) als Backend](32_Vuejs/Teil02/README.md)
 
 ### 4 Node.js Projekte ohne SPA Framework erstellen ([zum Inhalt](33_Webpack))
 

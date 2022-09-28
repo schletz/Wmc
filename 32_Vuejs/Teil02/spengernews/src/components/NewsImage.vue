@@ -26,20 +26,24 @@ export default {
 
 <style scoped>
 .imageContainer {
-  position: relative;
+    position: relative;
 }
-img {
-    opacity: 0.5;
+.imageContainer img {
+    opacity: 0.3;
 }
-img:hover {
-    opacity: 1;
-}
+
 .overlayText {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  font-size: 14pt;
-  font-weight: bold;
-  color:white;
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    font-size: 14pt;
+    font-weight: bold;
+    color: black;
+}
+.imageContainer:hover .overlayText {
+    color: white;
+}
+.imageContainer:hover img {
+    opacity: 1;
 }
 </style>
