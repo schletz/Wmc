@@ -4,7 +4,15 @@ import NewsFlash from './components/NewsFlash.vue'
 </script>
 
 <template>
-  <h1>Spengernews</h1>
-  <ImagePanel></ImagePanel>
-  <NewsFlash></NewsFlash>  
+    <!-- Template needs to have one root element -->
+    <div>
+        <div id="header">
+            <h1>Spengernews</h1>
+        </div>
+        <div id="main">
+            <ImagePanel></ImagePanel>
+            <NewsFlash></NewsFlash>
+        </div>
+    </div>
 </template>
+
