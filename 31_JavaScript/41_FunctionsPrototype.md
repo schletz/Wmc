@@ -40,19 +40,20 @@ Definieren wir also ein JSON Objekt mit einer Funktion:
 const person = {
     firstname: "Max",
     lastname: "Mustermann",
-    longnane: this.firstname + " " + this.lastname,    // !! undefined !!
+    longname: this.firstname + " " + this.lastname,    // !! undefined !!
     getLongname() {
         return this.firstname + " " + this.lastname;
     }
 }
 
-console.log(person.longname);       // undefined
+console.log(person.longname);       // undefined undefined
 console.log(person.getLongname());  // Max Mustermann
 ```
 
-Die erste Ausgabe liefert undefined, da das Property *longname* keine Funktion ist. Daher ist
-*this* dort nicht definiert. Verwenden wir eine Funktion (*getLongname()*), so können wir mit
-*this* auf die Properties des JSON Objektes zugreifen.
+Die erste Ausgabe liefert undefined undefined (this.firstname und this.lastname ist beides undefined),
+da das Property *longname* keine Funktion ist. Daher ist *this* dort nicht definiert.
+Verwenden wir eine Funktion (*getLongname()*), so können wir mit *this* auf die Properties des
+JSON Objektes zugreifen.
 
 ## Object.create() und der Prototype
 

@@ -114,7 +114,7 @@ const points = [
 ];
 
 const xValues = points.map(p => p.x);
-console.log(xValues);                  // [3, 4]
+console.log(xValues);                  // [ 1, 4 ]
 const pointStrings = points.map(p => `X = ${p.x} | Y = ${p.y}`);
 console.log(pointStrings);            // [ 'X = 1 | Y = 2', 'X = 4 | Y = 5' ]
 
