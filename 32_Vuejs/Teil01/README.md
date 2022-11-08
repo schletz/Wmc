@@ -10,7 +10,7 @@ angelegt. Es ist ein Assistent, bei dem wir folgende Einstellungen konfiguriert 
 ```
 Vue.js - The Progressive JavaScript Framework
 
-√ Project name: ... spengershop
+√ Project name: ... spengernews
 √ Add TypeScript? ... No
 √ Add JSX Support? ... No
 √ Add Vue Router for Single Page Application development? ... Yes
@@ -18,7 +18,7 @@ Vue.js - The Progressive JavaScript Framework
 √ Add Vitest for Unit Testing? ... No
 √ Add Cypress for both Unit and End-to-End testing? ... No
 √ Add ESLint for code quality? ... Yes
-√ Add Prettier for code formatting? ... Yes
+√ Add Prettier for code formatting? ... No
 ```
 
 ## Das Komponentenkonzept
