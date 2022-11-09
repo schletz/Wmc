@@ -4,7 +4,7 @@ import NewsFlash from "../components/NewsFlash.vue";
 </script>
 
 <template>
-    <div id="main">
+    <div>
         <ImagePanel></ImagePanel>
         <NewsFlash></NewsFlash>
     </div>

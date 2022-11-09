@@ -1,4 +1,7 @@
 ﻿using Bogus;
+using Microsoft.AspNetCore.Http;
+using System;
+using System.Linq;
 
 namespace webapi.Controllers
 {
@@ -7,7 +10,7 @@ namespace webapi.Controllers
         public record NewsOverviewDto(int Id, string Headline, string ImageUrl);
         public record NewsDetailDto (int Id, string Headline, string Content);
 
-        public List<NewsOverviewDto> GetAllNews()
+        public IResult GetAllNews()
         {
             string[] images = new string[]
             {
@@ -23,23 +26,25 @@ namespace webapi.Controllers
             {
                 return new NewsOverviewDto(
                     Id: rowNr++,
-                    Headline: f.Person.LastName,
+                    Headline: string.Join(" ", f.Lorem.Words(f.Random.Int(1, 3))),
                     ImageUrl: f.Random.ListItem(images));
             })
             .Generate(10)
             .ToList();
-            return news;
+            return Results.Ok(news);
         }
 
-        public NewsDetailDto GetNewsDetail(int id)
+        public IResult GetNewsDetail(int id)
         {
-            Randomizer.Seed = new Random(1529);
+            // Um auch 404 Antworten im Frontend zu testen, liefern wir
+            // NotFound wenn die id < 1000 ist.
+            if (id < 1000) { return Results.NotFound(); }
+            Randomizer.Seed = new Random(1529 + id);
             var f = new Faker("de");
-
-            return new NewsDetailDto(
+            return Results.Ok(new NewsDetailDto(
                 Id: id,
-                Headline: f.Commerce.ProductMaterial(),
-                Content: f.Commerce.ProductDescription());
+                Headline: string.Join(" ", f.Lorem.Words(f.Random.Int(1,3))),
+                Content: f.Lorem.Paragraphs(f.Random.Int(3,30), "<br />")));
         }
     }
 }
