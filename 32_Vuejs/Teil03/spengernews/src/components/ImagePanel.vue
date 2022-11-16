@@ -4,33 +4,51 @@ import NewsImage from './NewsImage.vue';
 
 <template>
     <div class="newsImages">
-        <NewsImage
-            id="12"
-            headline="News mit ID 12"
-            imageUrl="https://assets.orf.at/mims/2022/40/23/crops/w=171,q=90,r=1/1514150_1k_550823_wirtschaft_erfolgreiche_laender_zko.jpg?s=8c6cb33bc7f34b3ae5eacb249b8e75a0831a89b8"
-        ></NewsImage>
-        <NewsImage
-            id="13"
-            headline="News mit ID 13"
-            imageUrl="https://assets.orf.at/mims/2022/40/23/crops/w=171,q=90,r=1/1514150_1k_550823_wirtschaft_erfolgreiche_laender_zko.jpg?s=8c6cb33bc7f34b3ae5eacb249b8e75a0831a89b8"
-        ></NewsImage>
-        <NewsImage
-            id="14"
-            headline="News mit ID 14"
-            imageUrl="https://assets.orf.at/mims/2022/40/23/crops/w=171,q=90,r=1/1514150_1k_550823_wirtschaft_erfolgreiche_laender_zko.jpg?s=8c6cb33bc7f34b3ae5eacb249b8e75a0831a89b8"
-        ></NewsImage>
-        <NewsImage
-            id="15"
-            headline="News mit ID 15"
-            imageUrl="https://assets.orf.at/mims/2022/40/23/crops/w=171,q=90,r=1/1514150_1k_550823_wirtschaft_erfolgreiche_laender_zko.jpg?s=8c6cb33bc7f34b3ae5eacb249b8e75a0831a89b8"
-        ></NewsImage>
-        <NewsImage
-            id="16"
-            headline="News mit ID 16"
-            imageUrl="https://assets.orf.at/mims/2022/40/23/crops/w=171,q=90,r=1/1514150_1k_550823_wirtschaft_erfolgreiche_laender_zko.jpg?s=8c6cb33bc7f34b3ae5eacb249b8e75a0831a89b8"
-        ></NewsImage>
+        <h3>
+            {{ newsCount }} von {{ newsItems.length }} News.&nbsp;
+            <span @click="newsCount++">more</span>&nbsp;
+            <span @click="newsCount--">less</span>
+        </h3>
+        <template v-if="newsItems.length">
+            <NewsImage
+                v-for="item in displayNews"
+                v-bind:key="item.id"
+                :id="item.id"
+                :headline="item.headline"
+                :imageUrl="item.imageUrl"
+            ></NewsImage>
+        </template>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            newsCount: 3,
+            newsItems: [],
+        };
+    },
+    computed: {
+        displayNews: function () {
+            return this.newsItems.slice(0, this.newsCount);
+        },
+    },
+    mounted: async function () {
+        const res = await fetch('https://localhost:5001/api/news');
+        if (!res.ok) {
+            alert('Problem beim Laden der Daten.');
+        }
+        this.newsItems = await res.json();
+        this.count = 10;
+    },
+    methods: {
+        incrementCounter: function (step) {
+            this.count += step;
+        },
+    },
+};
+</script>
 
 <style scoped>
 .newsImages {
