@@ -3,21 +3,23 @@ import NewsImage from './NewsImage.vue';
 </script>
 
 <template>
-    <div class="newsImages">
+    <div>
         <h3>
             {{ newsCount }} von {{ newsItems.length }} News.&nbsp;
-            <span @click="newsCount++">more</span>&nbsp;
-            <span @click="newsCount--">less</span>
+            <button @click="newsCount++">more</button>&nbsp;
+            <button @click="newsCount--">less</button>
         </h3>
-        <template v-if="newsItems.length">
-            <NewsImage
-                v-for="item in displayNews"
-                v-bind:key="item.id"
-                :id="item.id"
-                :headline="item.headline"
-                :imageUrl="item.imageUrl"
-            ></NewsImage>
-        </template>
+        <div class="newsImages">
+            <template v-if="newsItems.length">
+                <NewsImage
+                    v-for="item in displayNews"
+                    v-bind:key="item.id"
+                    :id="item.id"
+                    :headline="item.headline"
+                    :imageUrl="item.imageUrl"
+                ></NewsImage>
+            </template>
+        </div>
     </div>
 </template>
 
@@ -35,12 +37,16 @@ export default {
         },
     },
     mounted: async function () {
-        const res = await fetch('https://localhost:5001/api/news');
-        if (!res.ok) {
-            alert('Problem beim Laden der Daten.');
+        try {
+            const res = await fetch('https://localhost:5001/api/news');
+            if (!res.ok) {
+                alert('Problem beim Laden der Daten.');
+            }
+            this.newsItems = await res.json();
+            this.count = 10;
+        } catch (e) {
+            alert('Der Server ist nicht erreichbar.');
         }
-        this.newsItems = await res.json();
-        this.count = 10;
     },
     methods: {
         incrementCounter: function (step) {
