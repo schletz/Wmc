@@ -49,5 +49,6 @@ VOLUME /var/www/html
 EXPOSE 80 443 8000
 
 COPY compose_app.sh /
+RUN chmod a+x ./compose_app.sh
 COPY sql_server_test.php /
 ENTRYPOINT /compose_app.sh
