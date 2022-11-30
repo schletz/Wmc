@@ -1,0 +1,27 @@
+@startuml
+' ALT + D = PREVIEW
+entity Category {
+    + name : string
+}
+entity Author {
+    + firstname : string
+    + lastname : string
+    + email : string
+    + phone : string [0..1]
+    + category : Category
+}
+' Über das Property category können
+' wir in den Typ Category navigieren.
+Author o--> Category : "> category"
+
+entity Article {
+    + headline : string
+    + content : string
+    + created : DateTime
+    + imageUrl : string
+    + author : Author
+}
+
+Article o--> Author : "> author"
+
+@enduml
