@@ -1,15 +1,27 @@
 ﻿using Bogus;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using webapi.Infrastructure;
 
 namespace webapi.Controllers
 {
-    public class NewsController
+    [ApiController]
+    [Route("/api/[controller]")] // /api/news
+    public class NewsController : ControllerBase
     {
+        private readonly SpengernewsContext _db;
+
+        public NewsController(SpengernewsContext db)
+        {
+            _db = db;
+        }
+
         public record NewsOverviewDto(int Id, string Headline, string ImageUrl);
         public record NewsDetailDto (int Id, string Headline, string Content);
 
+        [HttpGet]
         public IResult GetAllNews()
         {
             string[] images = new string[]
@@ -34,6 +46,7 @@ namespace webapi.Controllers
             return Results.Ok(news);
         }
 
+        [HttpGet("{id:int}")]
         public IResult GetNewsDetail(int id)
         {
             // Um auch 404 Antworten im Frontend zu testen, liefern wir
