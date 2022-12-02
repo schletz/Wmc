@@ -8,7 +8,9 @@ namespace webapi.Model
 {
     public class Article
     {
-        public Article(string headline, string content, DateTime created, string imageUrl, Author author)
+        public Article(
+            string headline, string content, DateTime created,
+            string imageUrl, Author author)
         {
             Headline = headline;
             Content = content;
@@ -19,6 +21,8 @@ namespace webapi.Model
 #pragma warning disable CS8618 
         protected Article() { }
 #pragma warning restore CS8618
+
+        // Convention over configuration
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; private set; }

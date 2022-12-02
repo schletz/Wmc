@@ -7,7 +7,9 @@ namespace webapi.Model
     [Index(nameof(Email), IsUnique = true)]
     public class Author
     {
-        public Author(string firstname, string lastname, string email, Category category, string? phone = null)
+        public Author(
+            string firstname, string lastname, string email,
+            Category category, string? phone = null)
         {
             Firstname = firstname;
             Lastname = lastname;

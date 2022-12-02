@@ -8,7 +8,12 @@ using webapi.Infrastructure;
 namespace webapi.Controllers
 {
     [ApiController]
-    [Route("/api/[controller]")] // /api/news
+    // [controller] bedeutet: Nimm den Namen vor "Controller"
+    // /api/news -> NewsController
+    // /api/author -> AuthorController
+    // [controller] bedeutet: ASP.NET Core generiert die Route
+    // mit dem Wort vor "Controller"
+    [Route("/api/[controller]")]
     public class NewsController : ControllerBase
     {
         private readonly SpengernewsContext _db;
@@ -21,8 +26,9 @@ namespace webapi.Controllers
         public record NewsOverviewDto(int Id, string Headline, string ImageUrl);
         public record NewsDetailDto (int Id, string Headline, string Content);
 
+        // GET Request (app.MapGet("/api/news/")
         [HttpGet]
-        public IResult GetAllNews()
+        public IActionResult GetAllNews()
         {
             string[] images = new string[]
             {
@@ -43,18 +49,23 @@ namespace webapi.Controllers
             })
             .Generate(10)
             .ToList();
-            return Results.Ok(news);
+            return Ok(news);
         }
 
+        // GET Request (app.MapGet("/api/news/{id}")
+        // z. B. /api/news/17
+        // ASP liest die ID aus dem Request und stellt sie unter
+        // der Variable id zur Verfügung. Achtung: Nimm genau diese
+        // Variable als Parameter der Methode!
         [HttpGet("{id:int}")]
-        public IResult GetNewsDetail(int id)
+        public IActionResult GetNewsDetail(int id)
         {
             // Um auch 404 Antworten im Frontend zu testen, liefern wir
             // NotFound wenn die id < 1000 ist.
-            if (id < 1000) { return Results.NotFound(); }
+            if (id < 1000) { return NotFound(); }
             Randomizer.Seed = new Random(1529 + id);
             var f = new Faker("de");
-            return Results.Ok(new NewsDetailDto(
+            return Ok(new NewsDetailDto(
                 Id: id,
                 Headline: string.Join(" ", f.Lorem.Words(f.Random.Int(1,3))),
                 Content: f.Lorem.Paragraphs(f.Random.Int(3,30), "<br />")));

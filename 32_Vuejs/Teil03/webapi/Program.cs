@@ -7,22 +7,10 @@ using webapi.Controllers;
 using webapi.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
-if (builder.Environment.IsDevelopment())
-{
-    var opt = new DbContextOptionsBuilder<SpengernewsContext>()
-        .UseSqlite(builder.Configuration.GetConnectionString("Sqlite"))
-        .Options;
-
-    using (var db = new SpengernewsContext(opt))
-    {
-        db.Database.EnsureDeleted();
-        db.Database.EnsureCreated();
-        db.Seed();
-    }
-}
 
 builder.Services.AddDbContext<SpengernewsContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("Sqlite")));
+
 builder.Services.AddControllers();
 if (builder.Environment.IsDevelopment())
 {
@@ -37,8 +25,19 @@ if (builder.Environment.IsDevelopment())
 }
 
 var app = builder.Build();
+// Leitet http auf https weiter (http Port 5000 auf https Port 5001)
+app.UseHttpsRedirection();
 if (app.Environment.IsDevelopment())
 {
+    using (var scope = app.Services.CreateScope())
+    {
+        using (var db = scope.ServiceProvider.GetRequiredService<SpengernewsContext>())
+        {
+            db.Database.EnsureDeleted();
+            db.Database.EnsureCreated();
+            db.Seed();
+        }
+    }
     app.UseCors();
 }
 app.UseStaticFiles();
