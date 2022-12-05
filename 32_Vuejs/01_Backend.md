@@ -1,4 +1,4 @@
-# Eine ASP.NET Core Webapi + VueJS Applikation erstellen
+# Eine ASP.NET Core Webapi Backend für eine VueJS Applikation erstellen
 
 ## Anlegen der Projektstruktur
 
@@ -153,8 +153,9 @@ using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 // SpengernewsContext ist der DbContext, der im Application Project angelegt wurde.
-builder.Services.AddDbContext<SpengernewsContext>(opt =>
-    opt.UseSqlite(builder.Configuration.GetConnectionString("Sqlite")));
+// Aktiviere diese Zeile, wenn du den DB Context definiert hat.
+// builder.Services.AddDbContext<SpengernewsContext>(opt =>
+//     opt.UseSqlite(builder.Configuration.GetConnectionString("Sqlite")));
 
 // Wir wollen automatisch nach Controllern im Ordner Controllers suchen.
 builder.Services.AddControllers();
@@ -173,14 +174,15 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 if (app.Environment.IsDevelopment())
 {
-    // Im Development Mode erstellen wir bei jedem Serverstart die Datenbank neu.
-    using (var scope = app.Services.CreateScope())
-        using (var db = scope.ServiceProvider.GetRequiredService<SpengernewsContext>())
-        {
-            db.Database.EnsureDeleted();
-            db.Database.EnsureCreated();
-            db.Seed();  // TODO: Implementiere diese Methode im Datenbankcontext.
-        }
+// Im Development Mode erstellen wir bei jedem Serverstart die Datenbank neu.
+// Aktiviere diese Zeilen, wenn du den DB Context erstellt hat.
+//     using (var scope = app.Services.CreateScope())
+//        using (var db = scope.ServiceProvider.GetRequiredService<SpengernewsContext>())
+//        {
+//            db.Database.EnsureDeleted();
+//            db.Database.EnsureCreated();
+//            db.Seed();  // TODO: Implementiere diese Methode im Datenbankcontext.
+//        }
     app.UseCors();
 }
 // Liefert die statischen Dateien, die von VueJS generiert werden, aus.
@@ -195,7 +197,7 @@ app.Run();
 
 ### Eine bat Datei für den Serverstart
 
-Damit der Server bequemer gestartet werden kann, lege eine Datei *startServer.bat* **im selben
+Damit der Server bequemer gestartet werden kann, lege eine Datei *startServer.cmd* **im selben
 Ordner wie die sln Datei** an. Die Pfade müssen natürlich angepasst werden:
 
 **startServer.cmd**

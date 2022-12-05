@@ -47,8 +47,12 @@ Installiere folgende Software:
 
 ### 3 Eine Vue.js Applikation erstellen: Projekt Spengernews
 
+- [HOWTO: Anlegen des Backends](32_Vuejs/01_Backend.md)
+- [HOWTO: Anlegen von Controllern](32_Vuejs/02_Controller.md)
+  
 - [Teil 1: Anlegen der App](32_Vuejs/Teil01)
 - [Teil 2: Scoped Styles und minimal API (.NET) als Backend](32_Vuejs/Teil02)
+- [Teil 3: Clientseitiges Routing und DB Anbindung](32_Vuejs/Teil03)
 
 ### 4 Node.js Projekte ohne SPA Framework erstellen ([zum Inhalt](33_Webpack))
 
