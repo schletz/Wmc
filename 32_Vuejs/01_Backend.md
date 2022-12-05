@@ -70,11 +70,11 @@ die csproj Datei in einem Editor öffnest. Ersetze den Inhalt der Datei durch de
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Bogus" Version="34.*" />	
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.*" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.*" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.*" />
-		<PackageReference Include="Bogus" Version="34.*" />	
-        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.*" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.*" />
 	</ItemGroup>
 </Project>
 ```
