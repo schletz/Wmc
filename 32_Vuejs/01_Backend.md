@@ -210,8 +210,9 @@ rd /S /Q SpengernewsProject.Webapi/.vs 2> nul
 rd /S /Q SpengernewsProject.Webapi/bin 2> nul
 rd /S /Q SpengernewsProject.Webapi/obj 2> nul
 
-:start
+
 cd SpengernewsProject.Webapi
+:start
 dotnet watch run -c Debug
 goto start
 ```
