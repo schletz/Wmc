@@ -10,6 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<SpengernewsContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("Sqlite")));
+//builder.Services.AddDbContext<SpengernewsContext>(opt =>
+//    opt.UseMySql(
+//        builder.Configuration.GetConnectionString("MySql"),
+//        new MariaDbServerVersion("10.10.2")));
 
 builder.Services.AddControllers();
 if (builder.Environment.IsDevelopment())
