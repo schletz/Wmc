@@ -255,7 +255,7 @@ versucht, mit *docker start* den Container mit dem Namen *mariadb* zu starten. W
 funktioniert (errorlevel ist >= 1), wird der Container angelegt.
 
 ```
-docker start mariadb 2> null
+docker start mariadb 2> nul
 if errorlevel 1 docker run --name mariadb -d -p 13306:3306 -e MARIADB_USER=root -e MARIADB_ROOT_PASSWORD=mariadb_root_password mariadb:10.10.2
 ```
 
