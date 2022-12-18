@@ -50,6 +50,7 @@ Installiere folgende Software:
 - [HOWTO: Anlegen des Backends](32_Vuejs/01_Backend.md)
 - [HOWTO: Anlegen von Controllern](32_Vuejs/02_Controller.md)
 - [HOWTO: Konfigurieren und Seeden der Datenbank](32_Vuejs/03_Database.md)
+- [HOWTO: CRUD Operationen im Backend](32_Vuejs/04_Crud.md)
 
 - [Teil 1: Anlegen der App](32_Vuejs/Teil01)
 - [Teil 2: Scoped Styles und minimal API (.NET) als Backend](32_Vuejs/Teil02)

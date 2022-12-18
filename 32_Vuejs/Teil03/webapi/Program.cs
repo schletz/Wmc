@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using webapi.Controllers;
+using webapi.Dto;
 using webapi.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,8 @@ builder.Services.AddDbContext<SpengernewsContext>(opt =>
 //        new MariaDbServerVersion("10.10.2")));
 
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
 if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddCors(options =>
@@ -27,6 +30,7 @@ if (builder.Environment.IsDevelopment())
             });
     });
 }
+
 
 var app = builder.Build();
 // Leitet http auf https weiter (http Port 5000 auf https Port 5001)
