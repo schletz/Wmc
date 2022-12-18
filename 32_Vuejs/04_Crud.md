@@ -1,4 +1,4 @@
-# CRUD Operationen
+# CRUD Operationen und serverseitige Validierung
 
 Bis jetzt haben wir in unserem Controller Daten gelesen. Natürlich wollen wir auch in einer
 Webapplikation Daten bearbeiten. Dafür gibt es unterschiedliche *HTTP request types*:

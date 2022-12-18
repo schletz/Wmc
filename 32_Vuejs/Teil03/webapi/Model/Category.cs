@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace webapi.Model
+namespace Webapi.Model
 {
     [Index(nameof(Name), IsUnique = true)]
     public class Category

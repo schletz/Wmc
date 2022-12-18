@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using webapi.Infrastructure;
+using Webapi.Infrastructure;
 
-namespace webapi.Dto
+namespace Webapi.Dto
 {
     public record ArticleDto(
         Guid Guid,

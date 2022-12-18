@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Bogus;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,11 +9,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using webapi.Dto;
-using webapi.Infrastructure;
-using webapi.Model;
+using Webapi.Dto;
+using Webapi.Infrastructure;
+using Webapi.Model;
 
-namespace webapi.Controllers
+namespace Webapi.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]

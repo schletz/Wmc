@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace webapi
+namespace Webapi
 {
     public static class WebApplicationExtensions
     {

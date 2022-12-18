@@ -6,9 +6,9 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using webapi.Model;
+using Webapi.Model;
 
-namespace webapi.Infrastructure
+namespace Webapi.Infrastructure
 {
     public class SpengernewsContext : DbContext
     {
@@ -62,6 +62,8 @@ namespace webapi.Infrastructure
                     firstname: f.Name.FirstName(),
                     lastname: lastname,
                     email: $"{lastname.ToLower()}@spengergasse.at",
+                    username: lastname.ToLower(),
+                    initialPassword: "1111",
                     phone: $"{+43}{f.Random.Int(1, 9)}{f.Random.String2(9, "0123456789")}".OrNull(f, 0.25f))
                 { Guid = f.Random.Guid() };
             })
@@ -86,7 +88,7 @@ namespace webapi.Infrastructure
             {
                 return new Article(
                     headline: f.Lorem.Sentence(f.Random.Int(2, 4)),
-                    content: f.Lorem.Paragraphs(10,20),
+                    content: f.Lorem.Paragraphs(10, 20),
                     created: f.Date.Between(new DateTime(2021, 1, 1), new DateTime(2022, 1, 1)),
                     imageUrl: f.Random.ListItem(images),
                     author: f.Random.ListItem(authors),

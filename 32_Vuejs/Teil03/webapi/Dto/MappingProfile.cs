@@ -1,9 +1,9 @@
 ﻿using static System.Formats.Asn1.AsnWriter;
 using System;
-using webapi.Model;
+using Webapi.Model;
 using AutoMapper;
 
-namespace webapi.Dto
+namespace Webapi.Dto
 {
     public class MappingProfile : Profile
     {

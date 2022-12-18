@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Net;
 using System.Numerics;
 
-namespace webapi.Model
+namespace Webapi.Model
 {
     public class Article
     {

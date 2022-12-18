@@ -1,14 +1,18 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using webapi.Controllers;
-using webapi.Dto;
-using webapi.Infrastructure;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using Webapi.Dto;
+using Webapi.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
-
+// *************************************************************************************************
+// BUILDER CONFIGURATION
+// *************************************************************************************************
 builder.Services.AddDbContext<SpengernewsContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("Sqlite")));
 //builder.Services.AddDbContext<SpengernewsContext>(opt =>
@@ -18,6 +22,22 @@ builder.Services.AddDbContext<SpengernewsContext>(opt =>
 
 builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+// JWT Authentication ******************************************************************************
+// using Microsoft.AspNetCore.Authentication.JwtBearer;
+// using Microsoft.IdentityModel.Tokens;
+
+byte[] secret = Convert.FromBase64String(builder.Configuration["Secret"]);
+builder.Services
+    .AddAuthentication(options => options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(secret)
+        };
+    });
+// *************************************************************************************************
 
 if (builder.Environment.IsDevelopment())
 {
@@ -31,7 +51,9 @@ if (builder.Environment.IsDevelopment())
     });
 }
 
-
+// *************************************************************************************************
+// APP
+// *************************************************************************************************
 var app = builder.Build();
 // Leitet http auf https weiter (http Port 5000 auf https Port 5001)
 app.UseHttpsRedirection();
@@ -49,11 +71,8 @@ if (app.Environment.IsDevelopment())
     app.UseCors();
 }
 app.UseStaticFiles();
-// Der Request /api/(controllername) wird so bearbeitet:
-// -) Klasse Controllername + Controller wird gesucht.
-// -) Controller wird instanziert
-// -) Route wird aufgerufen.
-// Beispiel: /api/news -> NewsController
 app.MapControllers();
 app.MapFallbackToFile("index.html");
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();
