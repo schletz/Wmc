@@ -243,6 +243,7 @@ public class UserController : ControllerBase
         return Ok(new
         {
             user.Username,
+            UserGuid = user.Guid,            
             Role = role,
             Token = tokenHandler.WriteToken(token)
         });
