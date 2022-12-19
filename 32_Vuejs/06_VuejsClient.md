@@ -123,7 +123,7 @@ wird mit Hilfe von Axios ein POST Request an die URL */api/user/login* geschickt
 bei zukünftigen Requests den Token immer mitsendet, schreiben wir ihn mit der Zeile
 
 ```javascript
-axios.defaults.headers.common['Authorization'] = userdata.token;
+axios.defaults.headers.common['Authorization'] = `Bearer ${userdata.token}`;
 ```
 
 in den Request Header. Achte dabei, dass das Backend auch mit dem Property *token* antwortet. In

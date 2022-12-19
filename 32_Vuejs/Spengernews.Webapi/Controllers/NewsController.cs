@@ -87,6 +87,7 @@ namespace Webapi.Controllers
         /// Creates a new article in the database. Validation of the dto class is performed
         /// automatically by ASP.NET Core, so you have to implement this in your dto class!
         /// </summary>
+        [Authorize]
         [HttpPost]
         public IActionResult AddArticle(ArticleDto articleDto)
         {
@@ -111,6 +112,7 @@ namespace Webapi.Controllers
         /// Updates an article in the database. Validation of the dto class is performed
         /// automatically by ASP.NET Core, so you have to implement this in your dto class!
         /// </summary>
+        [Authorize]
         [HttpPut("{guid:Guid}")]
         public IActionResult EditArticle(Guid guid, ArticleDto articleDto)
         {
@@ -135,6 +137,7 @@ namespace Webapi.Controllers
         /// DELETE Request /api/news/(guid) with JSON body
         /// Updates an article in the database.
         /// </summary>
+        [Authorize]
         [HttpDelete("{guid:Guid}")]
         public IActionResult DeleteArticle(Guid guid)
         {

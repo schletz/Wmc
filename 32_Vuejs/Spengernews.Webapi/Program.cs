@@ -34,7 +34,9 @@ builder.Services
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(secret)
+            IssuerSigningKey = new SymmetricSecurityKey(secret),
+            ValidateAudience = false,
+            ValidateIssuer = false
         };
     });
 // *************************************************************************************************
