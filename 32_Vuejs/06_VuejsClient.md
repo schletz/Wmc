@@ -61,13 +61,16 @@ Er löscht alte Dateien im Ordner *wwwroot*.
 
 Ein *State Manager* ist ein Speicherbereich, auf den alle Komponenten zugreifen können. Außerdem
 können die Komponenten auch auf Aktualisierungen reagieren. Wir brauchen den State Manager, um
-nach dem Login die Userdaten zu setzen.
+nach dem Login die Userdaten zu setzen. Dadurch kann der Router bei bestimmten Routen prüfen,
+ob der User angemeldet ist und nur in diesem Fall dorthin routen.
 
 Erstelle dafür die Datei *src/store.js* mit dem [Inhalt aus dem Musterprojekt](Spengernews.Client/src/store.js).
 
 Wie du erkennen kannst, hat der state ein Property *user* mit *name* (username), *guid* (GUID des
 angemeldeten Users) und ein Flag *isLoggedIn*. Die Methode *authenticate* setzt die entsprechenden
 Daten. Sie wird in der Login Komponente verwendet.
+
+Weitere Informationen zum State Manager Vuex sind auf https://vuex.vuejs.org abrufbar.
 
 ## Clientseitige Routen
 
@@ -92,6 +95,8 @@ router.beforeEach((to, from, next) => {
 });
 ```
 
+Weitere Informationen zum Vue Router sind auf https://router.vuejs.org abrufbar.
+
 ## Konfiguration von Axios
 
 In der Datei [src/main.js](Spengernews.Client/src/main.js) wird nun alles zusammengelegt.
@@ -110,6 +115,8 @@ Nun können wir einfach in den Komponenten mit *await axios.get("news")* einen R
 setzen, ohne dass wir den vollen Pfad immer angeben müssen. Das erleichtert eine nachträgliche
 Änderung.
 
+Weitere Informationen zu Axios sind auf [axios-http.com](https://axios-http.com/docs/intro) abrufbar.
+
 ## Das zentrale CSS in main.css
 
 In *src/assets/main.css* kannst du dein zentrales CSS definieren. Dort kommen nur Anweisungen
@@ -123,12 +130,88 @@ wird mit Hilfe von Axios ein POST Request an die URL */api/user/login* geschickt
 bei zukünftigen Requests den Token immer mitsendet, schreiben wir ihn mit der Zeile
 
 ```javascript
-axios.defaults.headers.common['Authorization'] = userdata.token;
+axios.defaults.headers.common['Authorization'] = `Bearer ${userdata.token}`;
 ```
 
 in den Request Header. Achte dabei, dass das Backend auch mit dem Property *token* antwortet. In
 *userdata* steht die Antwort der Route *api/user/login* und kann sich bei deinen Projekten natürlich
 unterscheiden.
+
+## Vue Components und Views
+
+Die Views und Components sind *vue* Dateien und haben eine bestimmte Syntax. Um sie besser bearbeiten
+zu können, kannst du die Extension [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+in VS Code installieren. Der Dateinamen soll aus mindestens 2 Wörtern bestehen (*NewsContent*,
+*LoginForm*, ...) um Verwechslungen mit HTML Elementen zu vermeiden.
+
+So eine Datei besteht aus mehreren Teilen: Einem Template für die HTML Darstellung, einem Style
+Block und einem Script Block. Du kannst die folgende Vorlage in eine neu erstellte *vue*
+Datei kopiere, um schneller arbeiten zu können:
+
+```html
+<script setup>
+    // Imports
+</script>
+
+<template>
+    <!-- A template must have one (1) root element. Usually a div with the classname
+    of your component -->
+    <div class="componentName">
+       <!-- Your html -->
+    </div>
+</template>
+
+<style scoped>
+    /* Your css */
+</style>
+
+<script>
+export default {
+    props: {
+        // Your parameters from the caller. Example: id : Number
+    },
+    data() {
+        return {
+            // Your data properties
+        };
+    },
+    mounted() {
+        // Your initialization code. Maybe async ( async mounted() {...} )
+    },
+    methods: {
+        // Your methods
+    },
+    computed: {
+        // Your computed properties
+    }
+};
+</script>
+```
+
+Weitere Informationen sind auf der Seite
+[Template Lifecycle](https://vuejs.org/guide/essentials/lifecycle.html)
+abrufbar.
+
+### Der Template Bereich
+
+Im Template Bereich gibt es spezielle Attribute für deine HTML Elemente, die von Vue gerendert
+werden:
+
+- **{{ variable }}** Gibt den Inhalt der Variablen, die in *data* oder *props* definiert wurde, aus.
+- **v-if** Blendet das HTML nur ein, wenn die angegebene Bedingung wahr ist. Kann in Zusammenhang
+  mit *v-else* definiert werden.
+- **v-for** Rendert das HTML Element für jeden Eintrag im Array. Wird in Zusammenarbeit mit
+  *v-bind:key* verwendet.
+- **v-on** Eventhandler, die auf Methoden in *methods* verweisen. Beispiel: *v-on:click="method()"*.
+- **v-bind** Attributswerte, die von *data* gelesen werden sollen. Beispiel: *v-bind:value*.
+- **v-bind:class** Speziell für das bedingte Aktivieren von CSS Klassen. Siehe
+[Binding HTML Classes](https://vuejs.org/guide/essentials/class-and-style.html).
+- **v-model** Für Formularfelder. Werte werden in ein Property in *data* geschrieben und von
+  dort gelesen. Beispiel: *v-model=model.myFormField*.
+
+Weitere Informationen zu Vue Templates sind auf der Seite
+[Vue Template Syntax](https://vuejs.org/guide/essentials/template-syntax.html#text-interpolation)
+beschrieben.
 
 ## Formulare und Validierung
 

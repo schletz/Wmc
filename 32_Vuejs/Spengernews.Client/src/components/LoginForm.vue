@@ -34,7 +34,7 @@ export default {
         async sendLoginData() {
             try {
                 const userdata = (await axios.post('user/login', this.model)).data;
-                axios.defaults.headers.common['Authorization'] = userdata.token;
+                axios.defaults.headers.common['Authorization'] = `Bearer ${userdata.token}`;
                 this.$store.commit('authenticate', userdata);
             } catch (e) {
                 if (e.response.status == 401) {
