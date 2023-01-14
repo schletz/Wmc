@@ -280,8 +280,8 @@ dotnet run -c Debug --project <relative_path_to_your_webapi>
 **startServer.sh** (macOS, Linux)
 
 ```
-docker rm -f mariadb_<yourAppName> &> /dev/null
-docker run --name mariadb -d -p 13306:3306 -e MARIADB_USER=root -e MARIADB_ROOT_PASSWORD=mariadb_root_password mariadb:10.10.2
+docker rm -f <your_container_name> &> /dev/null
+docker run --name <your_container_name> -d -p 13306:3306 -e MARIADB_USER=root -e MARIADB_ROOT_PASSWORD=mariadb_root_password mariadb:10.10.2
 dotnet build <relative_path_to_your_webapi_with_slash> --no-incremental --force
 dotnet watch run -c Debug --project <relative_path_to_your_webapi_with_slash>
 ```
