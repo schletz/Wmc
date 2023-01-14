@@ -197,22 +197,17 @@ app.Run();
 
 ### Eine bat Datei für den Serverstart
 
-Damit der Server bequemer gestartet werden kann, lege eine Datei *startServer.cmd* **im selben
-Ordner wie die sln Datei** an. Die Pfade müssen natürlich angepasst werden:
+Damit der Server bequemer gestartet werden kann, lege eine Datei *startDevServer.cmd* *im Verzeichnis der
+sln Datei* an. Die Pfade müssen natürlich angepasst werden. Die bat Datei
+läuft durch die *GOTO* Anweisung in einer Endlosschleife. Mit CTRL+C wirst du gefragt, ob die
+Verarbeitung abgebrochen werden soll. Drückst du *n*, wird erneut ein build aufgerufen und der
+Server neu gestartet. Bei *y* wird abgebrochen.
 
-**startServer.cmd**
+**startDevServer.cmd**
+
 ```
-rd /S /Q .vs 2> nul
-rd /S /Q SpengernewsProject.Application/.vs 2> nul
-rd /S /Q SpengernewsProject.Application/bin 2> nul
-rd /S /Q SpengernewsProject.Application/obj 2> nul
-rd /S /Q SpengernewsProject.Webapi/.vs 2> nul
-rd /S /Q SpengernewsProject.Webapi/bin 2> nul
-rd /S /Q SpengernewsProject.Webapi/obj 2> nul
-
-
-cd SpengernewsProject.Webapi
 :start
-dotnet watch run -c Debug
+dotnet build SpengernewsProject.Webapi --no-incremental --force
+dotnet watch run -c Debug --project SpengernewsProject.Webapi
 goto start
 ```

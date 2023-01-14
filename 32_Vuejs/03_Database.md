@@ -248,16 +248,46 @@ builder.Services.AddDbContext<SpengernewsContext>(opt =>
         new MariaDbServerVersion("10.10.2")));
 ```
 
-### Automatisches Starten des Containers
+### Automatisches Starten des Servers und des Containers (Skript für den Lehrer)
 
-Du kannst in der Datei *startServer.cmd* zu Beginn folgende Anweisungen schreiben. Zuerst wird
-versucht, mit *docker start* den Container mit dem Namen *mariadb* zu starten. Wenn das nicht
-funktioniert (errorlevel ist >= 1), wird der Container angelegt.
+Im Kapitel *Backend* wurde bereits eine Datei *startDevServer.cmd* im Verzeichnis der sln Datei angelegt.
+Sie läuft in Endlosschleife, damit mit CTRL+C der Server neu kompiliert und gestartet werden kann.
+
+Für *Lehrer*, die das Repo klonen und den Server starten wollen, brauchen wir andere Anforderungen:
+- Der Container für die Datenbank - falls einer verwendet wird - muss geladen werden.
+- Das Skript wird nicht in Endlosschleife ausgeführt, sondern startet 1x den Server.
+- Die *startDevServer.cmd* im sln Ordner verwendet *dotnet watch run*, um bei Änderungen von Dateien neu
+  zu kompilieren. Hier genügt ein normales *dotnet run*.
+
+Lege eine Datei **startServer.cmd** (für Windows) und **startServer.sh** (für macOS/Linux)
+*im Root Verzeichnis des Repositories an*.
+*<your_container_name>* muss natürlich angepasst werden, z. B. auf *mariadb_employeemanager*.
+Wenn du andere Ports oder ein anderes Datenbanksystem verwenden möchtest, muss *docker run* entsprechend
+angepasst werden.
+
+Ersetze dann *<relative_path_to_your_webapi>* durch den relativen Pfad zur WebAPI,
+z. B. *EmployeeManager/EmployeeManager.WebAPI*
+
+**startServer.cmd** (Windows)
 
 ```
-docker start mariadb 2> nul
-if errorlevel 1 docker run --name mariadb -d -p 13306:3306 -e MARIADB_USER=root -e MARIADB_ROOT_PASSWORD=mariadb_root_password mariadb:10.10.2
+docker rm -f <your_container_name> 2> nul
+docker run --name <your_container_name> -d -p 13306:3306 -e MARIADB_USER=root -e MARIADB_ROOT_PASSWORD=mariadb_root_password mariadb:10.10.2
+dotnet build <relative_path_to_your_webapi> --no-incremental --force
+dotnet run -c Debug --project <relative_path_to_your_webapi>
 ```
+
+**startServer.sh** (macOS, Linux)
+
+```
+docker rm -f mariadb_<yourAppName> &> /dev/null
+docker run --name mariadb -d -p 13306:3306 -e MARIADB_USER=root -e MARIADB_ROOT_PASSWORD=mariadb_root_password mariadb:10.10.2
+dotnet build <relative_path_to_your_webapi_with_slash> --no-incremental --force
+dotnet watch run -c Debug --project <relative_path_to_your_webapi_with_slash>
+```
+
+Natürlich können die Dockerbefehle auch in der *startDevServer.cmd* Datei für die Entwicklung
+(im Ordner der sln Datei) ergänzt werden.
 
 ## Verwenden einer anderen Datenbank für Production und Development
 
