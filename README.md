@@ -63,6 +63,8 @@ Installiere folgende Software:
 - EsLint
 - Babel
 
+### [Special: ASP.NET Core als Websocket Server](WebsocketDemo)
+
 ## Nutzungsbedingungen
 
 Dieses Repository kann frei im Unterricht verwendet werden. Bei der Verwendung von Unterlagen

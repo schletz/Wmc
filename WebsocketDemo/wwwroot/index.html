@@ -1,0 +1,138 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Websocket Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            line-height: 1.4em;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        #app {
+            max-width: 50rem;
+            margin: auto;
+            border: 3px solid black;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .formRow {
+            display: flex;
+            align-items: center;
+        }
+
+            .formRow label {
+                display: block;
+                flex: 0 0 5em;
+            }
+
+            .formRow input {
+                flex-grow: 1;
+                padding: 0.5em 0.5em;
+                border: 1px solid gray;
+                border-radius: 8px;
+            }
+
+        #log {
+            margin-top: 3rem;
+        }
+
+        .logRow {
+            display: flex;
+        }
+
+            .logRow .messageType {
+                flex: 0 0 5em;
+                font-weight: bolder;
+            }
+
+            .logRow .content {
+                flex-grow: 1;
+            }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div id="app">
+            <h1>Websocket Test</h1>
+            <p>
+                Tipp: Mach einen 2. Tab auf. Dann siehst du, wie die Nachricht an alle Clients
+                versandt wird. Experimentiere ein wenig, dann siehst du die Probleme, die auftreten
+                können:
+                <ul>
+                    <li>Mach einen neuen Tab auf. Hat der neue Client die alten Nachrichten?</li>
+                    <li>Lade die Seite neu. Was passiert?</li>
+                </ul>
+            </p>
+            <div class="formRow">
+                <label>Message:</label>
+                <input id="wsMessage" onchange="sendMessage(this)" />
+            </div>
+            <div id="log"></div>
+        </div>
+    </main>
+    <script>
+        // https://stackoverflow.com/questions/105034/how-do-i-create-a-guid-uuid
+        // Crypto API only available over https (in most browsers)
+        function uuidv4() {
+            return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+                (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+            );
+        }
+
+        function writeLog(type, text) {
+            const logDiv = document.getElementById("log");
+            const rowDiv = document.createElement("div");
+            const messageDiv = document.createElement("div");
+            const textDiv = document.createElement("div");
+
+            rowDiv.classList.add("logRow")
+            messageDiv.classList.add('messageType');
+            messageDiv.classList.add(type);
+            textDiv.classList.add('content');
+            textDiv.classList.add(type);
+
+            messageDiv.innerText = type;
+            textDiv.innerText = text;
+            rowDiv.appendChild(messageDiv);
+            rowDiv.appendChild(textDiv);
+            logDiv.appendChild(rowDiv);
+        }
+
+        function sendMessage(target) {
+            websocket.send(target.value)
+            target.value = "";
+        }
+
+        const guid = uuidv4();
+        writeLog('info', `Client-ID is ${guid}`);
+        const protocol = /^https/.test(window.location.protocol) ? 'wss' : 'ws';
+        writeLog('info', `Try to connect to ${protocol}://localhost:5001/ws/${guid}`);
+        const websocket = new WebSocket(`${protocol}://localhost:5001/ws/${guid}`);
+
+        websocket.addEventListener('message', (event) => {
+            writeLog('message', event.data);
+        });
+        websocket.addEventListener('error', (event) => {
+            writeLog('error', JSON.stringify(event));
+        });
+        websocket.addEventListener('open', (event) => {
+            writeLog('open', JSON.stringify(event));
+        });
+        websocket.addEventListener('close', () => {
+            writeLog('close', JSON.stringify(event));
+        });
+
+    </script>
+</body>
+</html>
