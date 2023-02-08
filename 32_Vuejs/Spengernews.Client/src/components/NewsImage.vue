@@ -21,6 +21,7 @@ export default {
 }
 .imageContainer img {
     opacity: 0.3;
+    height:200px;
 }
 
 .overlayText {
@@ -29,11 +30,9 @@ export default {
     left: 8px;
     font-size: 14pt;
     font-weight: bold;
-    color: black;
-}
-.imageContainer:hover .overlayText {
     color: white;
 }
+
 .imageContainer:hover img {
     opacity: 1;
 }

@@ -88,12 +88,21 @@ export default {
 </script>
 
 <style scoped>
+h3 {
+    color:white;
+    margin-top:0;
+    margin-bottom: 1rem;
+}
+
+input, textarea, select {
+    background-color:rgba(255,255,255,70%);
+    padding: 0.3rem 0rem;
+}
 .form {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     max-width: 40em;
-    margin: 0 auto;
-    padding: 0 1em;
-    border: 1px solid gray;
 }
 .form-row {
     display: flex;
@@ -101,6 +110,8 @@ export default {
 }
 .form-row .label {
     flex: 0 0 8em;
+    color:white;
+
 }
 .form-row .control {
     flex-grow: 1;
@@ -109,7 +120,5 @@ export default {
 .form-row .control textarea {
     width: 100%;
 }
-h3 {
-    margin: 0;
-}
+
 </style>

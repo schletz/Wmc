@@ -1,1 +1,0 @@
-import{_ as o,o as t,c as s,p as _,a as c,b as a}from"./index.cfa481dc.js";const d={},n=e=>(_("data-v-1620f544"),e=e(),c(),e),p={id:"about"},i=n(()=>a("h3",null,"This is an about page",-1)),r=[i];function u(e,f){return t(),s("div",p,r)}const l=o(d,[["render",u],["__scopeId","data-v-1620f544"]]);export{l as default};

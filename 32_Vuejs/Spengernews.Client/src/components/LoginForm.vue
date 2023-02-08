@@ -16,6 +16,21 @@ import axios from 'axios';
         </template>
     </div>
 </template>
+<style scoped>
+.loginForm {
+    display: flex;
+    gap:1rem;
+}
+a {
+    text-decoration: none;
+
+}
+a:hover {
+    color: lightgray;
+    text-decoration: underline;
+}
+</style>
+
 <script>
 export default {
     data() {

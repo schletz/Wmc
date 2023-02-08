@@ -4,11 +4,14 @@ import axios from 'axios';
 </script>
 
 <template>
-    <div>
-        <h3>
-            {{ newsCount }} von {{ newsItems.length }} News.&nbsp; <button v-on:click="incrementCounter(1)">more</button>&nbsp;
-            <button v-on:click="incrementCounter(-1)">less</button>
-        </h3>
+    <div class="imagePanel">
+        <div class="newsCounter">
+            <div class="newsCount">{{ newsCount }} von {{ newsItems.length }} News</div>
+            <div class="newsButtons">
+                <button v-on:click="incrementCounter(1)">more</button>&nbsp;
+                <button v-on:click="incrementCounter(-1)">less</button>
+            </div>
+        </div>
         <div class="newsImages">
             <template v-if="newsItems.length">
                 <div v-for="item in displayNews" v-bind:key="item.id">
@@ -55,5 +58,13 @@ export default {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+}
+.newsCounter {
+    display: flex;
+    gap:2rem;
+    margin-bottom: 0.5rem;
+}
+.newsCount {
+    font-weight: bolder;
 }
 </style>

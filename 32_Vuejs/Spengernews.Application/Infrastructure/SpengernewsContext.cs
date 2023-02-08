@@ -41,12 +41,6 @@ namespace Spengernews.Application.Infrastructure
 
         public void Seed()
         {
-            string[] images = new string[]
-            {
-                "https://www.bing.com/th?id=ORMS.c64be9536fb2ebb5673dfc61d8142abe&pid=Wdp&w=300&h=156&qlt=90&c=1&rs=1&dpr=1&p=0",
-                "https://www.bing.com/th?id=ORMS.805cf20c3f313d9d74bf2cfc96fc7e00&pid=Wdp&w=300&h=156&qlt=90&c=1&rs=1&dpr=1&p=0",
-                "https://www.bing.com/th?id=ORMS.430a52f4ed5a6e63b0a376680541e024&pid=Wdp&w=300&h=156&qlt=90&c=1&rs=1&dpr=1&p=0"
-            };
             Randomizer.Seed = new Random(1039);
             var faker = new Faker("de");
 
@@ -85,12 +79,12 @@ namespace Spengernews.Application.Infrastructure
                     headline: f.Lorem.Sentence(f.Random.Int(2, 4)),
                     content: f.Lorem.Paragraphs(10, 20),
                     created: f.Date.Between(new DateTime(2021, 1, 1), new DateTime(2022, 1, 1)),
-                    imageUrl: f.Random.ListItem(images),
+                    imageUrl: f.Image.PicsumUrl(),
                     author: f.Random.ListItem(authors),
                     category: f.Random.ListItem(categories))
                 { Guid = f.Random.Guid() };
             })
-            .Generate(3)
+            .Generate(6)
             .ToList();
             Articles.AddRange(articles);
             SaveChanges();
