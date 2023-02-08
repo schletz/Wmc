@@ -5,21 +5,43 @@
 Um das Backend zu erzeugen, lege mit folgendem Skript im Repository die Struktur an. Ersetze
 *SpengernewsProject* durch deinen Projektnamen
 
+**Windows**
 ```
 md SpengernewsProject
 cd SpengernewsProject
 md SpengernewsProject.Application
 md SpengernewsProject.Webapi
 cd SpengernewsProject.Application
-dotnet new classlib
-dotnet add package Microsoft.EntityFrameworkCore --version 6.*
+dotnet new classlib -f net6.0
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 6.*
 dotnet add package Microsoft.EntityFrameworkCore.Proxies --version 6.*
 dotnet add package Bogus --version 34.*
 dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection --version 12.*
 cd ..\SpengernewsProject.Webapi
-dotnet new webapi
+dotnet new webapi -f net6.0
 dotnet add reference ..\SpengernewsProject.Application
+cd ..
+dotnet new sln
+dotnet sln add SpengernewsProject.Webapi
+dotnet sln add SpengernewsProject.Application
+npm init vue@3 SpengernewsProject.Client
+```
+
+**maxOS, Linux**
+```
+mkdir SpengernewsProject
+cd SpengernewsProject
+mkdir SpengernewsProject.Application
+mkdir SpengernewsProject.Webapi
+cd SpengernewsProject.Application
+dotnet new classlib -f net6.0
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 6.*
+dotnet add package Microsoft.EntityFrameworkCore.Proxies --version 6.*
+dotnet add package Bogus --version 34.*
+dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection --version 12.*
+cd ../SpengernewsProject.Webapi
+dotnet new webapi -f net6.0
+dotnet add reference ../SpengernewsProject.Application
 cd ..
 dotnet new sln
 dotnet sln add SpengernewsProject.Webapi
@@ -33,14 +55,14 @@ Beim Anlegen des Vue Projektes (letzter Befehl) verwende die folgenden Einstellu
 Vue.js - The Progressive JavaScript Framework
 
 √ Project name: ... spengernewsProject-client
-√ Add TypeScript? ... No
-√ Add JSX Support? ... No
+√ Add TypeScript? ...                                         No
+√ Add JSX Support? ...                                        No
 √ Add Vue Router for Single Page Application development? ... Yes
-√ Add Pinia for state management? ... No
-√ Add Vitest for Unit Testing? ... No
-√ Add Cypress for both Unit and End-to-End testing? ... No
-√ Add ESLint for code quality? ... Yes
-√ Add Prettier for code formatting? ... No
+√ Add Pinia for state management? ...                         No
+√ Add Vitest for Unit Testing? ...                            No
+√ Add Cypress for both Unit and End-to-End testing? ...       No
+√ Add ESLint for code quality? ...                            Yes
+√ Add Prettier for code formatting? ...                       No
 ```
 
 Lege danach direkt im Verzeichnis deines Repositories eine Datei *.gitignore* an. Achte auf den
@@ -53,6 +75,8 @@ Punkt am Anfang des Namens!
 **/.vs
 **/.vscode
 **/node_modules
+package-lock.json
+appsettings.Development.json
 *.db*
 ```
 
@@ -71,7 +95,6 @@ die csproj Datei in einem Editor öffnest. Ersetze den Inhalt der Datei durch de
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Bogus" Version="34.*" />	
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.*" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.*" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.*" />
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.*" />
