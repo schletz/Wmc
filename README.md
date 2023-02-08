@@ -56,6 +56,7 @@ Installiere folgende Software:
 - [HOWTO: CRUD Operationen im Backend](32_Vuejs/04_Crud.md)
 - [HOWTO: JWT Authentication in ASP.NET Core](32_Vuejs/05_JwtAuthentication.md)
 - [HOWTO: Erstellen der Vue.js Client App](32_Vuejs/06_VuejsClient.md)
+- [HOWTO: Docker container mit .NET automatisch starten](32_Vuejs/07_DockerStartDotnet.md)
 
 ### 4 Node.js Projekte ohne SPA Framework erstellen ([zum Inhalt](33_Webpack))
 
