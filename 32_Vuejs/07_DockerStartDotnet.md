@@ -1,4 +1,4 @@
-# Docker container mit .NET automatisch starten
+# Datenbank container mit .NET automatisch starten
 
 Für .NET gibt es das Paket [Docker.DotNet](https://www.nuget.org/packages/Docker.DotNet), mit dem
 sich Docker steuern lässt. Konkret wird über die API mit dem Docker Daemon kommuniziert.
@@ -22,13 +22,14 @@ var app = builder.Build();
 // Other code
 if (app.Environment.IsDevelopment())
 {
-    // We create a fresh sql server container in development mode. Therefore we do not need EnsureDeleted().
-    // For performance reasons you can disable deleteAfterShutdown and call EnsureCreated().
+    // We will create a fresh sql server container in development mode. For performance reasons,
+    // you can disable deleteAfterShutdown because in development mode the database is deleted
+    // before it is generated.
     try
     {
         await app.UseSqlServerContainer(
-            containerName: "spengernews_sqlserver",
-            connectionString: app.Configuration.GetConnectionString("SqlServer"),
+            containerName: "spengernews_sqlserver", version: "latest",
+            connectionString: app.Configuration.GetConnectionString("Default"),
             deleteAfterShutdown: true);
     }
     catch (Exception e)
@@ -36,7 +37,6 @@ if (app.Environment.IsDevelopment())
         app.Logger.LogError(e.Message);
         return;
     }
-    // Seeding the database, ...
 }
 ```
 

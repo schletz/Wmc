@@ -123,7 +123,7 @@ den Datenbanknamen durch einen passenderen Namen.
 ```json
 {
   "ConnectionStrings": {
-    "Sqlite": "DataSource=WerDiesenNamenVerwendetBekommtEinNichtGenuegend.db"
+    "Default": "DataSource=WerDiesenNamenVerwendetBekommtEinNichtGenuegend.db"
   },
   "Logging": {
     "LogLevel": {
@@ -178,7 +178,7 @@ var builder = WebApplication.CreateBuilder(args);
 // SpengernewsContext ist der DbContext, der im Application Project angelegt wurde.
 // Aktiviere diese Zeile, wenn du den DB Context definiert hat.
 // builder.Services.AddDbContext<SpengernewsContext>(opt =>
-//     opt.UseSqlite(builder.Configuration.GetConnectionString("Sqlite")));
+//     opt.UseSqlite(builder.Configuration.GetConnectionString("Default")));
 
 // Wir wollen automatisch nach Controllern im Ordner Controllers suchen.
 builder.Services.AddControllers();
@@ -197,17 +197,19 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 if (app.Environment.IsDevelopment())
 {
-// Im Development Mode erstellen wir bei jedem Serverstart die Datenbank neu.
-// Aktiviere diese Zeilen, wenn du den DB Context erstellt hat.
-//     using (var scope = app.Services.CreateScope())
-//        using (var db = scope.ServiceProvider.GetRequiredService<SpengernewsContext>())
-//        {
-//            db.Database.EnsureDeleted();
-//            db.Database.EnsureCreated();
-//            db.Seed();  // TODO: Implementiere diese Methode im Datenbankcontext.
-//        }
     app.UseCors();
 }
+
+// Im Development Mode erstellen wir bei jedem Serverstart die Datenbank neu.
+// Aktiviere diese Zeilen, wenn du den DB Context erstellt hat.
+// using (var scope = app.Services.CreateScope())
+// {
+//     using (var db = scope.ServiceProvider.GetRequiredService<SpengernewsContext>())
+//     {
+//         db.CreateDatabase(isDevelopment: app.Environment.IsDevelopment());
+//     }
+// }
+
 // Liefert die statischen Dateien, die von VueJS generiert werden, aus.
 app.UseStaticFiles();
 // Bearbeitet die Routen, für die wir Controller geschrieben haben.

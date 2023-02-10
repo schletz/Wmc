@@ -4,11 +4,14 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<UserSecretsId>6d78dd9b-66c6-4656-9bd3-b5bdd161ed00</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(RunConfiguration)' == 'webapi' " />
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.*" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 	</ItemGroup>
 
 	<ItemGroup>

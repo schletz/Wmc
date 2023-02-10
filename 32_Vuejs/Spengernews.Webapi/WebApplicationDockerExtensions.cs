@@ -4,13 +4,14 @@
  * Dependencies: Docker.DotNet <PackageReference Include="Docker.DotNet" Version="3.*" />
  * Usage example (after var app = builder.Build()):
  *   await app.UseSqlServerContainer(
- *       containerName: "spengernews_sqlserver",
- *       connectionString: app.Configuration.GetConnectionString("SqlServer"), 
+ *       containerName: "spengernews_sqlserver", version:"latest",
+ *       connectionString: app.Configuration.GetConnectionString("Default"), 
  *       deleteAfterShutdown: true);
  */
 using Docker.DotNet;
 using Docker.DotNet.Models;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -27,12 +28,12 @@ namespace Webapi
         ///     Server=127.0.0.1,1433;Initial Catalog=MeineDb;User Id=sa;Password=SqlServer2019;TrustServerCertificate=true
         /// Usage example:
         ///     await app.UseSqlServerContainer(
-        ///         containerName: "spengernews_sqlserver",
+        ///         containerName: "spengernews_sqlserver", version:"latest",
         ///         connectionString: app.Configuration.GetConnectionString("SqlServer"), 
         ///         deleteAfterShutdown: true);
         /// </summary>
         public static async Task UseSqlServerContainer(
-            this WebApplication app, string containerName,
+            this WebApplication app, string containerName, string version,
             string connectionString, bool deleteAfterShutdown = true)
         {
             var splittedConnectionString = SplitConnectionString(connectionString);
@@ -47,7 +48,7 @@ namespace Webapi
 
             var containerParameters = new CreateContainerParameters()
             {
-                Image = "mcr.microsoft.com/azure-sql-edge:latest",
+                Image = $"mcr.microsoft.com/azure-sql-edge:{version}",
                 Name = containerName,
                 Env = new string[] { "ACCEPT_EULA=Y", $"SA_PASSWORD={password}" },
                 HostConfig = new HostConfig()
@@ -73,6 +74,91 @@ namespace Webapi
                 waitForMessage: "SQL Server is now ready for client connections", deleteAfterShutdown: deleteAfterShutdown);
         }
 
+        /// <summary>
+        /// Creates a mariaDb container and waits for completition.
+        /// Connection string is a normal EF Core connection string like
+        ///     server=localhost;port=13306;database=SpengernewsDb;user=root;password=MariaDbPassword
+        /// Usage example:
+        ///     await app.UseMariaDbContainer(
+        ///         containerName: "spengernews_mariadb", version:"10.10.3",
+        ///         connectionString: app.Configuration.GetConnectionString("Default"), 
+        ///         deleteAfterShutdown: true);
+        /// </summary>
+        public static async Task UseMariaDbContainer(
+            this WebApplication app, string containerName, string version,
+            string connectionString, bool deleteAfterShutdown = true)
+        {
+            var splittedConnectionString = SplitConnectionString(connectionString);
+            if (!splittedConnectionString.TryGetValue("port", out var port))
+                port = "3306";
+            if (!splittedConnectionString.TryGetValue("password", out var password))
+                throw new Exception($"Missing property Password in connection string {connectionString}.");
+
+            var containerParameters = new CreateContainerParameters()
+            {
+                Image = $"mariadb:{version}",
+                Name = containerName,
+                Env = new string[] { $"MARIADB_ROOT_PASSWORD={password}" },
+                HostConfig = new HostConfig()
+                {
+                    PortBindings = new Dictionary<string, IList<PortBinding>>()
+                    {
+                        { "3306/tcp", new PortBinding[]{new PortBinding() {HostPort = $"{port}/tcp" } } }
+                    }
+                }
+            };
+            // We wait for a log message "MariaDB init process done. Ready for start up.".
+            await StartContainer(
+                app: app, containerName: containerName, containerParameters: containerParameters,
+                waitForMessage: "MariaDB init process done. Ready for start up.", deleteAfterShutdown: deleteAfterShutdown);
+        }
+
+        /// <summary>
+        /// Creates a PostgreSQL container and waits for completition.
+        /// Connection string is a normal EF Core connection string like
+        ///     Host=127.0.0.1;Port=15432;Username=spengernews;Password=PostgresPassword
+        /// Usage example:
+        ///     await app.UsePostgresContainer(
+        ///         containerName: "spengernews_postgres", version:"15.1",
+        ///         connectionString: app.Configuration.GetConnectionString("Default"), 
+        ///         deleteAfterShutdown: true);
+        /// </summary>
+        public static async Task UsePostgresContainer(
+            this WebApplication app, string containerName, string version,
+            string connectionString, bool deleteAfterShutdown = true)
+        {
+            var splittedConnectionString = SplitConnectionString(connectionString);
+            if (!splittedConnectionString.TryGetValue("host", out var host))
+                throw new Exception($"Missing property Host in connection string {connectionString}.");
+            if (!splittedConnectionString.TryGetValue("port", out var port))
+            {
+                var hostSplitted = host.Split(":");
+                port = hostSplitted.Length > 1 ? hostSplitted[1] : "5432";
+            }
+            if (!splittedConnectionString.TryGetValue("username", out var username))
+                throw new Exception($"Missing property Username in connection string {connectionString}.");
+            if (!splittedConnectionString.TryGetValue("password", out var password))
+                throw new Exception($"Missing property Password in connection string {connectionString}.");
+
+
+            var containerParameters = new CreateContainerParameters()
+            {
+                Image = $"postgres:{version}",
+                Name = containerName,
+                Env = new string[] { $"POSTGRES_USER={username}", $"POSTGRES_PASSWORD={password}" },
+                HostConfig = new HostConfig()
+                {
+                    PortBindings = new Dictionary<string, IList<PortBinding>>()
+                    {
+                        { "5432/tcp", new PortBinding[]{new PortBinding() {HostPort = $"{port}/tcp" } } }
+                    }
+                }
+            };
+            // We wait for a log message "database system is ready to accept connections".
+            await StartContainer(
+                app: app, containerName: containerName, containerParameters: containerParameters,
+                waitForMessage: "database system is ready to accept connections", deleteAfterShutdown: deleteAfterShutdown);
+        }
 
         /// <summary>
         /// Core logic for container creation.

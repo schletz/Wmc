@@ -39,7 +39,36 @@ namespace Spengernews.Application.Infrastructure
             }
         }
 
-        public void Seed()
+        /// <summary>
+        /// Initialize the database with some values (holidays, ...).
+        /// Unlike Seed, this method is also called in production.
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        private void Initialize()
+        {
+            var author = new Author(
+                   firstname: "Max",
+                   lastname: "Mustermann",
+                   email: "mustermann@spengergasse.at",
+                   username: "admin",
+                   initialPassword: "1111",
+                   phone: "+4369912345678");
+            Authors.Add(author);
+            SaveChanges();
+
+            var categories = new Category[]{
+                new Category("Wissenschaft"),
+                new Category("Kultur"),
+                new Category("Sport")
+            };
+            Categories.AddRange(categories);
+            SaveChanges();
+        }
+
+        /// <summary>
+        /// Generates random values for testing the application. This method is only called in development mode.
+        /// </summary>
+        private void Seed()
         {
             Randomizer.Seed = new Random(1039);
             var faker = new Faker("de");
@@ -62,16 +91,8 @@ namespace Spengernews.Application.Infrastructure
             Authors.AddRange(authors);
             SaveChanges();
 
-            var categories = new Faker<Category>("de").CustomInstantiator(f =>
-            {
-                return new Category(f.Commerce.ProductAdjective())
-                { Guid = f.Random.Guid() };
-            })
-            .Generate(10)
-            .GroupBy(c => c.Name).Select(g => g.First())
-            .ToList();
-            Categories.AddRange(categories);
-            SaveChanges();
+            // Use OrderBy with PK to read in a deterministic sort order!
+            var categories = Categories.OrderBy(c => c.Id).ToList();
 
             var articles = new Faker<Article>("de").CustomInstantiator(f =>
             {
@@ -88,6 +109,19 @@ namespace Spengernews.Application.Infrastructure
             .ToList();
             Articles.AddRange(articles);
             SaveChanges();
+        }
+
+        /// <summary>
+        /// Creates the database. Called once at application startup.
+        /// </summary>
+        public void CreateDatabase(bool isDevelopment)
+        {
+            if (isDevelopment) { Database.EnsureDeleted(); }
+            // EnsureCreated only creates the model if the database does not exist or it has no
+            // tables. Returns true if the schema was created.  Returns false if there are
+            // existing tables in the database. This avoids initializing multiple times.
+            if (Database.EnsureCreated()) { Initialize(); }
+            if (isDevelopment) Seed();
         }
     }
 }
