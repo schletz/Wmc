@@ -330,3 +330,15 @@ Wenn du gültige Daten schickst, sendet der Server einen Token zurück. Diesen T
 und bei anderen Requests (z. B. */api/user/me*) als *bearer token* senden.
 
 ![](postman_send_token_1303.png)
+
+## Ein paar Worte zur Sicherheit
+
+In diesem Beispiel wird der Hash Algorithmus *HMACSHA256* verwendet. Dieser ist auf Geschwindigkeit
+optimiert, um den Hashwert auch großer Dateien schnell berechnen zu können. Doch genau diese
+Eigenschaft ist für das Passworthashing problematisch. Ein Angreifer kann schneller "durchprobieren",
+wenn er aufgrund einer Sicherheitslücke das Salt des Users bekommt.
+
+Das Paket ASP.NET Core Identity verwendet die Methode *KeyDerivation.Pbkdf2()*
+aus dem Namespace Microsoft.AspNetCore.Cryptography. Die Verwendung kannst du im Quelltext des
+Paketes Identity in der Methode *HashPasswordV3()* nachsehen:
+https://github.com/dotnet/aspnetcore/blob/main/src/Identity/Extensions.Core/src/PasswordHasher.cs
