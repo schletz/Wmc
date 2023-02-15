@@ -1,0 +1,29 @@
+# Asciidoc Test
+
+.CSV data
+[format="csv",cols="4"]
+|======
+1,2,3,4
+a,b,c,d
+A,B,C,D
+|======
+
+
+= Source code listing
+ 
+Code listings look cool with Asciidoctor and {source-highlighter}.
+ 
+[source,groovy,linenums]
+----
+// File: User.groovy
+class User {
+    String username
+}
+----
+ 
+[source,asciidoc,linenums]
+----
+# Hello world
+ 
+Asciidoc(tor) is aweseome!
+----
