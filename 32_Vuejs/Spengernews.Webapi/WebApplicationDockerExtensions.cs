@@ -5,9 +5,10 @@
  * Usage example (after var app = builder.Build()):
  *   await app.UseSqlServerContainer(
  *       containerName: "spengernews_sqlserver", version:"latest",
- *       connectionString: app.Configuration.GetConnectionString("Default"), 
+ *       connectionString: app.Configuration.GetConnectionString("Default"),
  *       deleteAfterShutdown: true);
  */
+
 using Docker.DotNet;
 using Docker.DotNet.Models;
 using Microsoft.AspNetCore.Builder;
@@ -29,7 +30,7 @@ namespace Webapi
         /// Usage example:
         ///     await app.UseSqlServerContainer(
         ///         containerName: "spengernews_sqlserver", version:"latest",
-        ///         connectionString: app.Configuration.GetConnectionString("SqlServer"), 
+        ///         connectionString: app.Configuration.GetConnectionString("SqlServer"),
         ///         deleteAfterShutdown: true);
         /// </summary>
         public static async Task UseSqlServerContainer(
@@ -81,7 +82,7 @@ namespace Webapi
         /// Usage example:
         ///     await app.UseMariaDbContainer(
         ///         containerName: "spengernews_mariadb", version:"10.10.3",
-        ///         connectionString: app.Configuration.GetConnectionString("Default"), 
+        ///         connectionString: app.Configuration.GetConnectionString("Default"),
         ///         deleteAfterShutdown: true);
         /// </summary>
         public static async Task UseMariaDbContainer(
@@ -120,7 +121,7 @@ namespace Webapi
         /// Usage example:
         ///     await app.UsePostgresContainer(
         ///         containerName: "spengernews_postgres", version:"15.1",
-        ///         connectionString: app.Configuration.GetConnectionString("Default"), 
+        ///         connectionString: app.Configuration.GetConnectionString("Default"),
         ///         deleteAfterShutdown: true);
         /// </summary>
         public static async Task UsePostgresContainer(
@@ -139,7 +140,6 @@ namespace Webapi
                 throw new Exception($"Missing property Username in connection string {connectionString}.");
             if (!splittedConnectionString.TryGetValue("password", out var password))
                 throw new Exception($"Missing property Password in connection string {connectionString}.");
-
 
             var containerParameters = new CreateContainerParameters()
             {
@@ -207,19 +207,24 @@ namespace Webapi
                 });
             }
 
-            var container = await client.Containers.CreateContainerAsync(containerParameters);
-            await client.Containers.StartContainerAsync(container.ID, new ContainerStartParameters());
+            var containers = await client.Containers.ListContainersAsync(new ContainersListParameters() { All = true });
+            var containerId = containers.FirstOrDefault(c => c.Names.Any(n => n == $"/{containerName}"))?.ID;
+            if (containerId is null)
+            {
+                containerId = (await client.Containers.CreateContainerAsync(containerParameters)).ID;
+            }
+            await client.Containers.StartContainerAsync(containerId, new ContainerStartParameters());
             if (waitCommand is not null)
             {
                 app.Logger.LogInformation($"Send command {waitCommand} and checks if it returns {waitForMessage}...");
-                var result = await WaitForOutputCommand(client, container.ID, waitCommand, waitForMessage);
+                var result = await WaitForOutputCommand(client, containerId, waitCommand, waitForMessage);
                 if (!result)
                     throw new Exception($"Container {containerName} could not start. {string.Join(" ", waitCommand)} returns not {waitForMessage} or exit code 0.");
             }
             else
             {
                 app.Logger.LogInformation($"Wait for the message {waitForMessage} in docker logs...");
-                var result = await WaitForOutputLog(client, container.ID, waitForMessage);
+                var result = await WaitForOutputLog(client, containerId, waitForMessage);
                 if (!result)
                     throw new Exception($"Failed to wait for the message ${waitForMessage} in docker logs.");
             }
