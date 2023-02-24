@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Spengernews.Application.Dto;
 using Spengernews.Application.Infrastructure;
+using Spengernews.Webapi.Services;
 using System;
 using Webapi;
 
@@ -47,6 +48,9 @@ builder.Services.AddDbContext<SpengernewsContext>(opt =>
 builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+builder.Services.AddHttpContextAccessor();     // Required to access the http context in the auth service.
+builder.Services.AddTransient<AuthService>();  // Instantiation on each DI injection.
+
 // JWT Authentication ******************************************************************************
 // using Microsoft.AspNetCore.Authentication.JwtBearer;
 // using Microsoft.IdentityModel.Tokens;
@@ -70,11 +74,7 @@ if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddCors(options =>
     {
-        options.AddDefaultPolicy(
-            builder =>
-            {
-                builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-            });
+        options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
     });
 }
 

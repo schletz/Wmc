@@ -8,6 +8,8 @@ using System.Security.Claims;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using Spengernews.Application.Infrastructure;
+using Spengernews.Webapi.Services;
+using System.Threading.Tasks;
 
 namespace Webapi.Controllers
 {
@@ -20,56 +22,31 @@ namespace Webapi.Controllers
         public record CredentialsDto(string username, string password);
 
         private readonly SpengernewsContext _db;
-        private readonly IConfiguration _config;  // Needed to read the secret from appsettings.json
-        public UserController(SpengernewsContext db, IConfiguration config)
+        private readonly AuthService _authService;
+        // DI von AuthService funktioniert nur, wenn es im Service Provider
+        // registriert wurde.
+        public UserController(SpengernewsContext db, AuthService authService)
         {
             _db = db;
-            _config = config;
+            _authService = authService;
         }
 
         /// <summary>
         /// POST /api/user/login
         /// </summary>
         [HttpPost("login")]
-        public IActionResult Login([FromBody] CredentialsDto credentials)
+        public async Task<IActionResult> Login([FromBody] CredentialsDto credentials)
         {
-            // Read the secret from appsettings.json via IConfiguration
-            // This is NOT the salt of the user password! It is the key to sign the JWT, so
-            // the client cannot manupulate our token.
-            var secret = Convert.FromBase64String(_config["Secret"]);
-            var lifetime = TimeSpan.FromHours(3);
-            // User exists in our database and the calculated hash matches
-            // the password hash in the database?
-            var user = _db.Authors.FirstOrDefault(a => a.Username == credentials.username);
-            if (user is null) { return Unauthorized(); }
-            if (!user.CheckPassword(credentials.password)) { return Unauthorized(); }
-
-            string role = "Admin";
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                // Payload for our JWT.
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    // Write username to the claim (the "data zone" of the JWT).
-                    new Claim(ClaimTypes.Name, user.Username.ToString()),
-                    // Write the role to the claim (optional)
-                    new Claim(ClaimsIdentity.DefaultRoleClaimType, role)
-                }),
-                Expires = DateTime.UtcNow + lifetime,
-                SigningCredentials = new SigningCredentials(
-                    new SymmetricSecurityKey(secret),
-                    SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var jwt = await _authService.Login(credentials.username, credentials.password);
+            if (jwt is null) { return Unauthorized(); }
             // Return the token so the client can save this to send a bearer token in the
             // subsequent requests.
             return Ok(new
             {
-                user.Username,
-                UserGuid = user.Guid,
-                Role = role,
-                Token = tokenHandler.WriteToken(token)
+                Username = _authService.CurrentUser,
+                UserGuid = _authService.CurrentUserGuid,
+                Role = _authService.CurrentUserRole,
+                Token = jwt
             });
         }
 
@@ -82,8 +59,10 @@ namespace Webapi.Controllers
         public IActionResult GetUserdata()
         {
             // No username is set in HttpContext? Should never occur because we added the
-            // Authorize annotation. But the properties are nullable, so we have to check.
-            var username = HttpContext?.User.Identity?.Name;
+            // Authorize annotation. But the properties are nullable, so we have to
+            // check.
+            var username = _authService.CurrentUser;
+            //var username = HttpContext?.User.Identity?.Name;
             if (username is null) { return Unauthorized(); }
 
             // Valid token, but no user match in the database (maybe deleted by an admin).
