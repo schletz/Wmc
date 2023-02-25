@@ -19,7 +19,6 @@ namespace Webapi.Controllers
     [Route("/api/[controller]")]
     public class NewsController : ControllerBase
     {
-
         private readonly IMapper _mapper;
         private readonly SpengernewsContext _db;
 
@@ -38,6 +37,7 @@ namespace Webapi.Controllers
         {
             // Project your entities to a custon JSON WITHOUT INTERNAL KEYS, ...
             var news = _db.Articles.OrderBy(a => a.Created)
+                .Where(a => a.Published)
                 .Select(a => new
                 {
                     a.Guid,

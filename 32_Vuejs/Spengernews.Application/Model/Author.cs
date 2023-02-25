@@ -11,22 +11,28 @@ namespace Spengernews.Application.Model
     public class Author
     {
         public Author(string firstname, string lastname, string email,
-            string username, string initialPassword, string? phone = null)
+            string username, string initialPassword, Role role, string? phone = null)
         {
             Firstname = firstname;
             Lastname = lastname;
             Email = email;
             Phone = phone;
             Username = username;
+            Role = role;
             SetPassword(initialPassword);
         }
 
 #pragma warning disable CS8618
-        protected Author() { }
+
+        protected Author()
+        { }
+
 #pragma warning restore CS8618
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; private set; }
+
         public Guid Guid { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
@@ -34,6 +40,7 @@ namespace Spengernews.Application.Model
         public string Salt { get; set; }
         public string PasswordHash { get; set; }
         public string Email { get; set; }
+        public Role Role { get; set; }
         public string? Phone { get; set; }
 
         // Hint for the compiler that we initialize some properties in this method.
@@ -43,7 +50,9 @@ namespace Spengernews.Application.Model
             Salt = GenerateRandomSalt();
             PasswordHash = CalculateHash(password, Salt);
         }
+
         public bool CheckPassword(string password) => PasswordHash == CalculateHash(password, Salt);
+
         /// <summary>
         /// Generates a random number with the given length of bits.
         /// </summary>

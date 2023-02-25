@@ -9,6 +9,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Spengernews.Application.Model;
 
 namespace Spengernews.Webapi.Services
 {
@@ -35,12 +36,15 @@ namespace Spengernews.Webapi.Services
             {
                 CurrentUserGuid = guid;
             }
-            CurrentUserRole = httpContext.User.FindFirstValue(ClaimTypes.Role);
+            if (Enum.TryParse<Role>(httpContext.User.FindFirstValue(ClaimTypes.Role), out var role))
+            {
+                CurrentUserRole = role;
+            }
         }
 
         public string? CurrentUser { get; private set; }
         public Guid? CurrentUserGuid { get; private set; }
-        public string? CurrentUserRole { get; private set; }
+        public Role? CurrentUserRole { get; private set; }
 
         /// <summary>
         /// Returns a JWT and sets the Username, GUID and Role.
@@ -58,10 +62,8 @@ namespace Spengernews.Webapi.Services
             if (user is null) { return null; }
             if (!user.CheckPassword(password)) { return null; }
 
-            string role = "Admin";
-
             CurrentUser = user.Username;
-            CurrentUserRole = role;
+            CurrentUserRole = user.Role;
             CurrentUserGuid = user.Guid;
 
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -73,7 +75,7 @@ namespace Spengernews.Webapi.Services
                     // Write username to the claim (the "data zone" of the JWT).
                     new Claim(ClaimTypes.Name, user.Username.ToString()),
                     // Write the role to the claim (optional)
-                    new Claim(ClaimsIdentity.DefaultRoleClaimType, role),
+                    new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString()),
                     new Claim("Guid", user.Guid.ToString())
                 }),
                 Expires = DateTime.UtcNow + lifetime,

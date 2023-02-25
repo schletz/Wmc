@@ -8,7 +8,7 @@ import axios from 'axios';
             <label>Username: <input type="text" v-model="model.username" /></label>
             <label>Password: <input type="password" v-model="model.password" /></label>
             <button type="button" v-on:click="sendLoginData">Submit</button>
-            <small>(Hint: Use admin, Password 1111)</small>
+            <small>(Hint: Use admin, password 1111 or user, password 1111)</small>
         </template>
         <template v-else>
             Angemeldet als {{ username }}

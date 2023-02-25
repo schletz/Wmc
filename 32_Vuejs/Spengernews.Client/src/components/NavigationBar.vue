@@ -8,7 +8,7 @@ import LoginForm from './LoginForm.vue';
             <div><router-link to="/about">About</router-link></div>
             <div v-if="authenticated"><router-link to="/write">Write an article</router-link></div>
         </div>
-        <div class="navRow" v-if="!authenticated">
+        <div class="navRow">
             <LoginForm></LoginForm>
         </div>
     </div>
