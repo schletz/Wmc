@@ -50,6 +50,7 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddHttpContextAccessor();     // Required to access the http context in the auth service.
 builder.Services.AddTransient<AuthService>();  // Instantiation on each DI injection.
+builder.Services.AddTransient<ArticleService>();
 
 // JWT Authentication ******************************************************************************
 // using Microsoft.AspNetCore.Authentication.JwtBearer;

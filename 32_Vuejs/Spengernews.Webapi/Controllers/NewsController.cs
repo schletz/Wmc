@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Spengernews.Application.Dto;
 using Spengernews.Application.Infrastructure;
 using Spengernews.Application.Model;
+using Spengernews.Webapi.Services;
+using SQLitePCL;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,11 +22,11 @@ namespace Webapi.Controllers
     public class NewsController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly SpengernewsContext _db;
+        private readonly ArticleService _articleService;
 
-        public NewsController(SpengernewsContext db, IMapper mapper)
+        public NewsController(ArticleService articleService, IMapper mapper)
         {
-            _db = db;
+            _articleService = articleService;
             _mapper = mapper;
         }
 
@@ -36,22 +38,8 @@ namespace Webapi.Controllers
         public IActionResult GetAllNews()
         {
             // Project your entities to a custon JSON WITHOUT INTERNAL KEYS, ...
-            var news = _db.Articles.OrderBy(a => a.Created)
-                .Where(a => a.Published)
-                .Select(a => new
-                {
-                    a.Guid,
-                    a.Headline,
-                    a.Content,
-                    a.Created,
-                    a.ImageUrl,
-                    AuthorGuid = a.Author.Guid,
-                    AuthorFirstname = a.Author.Firstname,
-                    AuthorLastname = a.Author.Lastname,
-                    CategoryGuid = a.Category.Guid,
-                    CategoryName = a.Category.Name
-                })
-                .ToList();
+            var news = _mapper.ProjectTo<ArticleDto>(
+                _articleService.Articles.OrderBy(a => a.Created).Where(a => a.Published));
             return Ok(news);
         }
 
@@ -62,22 +50,9 @@ namespace Webapi.Controllers
         public IActionResult GetNewsDetail(Guid guid)
         {
             // Project your entities to a custon JSON WITHOUT INTERNAL KEYS, ...
-            var article = _db.Articles
-                .Where(a => a.Guid == guid)
-                .Select(a => new
-                {
-                    a.Guid,
-                    a.Headline,
-                    a.Content,
-                    a.Created,
-                    a.ImageUrl,
-                    AuthorGuid = a.Author.Guid,
-                    AuthorFirstname = a.Author.Firstname,
-                    AuthorLastname = a.Author.Lastname,
-                    CategoryGuid = a.Category.Guid,
-                    CategoryName = a.Category.Name
-                })
-                .FirstOrDefault(a => a.Guid == guid);
+            var article = _mapper.ProjectTo<ArticleDto>(
+                _articleService.Articles.Where(a => a.Guid == guid))
+                .FirstOrDefault();
             if (article is null) { return NotFound(); }
             return Ok(article);
         }
@@ -89,22 +64,14 @@ namespace Webapi.Controllers
         /// </summary>
         [Authorize]
         [HttpPost]
-        public IActionResult AddArticle(ArticleDto articleDto)
+        public async Task<IActionResult> AddArticle(NewArticleCmd articleCmd)
         {
-            // After mapping we have to resolve the foreign key guids.
-            // First() throws an exception if no data matches the predicate. So you have to check
-            // the referenced data in your Validate method of your dto class!
-            var article = _mapper.Map<Article>(articleDto,
-                opt => opt.AfterMap((dto, entity) =>
-                {
-                    entity.Author = _db.Authors.First(a => a.Guid == articleDto.AuthorGuid);
-                    entity.Category = _db.Categories.First(c => c.Guid == articleDto.CategoryGuid);
-                    entity.Created = DateTime.UtcNow;
-                }));
-            _db.Articles.Add(article);
-            try { _db.SaveChanges(); }
-            catch (DbUpdateException) { return BadRequest(); } // DB constraint violations, ...
-            return Ok(_mapper.Map<Article, ArticleDto>(article));
+            try
+            {
+                var article = await _articleService.AddArticle(articleCmd);
+                return Ok(article);
+            }
+            catch (ServiceException e) { return BadRequest(e.Message); }
         }
 
         /// <summary>
@@ -114,22 +81,11 @@ namespace Webapi.Controllers
         /// </summary>
         [Authorize]
         [HttpPut("{guid:Guid}")]
-        public IActionResult EditArticle(Guid guid, ArticleDto articleDto)
+        public async Task<IActionResult> EditArticle(Guid guid, EditArticleCmd articleCmd)
         {
-            if (guid != articleDto.Guid) { return BadRequest(); }
-            var article = _db.Articles.FirstOrDefault(a => a.Guid == guid);
-            if (article is null) { return NotFound(); }
-            // Overwrite infos in article with new data in articleDto. Don't forget to resolve
-            // the foreign key guids!
-            _mapper.Map(articleDto, article,
-                opt => opt.AfterMap((dto, entity) =>
-                {
-                    entity.Author = _db.Authors.First(a => a.Guid == articleDto.AuthorGuid);
-                    entity.Category = _db.Categories.First(c => c.Guid == articleDto.CategoryGuid);
-                }));
-
-            try { _db.SaveChanges(); }
-            catch (DbUpdateException) { return BadRequest(); } // DB constraint violations, ...
+            if (guid != articleCmd.Guid) { return BadRequest(); }
+            var (success, message) = await _articleService.EditArticle(articleCmd);
+            if (!success) { return BadRequest(message); }
             return NoContent();
         }
 
@@ -139,18 +95,12 @@ namespace Webapi.Controllers
         /// </summary>
         [Authorize]
         [HttpDelete("{guid:Guid}")]
-        public IActionResult DeleteArticle(Guid guid)
+        public async Task<IActionResult> DeleteArticle(Guid guid)
         {
-            // Try to find article in the database.
-            var article = _db.Articles.FirstOrDefault(a => a.Guid == guid);
-            // Article does not exist: return 404.
-            if (article is null) { return NotFound(); }
-            // TODO: Remove referenced data (if needed)
-            // Remove article.
-            _db.Articles.Remove(article);
-            try { _db.SaveChanges(); }
-            catch (DbUpdateException) { return BadRequest(); } // DB constraint violations, ...
+            var (success, message) = await _articleService.Delete(guid);
+            if (!success) { return BadRequest(message); }
             return NoContent();
         }
     }
+
 }
