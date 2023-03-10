@@ -8,7 +8,9 @@ namespace Spengernews.Application.Dto
     {
         public MappingProfile()
         {
-            CreateMap<ArticleDto, Article>();  // ArticleDto --> Article
+            CreateMap<NewArticleCmd, Article>();  // NewArticleCmd --> Article
+            CreateMap<EditArticleCmd, Article>();  // EditArticleCmd --> Article
+
             CreateMap<Article, ArticleDto>();  // Article --> ArticleDto
         }
     }
