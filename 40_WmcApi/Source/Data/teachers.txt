@@ -1,0 +1,285 @@
+Shortname	Lastname	Firstname	Title
+AF	Akyildiz	Fatma	
+AGU	Augustin	Susanne	Ing.
+AH	Auinger	Harald	
+ALS	Almesberger	Silke	Magª. rer. nat.
+AMA	Amcha	Alfred	
+AT	Antonescu	Margareth	
+BAB	Bauer	Beatrice	Mag.
+BAM	Balluch	Manfred	Ing. Mag.
+BAN	Bankuti	Judit	
+BAR	Bartl-Binder	Petra	Mag.
+BAT	Barth	Marie	
+BEC	Beyer	Catherine	
+BEP	Benkö	Patrick	
+BES	Beil	Sabine	Dr.
+BH	Berger	Hans-Peter	
+BI	Binder	Florian	
+BIE	Bierbamer	Peter	Mag. MSc.
+BIG	Binder	Georg	Mag.
+BIK	Bittner	Karl	
+BIM	Bierbamer	Michael	
+BIN	Binder-Müller	Florian	DI (FH)
+BIT	Bitterer	Marcus Wilhelm	MMag. BA
+BLJ	Blöch	Julia	Mag.
+BOA	Bohn	Adele	DI.
+BOB	Bogensperger	Brigitte	DI.
+BOK	Boyer	Katharina	Mag.
+BOM	Boltz	Michael	Dipl.-Ing.
+BR	Brandtner	Thomas	
+BRA	Bramkamp	Heiko	Mag.
+BRC	Bruckner	Caroline	
+BRS	Breiteneder	Stefan	Ing. MSc.
+BUC	Buchta	Christian	
+BV	Bregar	Volker	
+BW	Bergmann	Wolfgang	
+CAM	Camrda	Christian	
+CEC	Celeda	Claus	
+CES	Cejka	Stephan	
+CHA	Chwatal	Andreas	Dipl.-Ing. Dr. Bakk.
+CO	Coufal	Klaus	
+COW	Costin	Walter	
+CSR	Csaszar	Robert	Mag.
+DM	Danek	Manuela	
+DOB	Dormayer	Bernd	DI (FH)
+DOM	Dolezal	Michael	Ing. MSc.
+DP	Divjak	Peter	
+DRS	Drs	Wolfgang	Ing.
+DVO	Dvorak	Patricia	Mag.art
+DYP	Dyderski	Piotr	
+EDJ	Eder	Johannes	
+EIA	Eibler	Alexander	
+EN	Engleitner	Thomas	
+ENU	Endl	Ursula	
+ERS	Erben	Stephan	Dipl.-Ing.(FH)
+FAE	Farley	Edith	
+FAL	Falter	Lisa	Mag.
+FAT	Falter	Tanja	
+FEM	Felix	Mario	
+FER	Feichtinger	Reinhard	MSc.
+FES	Feiner	Stefan	
+FM	Furtlehner	Margit	
+FOE	Födinger	Andreas	
+FOJ	Forster	Johanna	Mag.
+FRF	Franz	Frederik	Mag.
+FZ	Fanzott	Leo	
+GA	Gschaider	Andreas	
+GAL	Gallauner	Alexandra	Mag.
+GAV	Gaupmann	Valerie	
+GC	Gründl	Claudia	
+GRA	Grandits	Rene	Dipl. Ing. (FH)
+GRG	Graf	Georg	
+GRJ	Grüneis	Joachim	DI
+GRL	Grottenthaler	Lisa	MSc.
+GRM	Griesmayer	Andrea	
+GRP	Graf	Petra	DI
+GRT	Grabetz	Thomas	BSc MA
+GT	Griesmayer	Thomas	
+GUW	Guttmann	Wolfgang 	
+HAA	Hafner	Arthur	
+HAD	Hadinoto	Eugenie	Mag.art.
+HAF	Hassanen	Florian	BSc.
+HAG	Hager	Alexander	
+HAM	Hartmann	Manuel	Mag.art.
+HAS	Haslinger	Lisa	Mag.
+HAU	Haudek	Christoph	Mag.
+HB	Huber	Adolf	
+HEB	Hesina	Bernd	
+HEP	Heyderer	Patrick	
+HG	Hager	Gerhard	Dr.
+HIK	Hilbe	Klaus	DI MBA
+HIL	Hilbert	Wolfgang	Mag.art.
+HIN	Hirvonen	Nicolas	
+HL	Hiesel	Robert	
+HOH	Hohenbüchler	Heidemarie	Mag.art., MA
+HOM	Hörzinger	Michael	Dipl.-Ing. Mag. ,BSc
+HOS	Hofmair	Sonja	BA
+HOT	Hofmann	Tobias	
+HOV	Hofbauer	Volker	Mag.
+HP	Hoheiser-Pförtner	Franz	
+HUB	Huber	Barbara	Mag.
+HY	Horny	Christian	
+IMR	Imeri	Rijad	
+IR	Ilkhani	Roya	
+JAD	Jakubowicz	David	Bakk.
+JB	Jagersberger	Herbert	
+JEL	Jelinek	Robert	
+JIM	Jindra	Michaela	MSc.
+JO	John	Wilhelm	
+JUB	Juvancz	Balint Mate	
+KAS	Karl	Susanne	Mag.
+KDC	Kodydek	Christian	Mag.
+KEM	Keminger	Alexander	Ing. MSc
+KIR	Kirrer	Wolfgang	
+KMO	Kmyta	Olga	Dr.
+KNJ	Kneidinger	Julia	Mag.
+KNM	Knon	Manfred	Dipl.-Ing.
+KNT	Knopper	Thomas Michael	Dipl.Päd.
+KOB	Kopp	Barbara	
+KOE	Körbel	Gerhard	
+KOL	Kölbl	Karin	
+KOP	Kock	Philipp Anselm	BEd
+KOR	Kofler	Robert	Mag. rer. soc. oec.
+KRA	Krammer	Martin	
+KRB	Krajina	Brigitta	
+KRM	Kraft	Maximilian	
+KSR	Ksuz	René	MA (FH)
+KUA	Kulich	Anna-Leena	
+KUB	Kulha	Beate	
+KUJ	Kulha	John	
+KUM	Kuba-Kremser	Markus	
+KY	Kerry	Florian	
+LAD	Latsch	Daniela	
+LAM	Laker	Michaela	Mag.art
+LAN	Langer	Uwe	
+LAP	Lang	Philipp	
+LC	Lackinger	Doris	
+LEE	Leeb	Sebastian	
+LES	Lenk	Stefan	BA BEd MA MEd
+LEV	Lederhofer	Viviane	Mag.B.A.
+LIC	Linke	Christoph	Mag., MSc
+LIN	Lindner	Christoph	
+LJK	Ljubek	Kristian	MSc
+LOD	Lorenz	David	
+LOY	Loy	Amelie	Mag.art
+LUP	Luftensteiner	Philipp	
+MAE	Marinov	Emil	
+MAJ	Mayrhofer	Johannes	
+MAT	Matejowsky	Peter	DI
+MAU	Maurer	Markus	MSc.
+MAY	Mayer	Sonja	
+MC	Marek	Clemens	
+MEA	Metz	Andreas	Mag.
+MGE	Müller-Guttenbrunn	Eva	Bacc.
+MIP	Michel	Philip	Dipl.-Ing.(FH)
+MOH	Moritsch	Hans	Dipl.Ing. Dr.
+MOS	Moser	Gabriele	Mag.
+MRS	Mohr	Stephanie	
+MST	Müller-Striedinger	Elisabeth	Mag.
+MUE	Müller	Simone	
+MUI	Muschlin	Iris	
+NAH	Nassler	Henning	
+NAI	Naimer	Eva Maria	
+NI	Niemeczek	Claudia	
+NIJ	Niklas	Johanna	DI (FH)
+NOA	Nowak	Alexander	Mag.
+NWV	Neuwirth	Veronika	
+OBN	Obojkovits	Nathalie Katharina	
+OEM	Öhlknecht	Martin	
+OHL	Ohr	Lukas	
+OM	Ollrom	Martin	
+PAS	Parzer	Simon	Dipl.-Ing.
+PC	Pemmer	Christian	
+PE	Petschenig	Brigitte	
+PED	Petric	Dalibor	
+PF	Pfeiffer	Andreas	
+PIF	Piffel	Caroline	
+PIR	Pirker	Simon	Mag.DI.
+PK	Pollack-Drs	Susanne	
+POD	Poppel	Dominik	Dipl.-Ing(FH)
+POL	Popl	Louise	
+POP	Pötscher-Prem	Karin	
+PRE	Pree	Martin	
+PRK	Prikoszovits	Gerhard	Dipl-Päd.
+PRR	Pranz	René	Ing. BA.
+PRW	Pramel	Werner	,MA
+PT	Pater	Kurt	
+PUA	Puchhammer	Alexander	
+PUC	Puchhammer	Markus	
+PUE	Pühringer	Michael	
+PUH	Puhm	Ursula	
+PUW	Puchhammer	Wolfgang	MSc.
+PUZ	Puljic	Zeljko	DI
+RAM	Rath	Markus	
+RAR	Radaj	Rahmon	
+REM	Rentsch	Michaela	DI(FH)
+RGM	Roth-Gion	Michaela	Ing.
+RIC	Richter	Charlotte	
+ROS	Rosza	Susanne	
+RR	Radlbauer	Rudolf	
+RRN	Rodas Reyna	Fitzgerald	
+RT	Riedl	Thomas	
+RUC	Ruttner	Christoph	
+RX	Renkin	Max	
+SAB	San	Berg	BS.
+SAC	Schachner	Christine	Dipl. -Päd. Mag.
+SB	Schiefer	Birgit	
+SBA	Schnabl	Barbara	Mag.art
+SCE	Schroll	Edith	DDipl-Ing.
+SCG	Schildberger	Gerald	
+SCJ	Schiehsl	Johannes	Mag.
+SCM	Schrammel	Manuela	
+SCP	Scherz	Peter Franz	
+SCR	Schneider	Richart	Mag.art
+SCV	Schreiber	Vivienne	MSc.
+SED	Seitz	Daniela	DI Dr.
+SEM	Semmler	Eva	
+SF	Schopf	Günter	
+SGC	Seiringer-Gaubinger	Christina	Mag.
+SH	Schindelar	Heinz Peter	
+SIL	Siller	Waltraud	Mag.
+SIS	Sieber	Sebastian	
+SJ	Strassl	Johannes	Mag.art.
+SK	Schenk	Andreas	
+SL	Stangl	Astrid	Mag.
+SLA	Slawitscheck	Markus	
+SLK	Schlangen	Karin	DI (FH) Dr.
+SLM	Schlag	Martin	
+SM	Schreiber	Michael	DI (FH)
+SMA	Schüller	Martina	
+SO	Schmoll	Birgit	
+SOG	Sommer	Georg	Dr.
+SOR	Schönberger	René	Mag. MBA
+SPE	Spanring	Erwin	Ing. Dipl. Ing. (FH)
+SPN	Spanner	Christian	
+SPO	Spies	Oliver	Ing. Mag.
+SRM	Schrutek	Martin	DI (FH)
+SSJ	Steffek-Strohmar	Johanna	Mag.
+STA	Stach	Andreas	
+STC	Stach	Angela	
+STH	Steinwender	Heidi	Mag.
+STJ	Stanek-Schleifer	Julia	
+STK	Strake	Bernhard	Mag.
+STM	Stamfest	Sonja	
+STS	Steiner	Sigmund	Mag.art
+STU	Studnicka	Jakob	DI (FH)
+SUN	Subotic	Nenad	
+SUT	Supukovic	Tadej	
+SW	Schwaiger	Ursula	
+SWA	Schwaiger	Michael	Mag. BA
+SWH	Swoboda	Harald	
+SWM	Schwarz	Marcel	
+SZ	Schletz	Michael	BEd
+TK	Trappl	Katharina	
+TOF	Tonti	Fabio	
+TOM	Tomc	Angela	BEd.
+TRM	Tripolt	Michael	Mag.art.
+TSI	Tolic-Sapina	Ivana	Mag.
+TT	Tschernko	Thomas	
+UK	Unger	Klaus	
+UMI	Umile	Doris	Dipl. -Ing.
+VOG	Vogl	Helmut	Mag. MSc.
+VOR	Voracek	Adolf	
+VUV	Vucinic	Vesna	
+VVL	Vukovic	Vladimir	DI Dr.
+WAA	Wagner	Anna	Mag.rer.nat.
+WAB	Wachter	Bruno	
+WAG	Wagenhofer	Birgit	Mag.
+WEI	Weilguny	Markus	
+WEM	Wessely	Mario	Dipl. -Ing. (FH)
+WEN	Weninger	Friedrich	
+WER	Werner	Christian	
+WES	Weselsky	Rainer	Mag.
+WIR	Winkler	Rainer	
+WIS	Wiggins	Steffi	
+WK	Wodnar	Karl	
+WOF	Woisetschläger	Florian	Ing.BSC.MSc.
+WW	Wögerer	Wolfgang	
+WZR	Wenz	Renè	
+ZEI	Zeisel	Erwin	
+ZEP	Zeppelzauer	Wolfgang	
+ZIM	Zidek	Miriam	Dipl.-Ing.
+ZIP	Zippel	Erich	
+ZLA	Zlabinger	Walter	
+ZOE	Zöttl	Andreas	
+ZUM	Zumpf	Harald	Mag.

@@ -1,0 +1,119 @@
+Shortname	Info	Capacity
+A1.03	Jugencoaching	12
+A1.05	Stammklasse	35
+A1.06	Stammklasse	28
+A1.14	Stammklasse	30
+A1.15	Stammklasse	24
+A1.16	Stammklasse	30
+A1.17	Stammklasse	30
+A1.23	Stammklasse	26
+A2.04	Stammklasse	20
+A2.05	Stammklasse	25
+A2.06	Stammklasse	24
+A2.13	Stammklasse	26
+A2.14	Stammklasse	32
+A2.20	Stammklasse	32
+A3.04	Stammklasse	32
+A3.05	Stammklasse	24
+A3.12	Stammklasse	31
+A3.13	Stammklasse	32
+A3.14	Stammklasse	19
+A3.19	Stammklasse	30
+AH.21	Bibliothek	6
+AH.26	Stammklasse	25
+AH.32	Naturwissenschaftlicher Raum	36
+AU.04	Gymnastikraum	25
+B1.06W	Lager	16
+B1.07HW	Hardware-Labor	16
+B1.08ab	Stammklasse	30
+B1.13W	Holz- und Modellbau	16
+B1.14W	Wartung und Instandhaltung	12
+B1.15HW	Hardwarelabor	16
+B2.06L	Baustelle, nicht benützen	16
+B2.07aL	Foto- und Gamelabor	16
+B2.07bW	Modellierwerkstätte	16
+B2.09HW	Hardwarelabor	16
+B2.10HW	Hardwarelabor	16
+B2.11HW	Hardwarelabor	16
+B3.06MF	Multifunktionslabor	16
+B3.07MF	Multimedialabor	16
+B3.08MF	Multifunktionslabor	32
+B3.10MF	Multifunktionslabor	32
+B3.11NW	Netzwerklabor	16
+B3.12NW	Netzwerklabor	16
+B4.07	Besprechungsraum	12
+B4.12MF	Multimedialabor	16
+B4.14MF	Multifunktionslabor	24
+B4.15MF	Multifunktionslabor	24
+B4.16MF	Multifunktionslabor	24
+B4.17MF	Multifunktionslabor	16
+B5.06	Stammklasse	25
+B5.07	Stammklasse	28
+B5.08	Stammklasse	32
+B5.09	Stammklasse	32
+B5.10	Stammklasse	32
+B5.11	Stammklasse	32
+B5.12	Stammklasse	24
+B5.13	Stammklasse	24
+BH.08W	Netzwerktechnik	8
+BH.09aW	Mechanik	8
+BH.09bW	CNC-Technik	8
+BH.09cW	Blechbearbeitung	8
+BH.09dW	Schweisstechnik	8
+BH.10aW	Plasmaschneider	8
+BH.11W	Mechanik	8
+BLA	Betriebslaboratorium	8
+C1.07	Stammklasse	30
+C1.10	Stammklasse	30
+C1.13	Stammklasse	36
+C1.14	Stammklasse	30
+C1.17	Stammklasse	32
+C2.06	Stammklasse	18
+C2.07	Stammklasse	30
+C2.08	Stammklasse	30
+C2.09	Stammklasse	30
+C2.10	Stammklasse	30
+C2.11	Stammklasse	30
+C2.14	Stammklasse	32
+C3.06	Stammklasse	20
+C3.07	Stammklasse	30
+C3.08	Stammklasse	30
+C3.09	Stammklasse	30
+C3.10	Stammklasse	30
+C3.11	Stammklasse	30
+C3.14	Stammklasse	32
+C4.06	Stammklasse	19
+C4.07	Stammklasse	30
+C4.08	Stammklasse	30
+C4.09	Stammklasse	30
+C4.10	Stammklasse	30
+C4.11	Stammklasse	30
+C4.14	Stammklasse	32
+C5.06	Stammklasse	24
+C5.07	Stammklasse	22
+C5.08	Stammklasse	24
+C5.09	Stammklasse	32
+C5.10	Stammklasse	30
+CH.09L	Robotik und IoT	11
+CH.10aL	Medizintechnik	11
+CH.11L	Medizintechnik	11
+CH.12L	Innovationslabor	11
+CH.13	Stammklasse	24
+CH.14a	Stammklasse	22
+CU.27	Sporthalle 1	35
+CU.28	Sporthalle 2	35
+DE.03	Chemiesaal	35
+DE.04L	Instrumentelle Analytik	8
+DE.05L	Analytik und Prüftechnik	8
+DE.06L	Umweltlabor	8
+DE.09L	Nasschemisches Labor	8
+DE.10W	Reinigungs- und Facilitytechnik	8
+DE.11W	Färbe-, Veredlungs- und Verfahrenstechnik	8
+DE.12aW	Farblabor	8
+DE.13aW	Drucktechnik	8
+DE.15L	Versuchsanstalt Prüflabor	8
+DE.19L	Informatik-/KÜ-Labor	16
+DE.20L	Automatisierungstechnik	11
+DE.21L	Elektrotechnik und Elektronik	11
+DE.22L	Mess- und Prüftechnik	11
+VAS	Veranstaltungssaal	200

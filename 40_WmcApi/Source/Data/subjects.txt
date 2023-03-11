@@ -1,0 +1,311 @@
+SHORTNAME	NAME
+ABTV	Abteilungsvorstand
+AINF	Angew. Informatik
+AM	ANGEW. MATHEMATIK
+AM-E	Mathematik ESF
+AMEC	Angewandte Mechatronik
+AMECx	Angewandte Mechatronik X-Gruppe
+AMECy	Angewandte Mechatronik Y-GRuppe
+AMx	ANGEW. MATHEMATIK
+AMx-E	Mathematik ESF x
+AMy	ANGEW. MATHEMATIK
+AMy-E	Mathematik ESF y
+AMz	ANGEW. MATHEMATIK
+ANME	Angewandte Mechatronik
+AP4	Atelier und Produktion
+APT1	Anlagen- und Prüftechnik
+AUFSICHT	Aufsicht
+AW5A	ATELIER U. WERKST.
+BADV	BETR.ANWENDUNGEN
+BADVx	Betriebl. Anw. d. Datenverarb.
+BADVy	Betriebl. Anw. d. Datenverarb.
+BAP	Wahlpflichtgegenstand Business Applications
+BEHB	Sonderpädagogische Förderung
+BESP	Bewegung und Sport
+BESPK	Bewegung und Sport
+BET	Betriebstechnik
+BET2	Betriebstechnik
+BETP_2	Betriebstechnik und Projekte
+BETP_2x	Betriebstechnik und Projekte x-Gruppe
+BETP_2y	Betriebstechnik und Projekte y-Gruppe
+BIB	BILDUNGSBER.ZUS.T.
+BIBL	Bibliothek
+BIST	Bildungsstandards
+BMG2	Biologie, Medizin und Gesundheitswesen
+BMSV	Biomedizinische Signalverarbeitung
+BMSVx	Biomedizinische Signalverarbeitung, x-Gruppe
+BMSVy	Biomedizinische Signalverarbeitung, y-Gruppe
+BOW	Biologie, Ökologie und Warenlehre
+BSPK	Bewegung und Sport - Knaben
+BSPKx	Bewegung und Sport - Knaben X-Gruppe
+BSPKy	Bewegung und Sport - Knaben Y-Gruppe
+BSPM	Bewegung und Sport - Mädchen
+BWM	Betriebswirtschaft und Management
+BWM1	Betriebswirtschaft und Management
+BWM2	Betriebswirtschaft und Management
+BWM3	Betriebswirtschaft und Management
+CABS_1	Computerarchitektur und Betriebssysteme
+CABS_4a	Computerarchitektur und Betriebssysteme
+COPR	Computerpraktikum
+COPRx	Computerpraktikum
+COPRy	Computerpraktikum
+COPRz	Computerpraktikum
+COV19	COVID-19
+D	DEUTSCH
+DAKO	DARSTELLUNG UND KOMPOSITION
+DAT	Darstellungstechniken
+DBI1	Datenbank- und Informationssysteme
+DBI1x	Datenbank- und Informationssysteme x-Gruppe
+DBI1y	Datenbank- und Informationssysteme y-Gruppe
+DBI2x	Datenbank- und Informationssysteme x-Gruppe
+DBI2y	Datenbank- und Informationssysteme y-Gruppe
+DEGM	DESSINATUR-GEWEBE-U.MASCHENTECHNIK
+DESD	DESSINATUR-DRUCKTECHNIK
+DEST	DESIGNTHEORIE
+DIR	ENTLASTUNGSSTUNDEN - Direktor
+DIWE	Digitale Werkzeuge
+DIWEx	Digitale Werkzeuge
+DIWEy	Digitale Werkzeuge
+DKO2	DESIGN UND KOMMUNIKATION
+DKO2x	Design und Kommunikation
+DKO2y	Design und Kommunikation
+DUK	DEUTSCH U. KOMM.
+DUKx	Deutsch u. Komm.
+DUKy	Deutsch u. Komm.
+Dx	Deutschgruppe x
+Dx-E	Deutsch ESF
+Dy	Deutschgruppe y
+Dz	Deutschgruppe z
+E1	ENGLISCH
+E1x	ENGLISCH GRUPPE X
+E1y	ENGLISCH GRUPPE Y
+EKPR	ENTWURFSKRITIK-PRODUKTQUALITÄT
+EPR1	ENTWURFSPROJEKT
+ESS	Sommerschule
+ETH	Ethik
+EW1	ENTWURF
+EW1x	Entwurf x-Gruppe
+EW1y	Entwurf y-Gruppe
+EWD	Entwurf und Design
+FAA	Freifach Anwendung Algorithmen
+FAIK	Freifach Aikido
+FBESP	Freifach Bewegung und Sport - Volleyball
+FBSSE	Freifach Sport und Ernährung
+FBSSV	Freifach MAGA
+FCAS	Freifach Anwendung von Computeralgebrasystemen
+FCC	Freifach Cambridge Certificate
+FCLC	Freifach Cloud Computing mit AWS
+FD	Freifach Deutsch
+FDAZ	Freifach Deutsch als Fremd- & Zweitsprache
+FDSAI	Freifach  Data Science und Business Intelligence
+FEKI	Freigegenstand Einführung in die künstliche Intelligenz
+FELUE	Freigegenstand Angewandte Elektronik
+FEMIK	Freifach Licht- u. Elektr. Mikro
+FEP	Freifach English Perfectionist
+FEPx	Freifach English Perfectionist
+FEPy	Freifach English Perfectionist
+FFE	Freigegenstand Female Empowerment
+FGD	Generatives Design - Grundkurs
+FHBF	Freifach Hochbegabtenförderung
+FKRT	Krafttraining in Theorie und Praxis
+FKVT	Freigegenstand Kommunikations- u. Verkaufstraining
+FLAT	Freigegenstand Latein
+FMANM	Freigegenstand Management
+FMGTK	Freigegenstand Medizinaufnahmetest
+FMINT	Freigegenstand MINT
+FMT	Freifach Microsoft Technology
+FOEKUE	Freifach Environmental Education
+FPMG	Freifach Prototypenbau Medizinische Geräte
+FPOL	Poledance
+FPOS	Freigegenstand POS Coding Contest
+FPRE	Freifach Vorbereitung zur Projektmanagementzertifizierung
+FPSY	Freigegenstand Psychologie
+FRAP	Freifach Raspberry Projekte
+FSM	Fachspezifische Mathematik
+FSSK	Freifach Softskills
+FTHE3	Freifach Theater
+FUKKG	Freifach Kunst und kulturelles Geschehen in Wien
+FWD	Freigegenstand Web Development
+FWEK	Freigegenstand Modellieren mit Ton
+FWING	Freifach Wing Future 4.0
+FZD	Freifach Zweitsprache Deutsch
+GAD	Wahlpflichtgegenstand Game Development
+GGP	Geographie, Geschichte und politische Bildung
+GGPB	Geografie, Geschichte und pol. Bildung
+GINF	GRUNDLAGEN DER INF
+GOM2	Organisation im Gesundheitswesen
+GOM3	Gesundheitsökonomie und Management
+GUG	Geschichte und Geographie
+ILB	Individuelle Lernbegleitung
+INF1x	Informatik und Informationssysteme
+INF1y	Informatik und Informationssysteme
+INF1z	Informatik und Informationssysteme
+INFIx	Informatik und Informationssysteme X-Gruppe
+INFIy	Informatik und Informationssysteme Y-Grppe
+INSI_1	Informatinssysteme und IT-Sicherheit
+INSI_1x	Informationssysteme und IT-Sicherheit
+INSI_1y	Informationssysteme und IT-Sicherheit
+INSY	Informationssysteme
+INSYx	Informationssysteme x-Gruppe
+INSYx-E	INSY ESF
+INSYy	Informationssysteme y-Gruppe
+IOT	Wahlpflichtgegenstand Internet of Things
+ITP2	Informationstechnologie Projekte
+ITPR	IT-Praktikum FS
+JF_AVs	Joure Fixe für AVs
+JF_Sokrates	Jour Fixe Sokrates-Team
+KGKP	Kunstgeschichte und Kulturphilosophie
+KLS	Kommunikation und Lernstrategien
+KOM1	Kommunikation
+KOM2	Kommunikation
+KPRA	KOMMUNIKATION & PRÄSENTATIONSTECHNIK (LVG 2)
+KUST_2	KUST FACHTH. UNT.
+KWI	Kreativwirtschaft
+LA1	LABORATORIUM
+LQPM	LandesqualitätsprozessmanagerIn
+M2	Mathematik
+MDSG	MEDIEN-DESIGN / KD-Kolleg Abend
+MED2	Medientechnik
+MED2x	Medientechnik x-Gruppe
+MED2y	Medientechnik y-Gruppe
+MEDT	MEDIENTECHNIK (LVG 1)
+MEDTx	Medientechnik x-Gruppe
+MEDTy	Medientechnik y-Gruppe
+MEP_3	Medienproduktion 3 - 2013 - 2018
+MET1	Maschinen- und Elektrotechnik
+MET1x	Maschinen- und Elektrotechnik
+MET1y	Maschinen- und Elektrotechnik
+METE	Mechanische Technologie
+MGAN	Mediengestaltung - Animation
+MGG	Mediengestaltung
+MGGD	Mediengestaltung - Gamedesign
+MGIN	Medizin- und Gesundheitsinformatik
+MGINx	Medizin- und Gesundheitsinformatik x-Gruppe
+MGINy	Medizin- und Gesundheitsinformatik y-Gruppe
+MGT	Medizinische Gerätetechnik
+MIS	Medizinische Informationssysteme
+MISx	Medizinische Informationssysteme, x-Gruppe
+MISy	Medizinische Informationssysteme, y-Gruppe
+MP3	Medienprojekte (LP 2013-2018)
+MP3-E	Medienprojekte ESF
+MPAN	Medienproduktion - Animation
+MPANx	Medienproduktion - Animation x-Gruppe
+MPANy	Medienproduktion - Animation y-Gruppe
+MPGD	Medienproduktion - Gamedesign
+MPJ	Medienprojekt
+MPJx-E	Medienprojekt ESF
+MPJy	Medienprojekt y-Gruppe
+MSRT	MESS-STEUR.-REGEL
+MT	Mechanische Technologie
+MTAI	Medientechnologie - Animation und Angewandte Informatik
+MTAIx	Medientechnologie - Animation und Angewandte Informatik x-Gruppe
+MTAIy	Medientechnologie - Animation und Angewandte Informatik y-Gruppe
+MTGI	Medientechnologie - Gamedesign und Angewandte Informatik
+MTIN	Medientechnologie und angewandte Informatik
+MTKG	Medientheorie und Kunstgeschichte
+MTx	Mechanische Technologie X-Gruppe
+MTy	Mechanische Technologie Y-Gruppe
+MU4A	Musikerziehung
+MUL1	MULTIMEDIA
+MUW	Marketing und Werbung
+MWI2	Medienwirtschaft 
+NBU	NL Bibliothek
+NCAD	NL CAD
+NDVA	NL Datenverarbeitungsanlagen
+NEBL_2	Nebenleistungen
+NEES	Netzwerke und Embedded Systems
+NN_SKOC	
+NSCS_1	Netzwerksysteme und Cyber Security
+NSCS_1x	Netzwerksysteme und Cyber Security x-Gruppe
+NSCS_1y	Netzwerksysteme und Cyber Security y-Gruppe
+NVS1	Netzwerk- und verteilte Systeme
+NVS1x	Netzwerk- und verteilte Systeme x-Gruppe
+NVS1y	Netzwerk- und verteilte Systeme y-Gruppe
+NW2	Naturwissenschaften
+NWES	Netzwerke und Embedded Systems
+NWESx-E	NWES ESF
+NWESy	Netzwerke und Embedded Systems
+NWG	Naturwissenschaftl. Grundlagen
+NWG2	Naturwissenschaftliche Grundlagen
+NWT1	Netzwerktechnik
+NWTE	Netzwerktechnik
+NWTEx	Netzwerktechnik x-Gruppe
+NWTEy	Netzwerktechnik y-Gruppe
+NWT_1x	Netzwerktechnik x-Gruppe
+NWT_1y	Netzwerktechnik y-Gruppe
+NWT_4A	Netzwerktechnik - Computerpraktikum
+OPS	Wahlpflichtgegenstand Operations and Services
+ORD	ORDINARIAT
+P93	Einzelne Einrechnung
+P93E	Kustodiatspool IT/EDV - WE
+PMM	Prozessmanagement
+PMMx	
+PMMy	
+POS1	Programmieren und Softwareengineering
+POS1x	Programmieren und Softwareengineering x-Gruppe
+POS1y	Programmieren und Softwareengineering y-Gruppe
+POS1z	Programmieren und Softwareengineering z-Gruppe
+POSx-E	POS ESF
+PRE	Systemplanung und Projektentwicklung
+PRMN	Produktmanagement
+PRMNx	
+PRMNy	
+PSB	Persönlichkeitsbildung
+QBT	qualifizierte Beratungstätigkeit
+RE	RELIGION EVANG
+RISL	RELIGION ISLAM.
+RK	RELIGION KATH.
+RO	RELIGION ORTHODOX
+ROBO_1	Robotics
+RWDV	
+RWWR	Rechnungswesen
+S	Sprechstunde
+SB	Supplierbereitschaft
+SB1	Supplierbereitschaft
+SICH	Sicherheitstechniker
+SKOC	Studienkoordinator
+SKPH	STILKUNDE U. KULTURPHILOSOPHIE
+SMAP1	Smart Productin Lab 1
+SMAP3	Smart Productin Lab 3
+SMEN_1	Smart Mechanical Engineering
+SOPK	Sozial- und Personalkompetenz
+SOPR	Softwareentwicklung und Projektmanagement
+SOS	Wahlpflichtgegenstand Softwaresecurity
+SPL_1	Smart Production Lab 1
+SPL_3	Smart Production Lab 3
+SQPM	SchulqualitätsprozessmanagerIn
+STK	STILKUNDE
+SWP1	Softwareentwicklung und Projektmanagement
+SWP1x	Sofwareentwicklung und Projektmanagement X-Gruppe
+SWP1y	Sofwareentwicklung und Projektmanagement Y-Gruppe
+SYT	Systemtechnik
+SYTCP_4A	Systemtechnik - Computerpraktikum
+SYTx	Systemtechnik x-Gruppe
+SYTy	Systemtechnik y-Gruppe
+TE1	Technologie
+TEIN	Technologie und Angewandte Informatik
+TEINx	Technologie und Angewandte Informatik
+TEINy	Technologie und Angewandte Informatik
+TEKO	TELEKOMMUNIKATION
+TEPH	Technologie und Phänomenologie
+TICP4A	Techn. Informatik und Computerpraktikum
+TINF_1	Techn. Informatik und Computerpraktikum
+TINFx	Technische Informatik und Computerpraktikum
+TINFy	Technische Informatik und Computerpraktikum
+TMEN	TECHNOLOGIE DER MEDIEN / KD-Kolleg Abend
+TYPE	TYPOGRAF.ENTWURF
+UFW1	Unternehmensführung und Wirtschaftsrecht
+UFW2	Unternehmensführung und Wirtschaftsrecht
+UFW_2	Unternehmensführung und Wirtschaftsrecht
+UNF	Unternehmensführung
+UTE	Umwelttechnologie
+VAJF	Joure Fixe VA
+WEPT	Werkstätte und Produktionstechnik
+WIR3	WIRTSCHAFT U.RECHT
+WIRE	Wirtschaft und Recht - 2
+WMC_1	Webprogrammierung und Mobile Computing
+WMC_1x	Webprogrammierung und Mobile Computing
+WMC_1y	Webprogrammierung und Mobile Computing
+WPT_3	Werkstätte und Produktionstechnik
+WPT_4	Werkstätte und Produktionstechnik
+WRKL	WERKSTÄTTENLEITG.
