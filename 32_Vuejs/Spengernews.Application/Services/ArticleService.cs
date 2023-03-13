@@ -7,19 +7,19 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Spengernews.Webapi.Services
+namespace Spengernews.Application.Services
 {
     public class ArticleService
     {
         private readonly SpengernewsContext _db;
-        private readonly AuthService _authService;
+        private readonly Role _userRole;
         private readonly IMapper _mapper;
 
-        public ArticleService(SpengernewsContext db, AuthService authService, IMapper mapper)
+        public ArticleService(SpengernewsContext db, Role userRole, IMapper mapper)
         {
             _db = db;
-            _authService = authService;
             _mapper = mapper;
+            _userRole = userRole;
         }
 
         public IQueryable<Article> Articles => _db.Articles.AsQueryable();
@@ -38,7 +38,7 @@ namespace Spengernews.Webapi.Services
                     entity.Author = author;
                     entity.Category = category;
                     entity.Created = DateTime.UtcNow;
-                    entity.Published = _authService.CurrentUserRole == Role.Admin;
+                    entity.Published = _userRole == Role.Admin;
                 }));
             _db.Articles.Add(article);
             try { _db.SaveChanges(); }
@@ -49,7 +49,7 @@ namespace Spengernews.Webapi.Services
         {
             var article = await _db.Articles.FirstOrDefaultAsync(a => a.Guid == articleGuid);
             if (article is null) { return (false, $"Article {articleGuid} does not exist."); }
-            if (_authService.CurrentUserRole != Application.Model.Role.Admin)
+            if (_userRole != Role.Admin)
                 return (false, "User is not an Admin");
             article.Published = true;
             try { await _db.SaveChangesAsync(); }
@@ -62,7 +62,7 @@ namespace Spengernews.Webapi.Services
         {
             var article = await _db.Articles.FirstOrDefaultAsync(a => a.Guid == articleCmd.Guid);
             if (article is null) { return (false, $"Article {articleCmd.Guid} does not exist."); }
-            if (_authService.CurrentUserRole != Application.Model.Role.Admin && article.Published)
+            if (_userRole != Role.Admin && article.Published)
                 return (false, "Article is published");
             var category = await _db.Categories.FirstOrDefaultAsync(c => c.Guid == articleCmd.CategoryGuid);
             if (category is null) { return (false, $"Category {articleCmd.CategoryGuid} does not exist."); }
@@ -84,12 +84,12 @@ namespace Spengernews.Webapi.Services
             var article = await _db.Articles.FirstOrDefaultAsync(a => a.Guid == articleGuid);
             if (article is null) { return (false, $"Article {articleGuid} does not exist."); }
             // Guard clause
-            if (_authService.CurrentUserRole != Application.Model.Role.Admin && article.Published)
+            if (_userRole != Role.Admin && article.Published)
                 return (false, "Article is published");
 
             _db.Articles.Remove(article);
             try { await _db.SaveChangesAsync(); }
-            catch(DbUpdateException e) { return (false, e.InnerException?.Message ?? e.Message); }
+            catch (DbUpdateException e) { return (false, e.InnerException?.Message ?? e.Message); }
             return (true, string.Empty);
         }
     }

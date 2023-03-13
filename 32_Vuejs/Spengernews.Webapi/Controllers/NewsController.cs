@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Spengernews.Application.Dto;
 using Spengernews.Application.Infrastructure;
 using Spengernews.Application.Model;
+using Spengernews.Application.Services;
 using Spengernews.Webapi.Services;
 using SQLitePCL;
 using System;

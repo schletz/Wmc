@@ -15,6 +15,12 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/addcategory',
+      name: "addcategory",
+      meta: { authorize: true },
+      component: () => import('../views/AddCategoryView.vue')
+    },    
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

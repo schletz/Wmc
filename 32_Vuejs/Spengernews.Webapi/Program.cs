@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Spengernews.Application.Dto;
 using Spengernews.Application.Infrastructure;
+using Spengernews.Application.Services;
 using Spengernews.Webapi.Services;
 using System;
 using Webapi;
@@ -50,7 +52,11 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddHttpContextAccessor();     // Required to access the http context in the auth service.
 builder.Services.AddTransient<AuthService>();  // Instantiation on each DI injection.
-builder.Services.AddTransient<ArticleService>();
+builder.Services.AddTransient(provider => new ArticleService(
+    db: provider.GetRequiredService<SpengernewsContext>(),
+    userRole: provider.GetRequiredService<AuthService>().CurrentUserRole
+        ?? Spengernews.Application.Model.Role.Author,
+    mapper: provider.GetRequiredService<IMapper>()));
 
 // JWT Authentication ******************************************************************************
 // using Microsoft.AspNetCore.Authentication.JwtBearer;
