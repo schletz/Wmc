@@ -14,8 +14,4 @@
 		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.*" />
 		<PackageReference Include="Docker.DotNet" Version="3.*" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Services\" />
-	</ItemGroup>
 </Project>

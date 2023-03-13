@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Spengernews.Webapi.Services
+namespace Spengernews.Application.Services
 {
     [Serializable]
-    internal class ServiceException : Exception
+    public class ServiceException : Exception
     {
         public ServiceException()
         {
