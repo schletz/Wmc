@@ -82,6 +82,11 @@ if (builder.Environment.IsDevelopment())
 // APP
 // *************************************************************************************************
 var app = builder.Build();
+
+// SHOW ENVIRONMENT
+app.Logger.LogInformation($"ASPNETCORE_ENVIRONMENT is {app.Environment.EnvironmentName}");
+app.Logger.LogInformation($"Use Database {builder.Configuration.GetConnectionString("Default")}");
+
 app.UseHttpsRedirection();
 if (app.Environment.IsDevelopment())
 {
