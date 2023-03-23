@@ -1,15 +1,27 @@
 #!/bin/bash
-# Setzt alle lokalen Branches zurück
 
-git fetch --all --prune
+echo "Warning: All local changes will be reset. Press CTRL+C to cancel."
+read -p "Press [Enter] to continue"
+
+# Get the current branch
 current_branch=$(git branch --show-current)
-for branch in $(git branch | tr '*' ' ')
-do
-    echo Reset branch $branch
-    git checkout $branch &> /dev/null
-    # git clean -df
-    git reset --hard origin/$branch &> /dev/null
+
+# Check if there are any uncommitted changes
+if [ -n "$(git status --porcelain)" ]; then
+    echo "You have uncommitted changes. Please commit or stash them before running this script."
+    exit 1
+fi
+
+# Reset all branches
+for branch in $(git branch); do
+    echo "Resetting branch $branch..."
+    git checkout $branch && git clean -df && git reset --hard "origin/$branch"
+    if [ $? -ne 0 ]; then
+        echo "Failed to reset branch $branch."
+        exit 1
+    fi
 done
 
-git checkout $current_branch &> /dev/null
-echo "You are in Branch $current_branch" &> /dev/null
+# Go back to the current branch
+git checkout $current_branch
+echo "You are now on branch $current_branch"
