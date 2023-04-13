@@ -70,6 +70,12 @@ Dieser Code liest das Secret aus der Datei *appsettings.json* und wandelt es wie
 um. Danach wird die Authentication so konfiguriert, dass das Standardverfahren JWT ist. Der
 Key wird ebenfalls übergeben, sodass ASP.NET Core von selbst einen manipulierten Token erkennen kann.
 
+Schlussendlich füge folgende Zeilen in die *Program.cs* ein:
+```c#
+app.UseAuthentication();
+app.UseAuthorization();
+```
+**Wichtig ist die Reihenfolgen der beiden Zeilen zu beachten. Bei umgekehrter Reihenfolge liefert der Server ein 401 Unauthorized Response, auch wenn der JWT Token gültig ist.**
 
 ## Anpassen des Models: Userdaten speichern
 
