@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Spengernews.Application.Model
 {
     [Index(nameof(Name), IsUnique = true)]
-    public class Category
+    public class Category : Entity<int>
     {
 #pragma warning disable CS8618
         protected Category() { }
@@ -17,11 +17,6 @@ namespace Spengernews.Application.Model
         {
             Name = name;
         }
-
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; private set; }
-        public Guid Guid { get; set; }
         public string Name { get; set; }
     }
 

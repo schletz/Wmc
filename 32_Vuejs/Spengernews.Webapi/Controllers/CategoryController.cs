@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Spengernews.Application.Infrastructure;
@@ -12,27 +13,18 @@ namespace Spengernews.Webapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoryController : CrudController<Category>
     {
+        public CategoryController(SpengernewsContext db, IMapper mapper) : base(db, mapper)
+        {
+        }
+
         public record NewCategoryCmd(
             [StringLength(255, MinimumLength = 1, ErrorMessage = "Invalid Name")] string Name);
-        private readonly SpengernewsContext _db;
-
-        public CategoryController(SpengernewsContext db)
-        {
-            _db = db;
-        }
 
         [HttpGet]
-        public IActionResult GetAllCategories()
-        {
-            return Ok(_db.Categories.Select(c => new
-            {
-                c.Guid,
-                c.Name
-            })
-            .ToList());
-        }
+        public async Task<IActionResult> GetAllCategories() =>
+            await Query(_db.Categories.Select(c => new { c.Guid, c.Name }));
 
         /// <summary>
         /// Reagiert auf POST /api/category

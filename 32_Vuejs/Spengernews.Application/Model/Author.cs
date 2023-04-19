@@ -8,7 +8,7 @@ namespace Spengernews.Application.Model
 {
     [Index(nameof(Email), IsUnique = true)]
     [Index(nameof(Username), IsUnique = true)]
-    public class Author
+    public class Author : Entity<int>
     {
         public Author(string firstname, string lastname, string email,
             string username, string initialPassword, Role role, string? phone = null)
@@ -28,12 +28,6 @@ namespace Spengernews.Application.Model
         { }
 
 #pragma warning restore CS8618
-
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; private set; }
-
-        public Guid Guid { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Username { get; set; }

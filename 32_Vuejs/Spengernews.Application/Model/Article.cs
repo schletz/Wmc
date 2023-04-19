@@ -4,7 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Spengernews.Application.Model
 {
-    public class Article
+
+    public class Article : Entity<int>
     {
         public Article(
             string headline, string content, DateTime created,
@@ -25,13 +26,6 @@ namespace Spengernews.Application.Model
         { }
 
 #pragma warning restore CS8618
-
-        // Convention over configuration
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; private set; }
-
-        public Guid Guid { get; set; }
 
         [MaxLength(255)]
         public string Headline { get; set; }

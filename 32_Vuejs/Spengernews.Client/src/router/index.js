@@ -19,7 +19,13 @@ const router = createRouter({
       name: "addcategory",
       meta: { authorize: true },
       component: () => import('../views/AddCategoryView.vue')
-    },    
+    },
+    {
+      path: '/editnews',
+      name: "editnews",
+      meta: { authorize: true },
+      component: () => import('../views/EditNewsView.vue')
+    },        
     {
       path: '/about',
       name: 'about',
