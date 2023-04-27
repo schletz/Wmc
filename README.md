@@ -66,6 +66,8 @@ Installiere folgende Software:
 - EsLint
 - Babel
 
+### [5 Eine Vue.js App mit einem PHP API Backend](50_PhpWithVue)
+
 ### [Special: ASP.NET Core als Websocket Server](WebsocketDemo)
 
 ## Nutzungsbedingungen
