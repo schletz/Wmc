@@ -1,32 +1,34 @@
 <?php
 abstract class Controller
 {
+    // For hashing. GENERATE A NEW ONE!
     private $salt = "vAok7Z2KnQPn0AcHFsgI8qJlf6fDJffLqKkDs7v5xm8=";
-    // MYSQL:
+    // MYSQL (sensitive informations, DO NOT PUBLISH):
     private $dbHost = "";
     private $dbName = "";
     private $dbUser = "";
     private $dbPass = "";
     // SQLITE
     private $sqliteDb = "users.db";
-    // Folgende Felder sind für die Implementierung eigener Controllerklassen interessant.
-    protected $dbConn = null;            // für $this->dbConn->lastInsertId()
+    // Accessible fields for your own controller.
+    protected $dbConn = null;            // for $this->dbConn->lastInsertId()
 
-    public $getParams;                   // alle übergebenen GET Parameter
-    public $postParams;                  // alle übergebenen POST Parameter (x-www-form-urlencoded)
-    public $requestBody;                 // Request Body (bei JSON Body requests)
+    public $getParams;                   // array; for all GET parameters. Access with $this->getParams["name].
+    public $postParams;                  // array; for all POST parameters (x-www-form-urlencoded)
+    public $requestBody;                 // object; request body (for JSON Body requests). Access with $this->requestBody->propertyname.
 
     public function __construct()
     {
         $this->requestBody = new stdClass();
     }
 
-    // Defaultmethode, muss im eigenen Controller implementiert werden.
+    // Default method; called if there is no method query parameter in the request.
     abstract public function get();
 
     /**
      * connectToDb
-     * Verbindet zur Datenbank und setzt die Membervariable dbConn.
+     * Sets the database connection. If $sqliteDb is not empty, we will use a SQLite db.
+     * Else we use MySQL with the configured credentials.
      * @return void
      */
     private function connectToDb()
@@ -38,16 +40,14 @@ abstract class Controller
 
     /**
      * getData
-     * Führt eine Abfrage in der Datenbank durch und liefert das Ergebnis als JSON zurück. 
-     * @param string query Die SQL Abfrage, die ausgeführt werden soll. Parameter können als ? 
-     * angegeben werden. Diese werden dann aus dem Array befüllt.
+     * Executes a query and returns the result as JSON string or assotiative array is asJson is false.
+     * @param string $query query SQL query to execute. Parameters are defined with a ? 
      * @example
-     * $ctrl->getData("SELECT * FROM Personen WHERE P_ID = ? AND P_Vorname = ?", array(12, 'Max'))
-     * @param array parameter Ein Array mit den zu befüllenden Parametern.
-     * @returns Ein JSON Objekt mit allen Daten. Dieses Objekt ist ein JSON Array, und jeder 
-     * Datensatz wird als JSON Objekt mit dem Namen der Spalte zurückgegeben.
-     * [{id:12, name:"Mustermann", vorname:"max"],{...},{...},...]
-     * @throws Exception Meldung mit der errorInfo aus der Datenbank, falls die Abfrage misslingt.
+     * $ctrl->getData("SELECT * FROM Persons WHERE P_ID = ? AND P_Vorname = ?", array(12, 'Max'))
+     * @param array $param parameter Values for all parameters of the query.
+     * @param bool $asJson If true, the result will returned as JSON string. Else as assotiative array. 
+     * @returns If asJson is true a JSON Array with the result, if asJson is false an assotiative array.
+     * @throws Exception Database exception.
      */
     protected function getData($query, $param = array(), $asJson = true)
     {
@@ -66,12 +66,19 @@ abstract class Controller
         return $asJson ? json_encode($rows, JSON_THROW_ON_ERROR) : $rows;
     }
 
+    /**
+     * Returns HTTP status 400 and exit script execution.
+     */
     protected function sendBadRequestAndExit()
     {
         http_response_code(400);
         exit(0);
     }
 
+    /**
+     * Returns HTTP status 401 and exit script execution.
+     * @param string $data Payload. Will be sent 1:1 to the client, should be a JSON string. 
+     */
     protected function sendUnauthorizedAndExit($data = null)
     {
         http_response_code(401);
@@ -79,6 +86,10 @@ abstract class Controller
         exit(0);
     }
 
+    /**
+     * Returns HTTP status 404 and exit script execution.
+     * @param string $data Payload. Will be sent 1:1 to the client, should be a JSON string. 
+     */
     protected function sendNotFoundAndExit($data = null)
     {
         http_response_code(404);
@@ -86,6 +97,9 @@ abstract class Controller
         exit(0);
     }
 
+    /**
+     * Returns HTTP status 204 and exit script execution.
+     */
     protected function sendNoContentAndExit()
     {
         http_response_code(204);
@@ -94,9 +108,9 @@ abstract class Controller
 
     /**
      * checkAuthentication
-     * Prüft, ob ein Cookie mit dem Namen php_api_auth oder ein Bearer Token im Authorization Header
-     * übermittelt wurde. Der Hash des Tokens oder des Cookies wird geprüft.
-     * @return object Objekt mit den Daten des Cookies oder des Tokens.
+     * Checks whether a cookie with the name php_api_auth or a bearer token in the Authorization
+     * Header has been submitted. The hash of the token or cookie is checked.
+     * @return array Assotiatice array with the cookie or token payload.
      */
     protected function checkAuthentication()
     {
@@ -118,7 +132,7 @@ abstract class Controller
 
     /**
      * setCookieHeader
-     * Sendet den set-cookie header, um ein Cookie zu setzen.
+     * Sends the set-cookie header to set a cookie.
      * @param  array $payload Array mit dem zu codierenden Payload.
      * @return void
      */
@@ -129,14 +143,14 @@ abstract class Controller
         }
         $expires = time() + 60 * 60 * 3;
         $token = $this->generateAuthToken($payload, $expires);
-        // Damit der Devserver auch auf das Cookie zugreifen kann, senden wir das secure flag (nur HTTPS)
-        // und setzen die SameSite Policy auf None.
+        // To allow the devserver to access the cookie, we send the secure flag (HTTPS only)
+        // and set the SameSite Policy to None. and set the SameSite Policy to None.
         setcookie("php_api_auth", $token, ["secure" => true, "expires" => $expires, "samesite" => "None"]);
     }
 
     /**
      * setDeleteCookieHeader
-     * Sendet ein expired Cookie, um das Cookie am Client zu löschen.
+     * Sends an expired cookie to remove the cookie on the client.
      * @return void
      */
     protected function setDeleteCookieHeader()
@@ -146,10 +160,10 @@ abstract class Controller
 
     /**
      * generateAuthToken
-     * Erstellt einen Token, der dann als Bearer Token im Authorize Header gesendet werden kann.
-     * Wird für den Android Client verwendet.
-     * @param  array $payload Array mit dem zu codierenden Payload.
-     * @param  int $expires UNIX Timestamp, wann der Token ablaufen soll.
+     * Creates a token that can then be sent as a bearer token in the Authorize header.
+     * Can be used for an android, ... client.
+     * @param  array $payload Array with the payload to be encoded.
+     * @param  int $expires   UNIX Timestamp when the token should expire.
      * @return void
      */
     protected function generateAuthToken($payload, $expires)
@@ -160,9 +174,14 @@ abstract class Controller
         $payload["expires"] = $expires;
         $data = json_encode($payload);
         $hash = crypt($data, $this->salt);
+        // Send token or cookie as <data>.<hash>
         return base64_encode($data) . "." . base64_encode($hash);
     }
 
+    /**
+     * Generates a random 128bit UUID (v4)
+     * @return string UUID formatted as hex string xxxx-xxx-xx... (36 chars)
+     */
     protected function generateGuid()
     {
         $data = random_bytes(16);
@@ -171,6 +190,7 @@ abstract class Controller
 
     private function checkAuthToken($token)
     {
+        // Allow only base64 characters in data and hash section.
         if (!preg_match("/^(?<data>[-A-Za-z0-9+\\/]+={0,3})\\.(?<hash>[-A-Za-z0-9+\\/]+={0,3})$/", $token, $match)) {
             return false;
         }

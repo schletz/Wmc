@@ -10,9 +10,11 @@ class UserController extends Controller
     }
 
     /**
-     * addUser
+     * Adds a new user to the database.
      * POST /api/?controller=user&method=addUser
-     * Legt einen User in der Datenbank an.
+     * Creates a user.
+     * Expected payload (JSON):
+     *     {username: string, password: string, firstname: string, lastname: string, email: string}
      * @return void
      */
     public function addUser()
@@ -32,10 +34,9 @@ class UserController extends Controller
 
 
     /**
-     * getProfile
+     * Gets the encoded data in the token or cookie.
+     * Requires authenticated user.
      * GET /api?controller=user&method=getProfile
-     * Liest den Inhalt des Cookies aus und sendet ihn zurück.
-     * @return void
      */
     public function getProfile()
     {

@@ -2,6 +2,24 @@
 
 Im Ordner *htdocs/api* liegt die API für die Single Page App.
 Mit dem Aufruf *http://localhost/api/?controller=article* kann sie getestet werden.
+
+## Datenbankzugriff
+
+In der Datei [controller.class.php](htdocs/api/controller.class.php) kann der Datenbankzugriff konfiguriert werden.
+In der Demo ist eine SQLite Datenbank konfiguriert, es kann auch eine MySQL Datenbank verwendet werden.
+Setze dafür die Verbindungsdaten und setze die Variable *sqliteDb* auf einen Leerstring.
+
+> **Vorsicht:** Die Datei enthält mit dem Verbindungsstring sensible Daten.
+> Achte darauf, dass sie nicht in ein öffentliches Repo hochgeladen wird.
+
+Als Erweiterung kannst du auch die Konfiguration von einer externen Datei (z. B. config.php und config.localhost.php) für Production und Development laden.
+
+Ebenfalls im Controller ist eine Variable *salt*.
+Sie wird zum Hashen des Cookies verwendet (*crypt* Funktion in php).
+Der Inhalt sollte neu generiert werden (z. B. mit https://generate.plus/en/base64) *und darf natürlich auch nicht veröffentlicht werden*.
+
+## Controller
+
 Der Controller *ArticleController* stellt z. B. Methoden zur Bearbeitung der *Article* Tabelle bereit:
 
 **htdocs/api/articleController.class.php**
