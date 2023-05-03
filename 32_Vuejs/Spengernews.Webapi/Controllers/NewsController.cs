@@ -11,6 +11,7 @@ using Spengernews.Application.Services;
 using Spengernews.Webapi.Services;
 using SQLitePCL;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
@@ -87,6 +88,14 @@ namespace Webapi.Controllers
             if (guid != articleCmd.Guid) { return BadRequest(); }
             var (success, message) = await _articleService.EditArticle(articleCmd);
             if (!success) { return BadRequest(message); }
+            return NoContent();
+        }
+
+        [Authorize]
+        [HttpPut("news_many")]
+        public IActionResult EditArticles(List<EditArticleCmd> articlesCmd)
+        {
+            // Hausübung: Schreibe die Logik.
             return NoContent();
         }
 

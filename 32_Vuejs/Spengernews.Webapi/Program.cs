@@ -106,7 +106,7 @@ if (app.Environment.IsDevelopment())
         await app.UseSqlServerContainer(
             containerName: "spengernews_sqlserver", version: "latest",
             connectionString: app.Configuration.GetConnectionString("Default"),
-            deleteAfterShutdown: true);
+            deleteAfterShutdown: false);
     }
     catch (Exception e)
     {
