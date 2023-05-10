@@ -1,11 +1,15 @@
 <script setup>
 import axios from 'axios';
 import SpinnerComponent from '../components/SpinnerComponent.vue';
+import ModalDialog from '../components/ModalDialog.vue';
 </script>
 
 <template>
     <div class="editNewsView">
-        <SpinnerComponent v-if="loading"></SpinnerComponent>
+        <SpinnerComponent ref="spinner"></SpinnerComponent>
+        <ModalDialog ref="saveConfirmDialog" title="Speichern?" v-bind:buttons="['Ja', 'Nein']">
+            <strong>Willst du die Änderungen speichern?</strong>
+        </ModalDialog>
         <table>
             <thead>
                 <tr>
@@ -50,13 +54,12 @@ export default {
         return {
             categories: [],
             news: [],
-            model: [],
-            loading: false
+            model: []
         }
     },
     async mounted() {
         try {
-            this.loading = true;
+            this.$refs.spinner.show();
             this.categories = (await axios.get("category")).data;
             const news = (await axios.get("news")).data;
             this.news = news;
@@ -66,7 +69,8 @@ export default {
             alert("Error loading data.");
         }
         finally {
-            this.loading = false;
+            this.$refs.spinner.hide();
+
         }
     },
     methods: {
@@ -77,25 +81,30 @@ export default {
             )
         },
         async saveChanged() {
+            console.log("show dialog...");
+            const button = await this.$refs.saveConfirmDialog.show({timeout: 4000, default: ""});
+            if (button != "Ja") {return; }
+            
             const changed = this.model.filter(m => m.changed).map(m => ({
                 guid: m.guid, headline: m.headline,
                 content: m.content, imageUrl: m.imageUrl, categoryGuid: m.categoryGuid
             }));
             if (!changed.length) { return; }
             try {
-                this.loading = true;
+                this.$refs.spinner.show();
                 await axios.put('news/news_many', changed);
                 // Entweder neu laden oder changed entfernen
                 this.news = this.model.map(m => {
                     delete m.changed;
                     return m;
                 });
+                this.model = this.news.map(n => ({ ...n }));              
             }
             catch (e) {
                 alert("Failed to save data.");
             }
             finally {
-                this.loading = false;
+                this.$refs.spinner.hide();
             }
         }
     },

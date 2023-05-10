@@ -1,5 +1,5 @@
 <template>
-    <div class="spinner"></div>
+    <div class="spinner" v-if="active"></div>
 </template>
 
 <style scoped>
@@ -25,4 +25,19 @@
     100% {
         transform: rotate(360deg)
     }
-}</style>
+}
+</style>
+
+<script>
+export default {
+    data() {
+        return {
+            active: false
+        }
+    },
+    methods: {
+        show() { this.active = true; },
+        hide() { this.active = false; }
+    }
+}
+</script>
