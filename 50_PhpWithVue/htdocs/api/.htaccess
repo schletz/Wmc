@@ -1,7 +1,0 @@
-# Allow only access to /api or /api/index.php
-# Important to protect sensitive files.
-Order allow,deny
-Deny from all
-<FilesMatch ^(index\.php)?$>
-  Allow from all
-</FilesMatch>
