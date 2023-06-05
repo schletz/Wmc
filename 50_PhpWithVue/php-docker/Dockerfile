@@ -1,4 +1,4 @@
-# docker build -t php_devserver . && docker run -p 443:443 -v "C:\Github\Projekte\4AFITN\sj23-24-4afitn-da-smartmirror\php-backend:/var/www/html" -it --rm --name smartpinboard php_devserver
+# docker build -t php_devserver . && docker run -p 443:443 -v "C:\Github\Wmc\50_PhpWithVue\htdocs:/var/www/html" -it --rm php_devserver
 # https://github.com/TrafeX/docker-php-nginx
 ARG ALPINE_VERSION=3.18
 FROM alpine:${ALPINE_VERSION}
