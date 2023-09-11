@@ -1,0 +1,1 @@
+*,*:before,*:after{box-sizing:border-box}html,body{font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif}body{display:flex;justify-content:center}#app{width:70em;border:1px solid gray;border-radius:2em;padding:1em}nav[data-v-82f5fd1b]{display:flex;column-gap:1em}

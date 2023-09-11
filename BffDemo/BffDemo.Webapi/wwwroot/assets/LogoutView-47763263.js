@@ -1,0 +1,1 @@
+import{a as t}from"./index-3e20a37e.js";const e={async mounted(){this.$store.commit("authenticate",null),await t.get("user/logout")}},_=Object.assign(e,{__name:"LogoutView",setup(o){return(a,s)=>" You logged out. "}});export{_ as default};

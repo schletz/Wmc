@@ -1,5 +1,5 @@
 <script setup>
-import axios from "axios";
+import CustomerService from "../services/CustomersService";
 </script>
 
 <template>
@@ -22,7 +22,7 @@ export default {
     }
   },
   async mounted() {
-    const data = (await axios.get('customers')).data;
+    const data = await CustomerService.getCustomers();
     this.customers = data;
   },
 };
