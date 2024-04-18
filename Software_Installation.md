@@ -25,7 +25,7 @@ Betriebssystem herunter.
 >  *Add "Open with Code" action to Windows Explorer directory context menu*.
 > Da Node.js Projekte nicht als Einzeldatei geöffnet werden können, ist diese Option sehr hilfreich!
 
-Danach installiere über das Extension Menü die Extension *Volar*.
+Danach installiere über das Extension Menü die Extension *Vue - Official* und *ESLint*.
 
 Öffne nun die Einstellungen (Drücke *F1* oder *SHIFT+CMD+P* für die Menüzeile. Gib dann  
 *settings* ein und wähle den Punkt *Preferences: Open User Settings (JSON)*. Füge die folgenden
