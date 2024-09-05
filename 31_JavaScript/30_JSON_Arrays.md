@@ -481,3 +481,120 @@ const statistics = {};
 console.log(JSON.stringify(statistics));
 ```
 
+## Der Spread und Rest Operator
+
+Der **`...` Operator** in JavaScript, auch bekannt als **Spread Operator** oder **Rest Operator**, hat je nach Kontext zwei Hauptverwendungen:
+
+### 1. Spread Operator
+
+Der Spread Operator wird verwendet, um Elemente eines Arrays oder Objekts zu "entfalten" und sie an einer anderen Stelle einzufügen. Es wird oft genutzt, um Arrays oder Objekte zu kopieren, zu kombinieren oder sie als Argumente in Funktionen zu übergeben.
+
+#### Beispiel (für Arrays):
+
+```javascript
+const arr1 = [1, 2, 3];
+const arr2 = [...arr1, 4, 5];
+console.log(arr2); // Ausgabe: [1, 2, 3, 4, 5]
+```
+
+#### Beispiel (für Objekte):
+
+```javascript
+const obj1 = { a: 1, b: 2 };
+const obj2 = { ...obj1, c: 3 };
+console.log(obj2); // Ausgabe: { a: 1, b: 2, c: 3 }
+```
+
+### 2. Rest Operator
+
+Der Rest Operator wird verwendet, um den Rest der übergebenen Argumente in ein Array zu sammeln.
+Er kommt häufig in Funktionen vor, um eine variable Anzahl von Argumenten zu verarbeiten.
+
+#### Beispiel:
+
+```javascript
+function sum(...numbers) {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+
+console.log(sum(1, 2, 3, 4)); // Ausgabe: 10
+```
+
+Hier sammelt `...numbers` alle übergebenen Argumente in einem Array und verarbeitet sie mit `reduce`.
+
+### Zusammenfassung:
+
+- **Spread** entfaltet Arrays/Objekte.
+- **Rest** sammelt mehrere Argumente in einem Array.
+
+## Übung zu Spread und Rest Operator
+
+Erstelle eine neue Datei mit dem Namen *json_exercise02.js* und öffne sie in VS Code. 
+Bearbeite die nachfolgenden Aufgaben in diesem File.
+
+### Kombiniere Arrays
+
+Erstelle zwei Arrays, *firstnames* und *lastnames*.
+Verwende den Spread Operator, um ein neues Array *fullNames* zu erstellen, das die Elemente beider Arrays kombiniert.
+
+```javascript
+const firstnames = ["Max", "Erika"];
+const lastnames = ["Mustermann", "Musterfrau"];
+// Deine Lösung hier
+
+console.log(fullNames); // Ausgabe: ["Max", "Erika", "Mustermann", "Musterfrau"]
+```
+
+### Übergib Funktionsargumente
+
+Erstelle eine Funktion summe, die beliebig viele Zahlen als Argumente entgegennimmt und deren Summe zurückgibt.
+Verwende den Spread Operator, um ein Array von Zahlen in dieser Funktion als einzelne Argumente zu übergeben.
+
+```javascript
+function sum(...values) {
+// Deine Lösung hier
+}
+
+const values = [10, 20, 30];
+console.log(sum(...values)); // Ausgabe: 60
+```
+
+### Der Spread Operator für tiefe Kopien von Objekten
+
+Erstelle ein verschachteltes Objekt namens *originalObject*, das Informationen über eine Person enthält.
+Weise zuerst mit dem = Operator das Objekt einer neuen Variable mit den Namen *referenceCopy* zu.
+Bearbeite dann das den Namen in *referenceCopy*, um zu sehen, ob es Auswirkungen auf *originalObject* hat.
+Weise danach mit dem Spread Operator das Objekt in die Variable *shallowCopy* zu und teste erneut.
+
+```javascript
+const originalObject = {
+  name: "Anna",
+  age: 30,
+};
+
+// TODO: Kopie von originalObject mit ...Operator in shallowCopy
+
+// TODO: Referenzkopie von originalObject mit = Operator in referenceCopy
+
+// Test: Ändere den Namen in referenceCopy und shallowCopy
+
+// Ausgabe
+console.log("Originalobjekt:", originalObject);
+console.log("Referenzkopie:", referenceCopy);
+console.log("Flache Kopie:", shallowCopy);
+```
+
+Danach teste, ob im nachfolgenden Objekt das Property *city* in *address* geändert wird, wenn du es in einer Kopie mit dem Spread Operator änderst.
+
+```javascript
+const nestedObject = {
+  name: "Anna",
+  age: 30,
+  address: {
+    city: "Hamburg",
+    country: "Deutschland"
+  }
+};
+```
+
+Suche nach *JSON.parse()* und *JSON.stringify()*, ob sich hierfür auch eine Lösung findet.
